@@ -88,7 +88,7 @@
                                 <label for="">
                                     <div class=" form-group">
                                         <label for="attachment" class="upload__btn">
-                                            <label class="form-label mt-4">Profile Photo:(<span
+                                            <label class="form-label mt-4">Avatar:(<span
                                                     class="ss_red">*</span>)</label>
                                             <input type="file" wire:model="avatar" id="attachment"
                                                 class="form-control" style="padding:4px" required>

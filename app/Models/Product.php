@@ -11,11 +11,7 @@ class Product extends Model
     //class name and table name may be different !
     protected $table = 'products';
     protected $primaryKey = 'id';
-
-    protected $appends = [
-        'product_url',
-    ];
-
+    
     protected $casts = [
         'image' => 'array',
     ];
@@ -27,15 +23,5 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function getProductUrlAttribute()
-    {
-        if ($this->image) {
-            foreach($this->image as $item) {
-                return url('images/' . $item);                
-            }
-        }
-        return url('images/deflaut_product.png');
     }
 }

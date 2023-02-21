@@ -20,9 +20,6 @@
                         <h6 class="m-0 font-weight-bold text-primary" role="alert">Edit Product</h6>
                     </div>
                     <div class="card-body">
-                        @if (Session::has('message'))
-                            <div class="alert alert-success">{{ Session::get('message') }}</div>
-                        @endif
                         <div class="table-responsive">
                             <form enctype="multipart/form-data" wire:submit.prevent="updateProduct()">
                                 <input class="form-control" wire:model="product_id" type="hidden" placeholder="ID">
@@ -74,28 +71,46 @@
                                 <label for="">
                                     <div class=" form-group">
                                         <label for="attachment" class="upload__btn">
-                                            <label class="form-label mt-4">Profile Photo: (<span
+                                            <label class="form-label mt-4">Product Image: (<span
                                                     class="ss_red">*</span>)</label>
-                                            <input type="file" wire:model="image" id="attachment"
+                                            <input type="file" wire:model="image" id="example-file"
                                                 class="form-control" multiple style="padding:4px" required>
+                                            <div wire:loading wire:target="image" style="font-size:20px;color:green">
+                                                Uploading...</div>
                                             @error('image.*')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </label>
                                         <div id="files-area" class="mt-xl-4">
-                                            <div id="filesList">                                         
+                                            <div id="filesList">
                                                 @if ($image)
-                                                    <div id="files-names">Preview image:</div>
-                                                    @foreach ($image as $images)
-                                                        <img style="height: 8rem" src="{{ $images->temporaryUrl() }}">
-                                                    @endforeach
+                                                    <div id="files-names">Preview Product:</div>
+                                                    <div style="display: flex">
+                                                        @foreach ($image as $images)
+                                                            <div wire:key="{{ $loop->index }}"
+                                                                style="padding: 0 15px 0 0">
+                                                                <p style="height:10px;border-radius:1px solid black"
+                                                                    wire:click="removeMe({{ $loop->index }})">
+                                                                    <i class="far fa-times-circle"
+                                                                        style="color: orangered;"></i>
+                                                                </p>
+                                                                <img style="height: 5rem"
+                                                                    src="{{ $images->temporaryUrl() }}">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 @else
-                                                    <div id="files-names">Current image:</div>
-                                                    <img style="height: 8rem" src="{{ $state['product_url'] ?? '' }}"> 
-                                                    @foreach ($state as $item)
-                                                        {{ $item['product_url'] ?? '' }}
-                                                    @endforeach                                                     
-                                                @endif                                                                                               
+                                                    <div id="files-names">Current Product:</div>
+                                                    @if ($state['image'])
+                                                        @foreach ($state['image'] as $images)
+                                                            <img style="height: 5rem;padding:5px"
+                                                                src="{{ url('images/' . $images) }}">
+                                                        @endforeach
+                                                    @else
+                                                        <img style="height: 5rem"
+                                                            src="{{ url('images/deflaut_product.png') }}">
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

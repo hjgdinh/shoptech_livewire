@@ -96,11 +96,11 @@
                                             @if (isset($item->image))
                                                 @foreach ($item->image as $img)
                                                     <img src="{{ url('images/' . $img) }}" alt="" 
-                                                        style="width:5rem;padding:2px">
+                                                        style="width:4rem;padding:2px">
                                                 @endforeach                                               
                                             @else
                                                 <img src="{{ url('images/deflaut_product.png') }}" alt="" 
-                                                style="width:5rem;padding:2px">
+                                                style="width:4rem;padding:2px">
                                             @endif                                                                                  
                                         </td>
                                         <td>{{ $item->description }}</td>

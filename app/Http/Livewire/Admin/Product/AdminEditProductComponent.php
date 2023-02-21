@@ -52,7 +52,6 @@ class AdminEditProductComponent extends Component
     {
         $product = Product::where('id', $id)->first();
         $this->state = $product->toArray();
-        // dd($this->state);
         $this->product_id = $product->id;
         $this->name = $product->name;
         $this->slug = $product->slug;
@@ -60,11 +59,17 @@ class AdminEditProductComponent extends Component
         $this->description = $product->description;
         $this->category_id = $product->category_id;
         $this->image = $product->image;
-        $this->reset('image');               
+        $this->reset('image');
     }
 
-    public function autoSlug() {
+    public function autoSlug()
+    {
         $this->slug = Str::slug($this->name);
+    }
+
+    public function removeMe($index)
+    {
+        array_splice($this->image, $index, 1);
     }
 
     public function updateProduct()
@@ -72,9 +77,9 @@ class AdminEditProductComponent extends Component
         $this->validate();
 
         foreach ($this->image as $key => $image) {
-            $this->image[$key] = $image->store('/','images');
+            $this->image[$key] = $image->store('/', 'images');
         }
-    
+
         $form = [
             'name' => $this->name,
             'slug' => $this->slug,
@@ -85,14 +90,15 @@ class AdminEditProductComponent extends Component
         ];
         $product = Product::find($this->product_id);
         $product->update($form);
+        $this->image = "";
         session()->flash('message', 'Sửa thành công');
-        $this->image="";
+        return redirect()->route('admin.product');
     }
 
     public function render()
     {
         $category = Category::where('parent_id', 0)->with(['children'])->get();
-        return view('livewire.admin.product.admin-edit-product-component',[
+        return view('livewire.admin.product.admin-edit-product-component', [
             'category' => $category,
         ])->layout('layouts.admin');
     }
