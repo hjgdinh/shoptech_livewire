@@ -1,10 +1,8 @@
 <?php
 
-// use Illuminate\Http\Request;
-// use Encore\Admin\Facades\Admin;
-// use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminProfileComponent;
 use App\Http\Livewire\Admin\User\AdminUserComponent;
@@ -29,7 +27,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', HomeComponent::class);    
+Route::get('/', HomeComponent::class);   
+
+Route::get('/shop', ShopComponent::class);    
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
