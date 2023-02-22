@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
+use App\Http\Livewire\DetailComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminProfileComponent;
 use App\Http\Livewire\Admin\User\AdminUserComponent;
@@ -27,9 +28,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', HomeComponent::class);   
+Route::get('/', HomeComponent::class)->name('home.component');   
 
-Route::get('/shop', ShopComponent::class);    
+Route::get('/shop', ShopComponent::class)->name('shop.component');  
+
+Route::get('/shop/{slug?}', DetailComponent::class)->name('detail.product');    
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {

@@ -1,4 +1,69 @@
 <div>
+    <div class="slider">
+        <div class="owl-carousel owl-one owl-theme">
+            <div class="item">
+                <div class="slider-img">
+                    <img src="{{ asset('user/images/slider_1.jpg') }}" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+                            <div class="slider-captions">
+                                <div class="brand-img">
+                                    <img src="{{ asset('user/images/mi_logo.png') }}" alt="">
+                                </div>
+                                <h1 class="slider-title">Red Mi <span>Y1</span></h1>
+                                <p class="hidden-xs">LED Selfie-light | Fingerprint sensor | Dedicated microSD card
+                                    slot Snapdragon 435 octa-core processor </p>
+                                <p class="slider-price">$138.99 </p>
+                                <a href="#" class="btn btn-primary btn-lg hidden-xs">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider-img"><img src="{{ asset('user/images/slider_2.jpg') }}" alt=""></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+                            <div class="slider-captions">
+                                <div class="brand-img">
+                                    <img src="{{ asset('user/images/google_logo.jpg') }}" alt="">
+                                </div>
+                                <h1 class="slider-title">Google Pixel 2</h1>
+                                <p class="hidden-xs">The latest Qualcomm Snapdragon 835 processor | Water-resistant
+                                    metal unibody | Up to 7 hours of battery.</p>
+                                <p class="slider-price">$ 938.10</p>
+                                <a href="#" class="btn btn-primary btn-lg hidden-xs">Download Free Template</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="slider-img"><img src="{{ asset('user/images/slider_3.jpg') }}" alt=""></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+                            <div class="slider-captions">
+                                <div class="brand-img">
+                                    <img src="{{ asset('user/images/apple_logo.jpg') }}" alt="">
+                                </div>
+                                <h1 class="slider-title">iphone 8 plus </h1>
+                                <p class="hidden-xs">5.5 inch Retina HD Display | 12MP wide-angle cameras
+                                    <br> | 64 GB &amp; 256 GB ROM Memory
+                                </p>
+                                <p class="slider-price">$759.64</p>
+                                <a href="#" class="btn btn-primary btn-lg hidden-xs">Download Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.slider -->
     <!-- mobile showcase -->
     <div class="space-medium">
         <div class="container">
@@ -6,21 +71,21 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="showcase-block">
                         <div class="display-logo ">
-                            <a href="#"> <img src="./images/nexus.png" alt=""></a>
+                            <a href="#"> <img src="{{ asset('user/images/nexus.png') }}" alt=""></a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"> <img src="./images/display_img_1.png" alt=""></a>
+                            <a href="#"> <img src="{{ asset('user/images/display_img_1.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="showcase-block active">
                         <div class="display-logo alignleft">
-                            <a href="#"> <img src="./images/iphone.png" alt="">
+                            <a href="#"> <img src="{{ asset('user/images/iphone.png') }}" alt="">
                             </a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"> <img src="./images/display_img_2.png" alt=""
+                            <a href="#"> <img src="{{ asset('user/images/display_img_2.png') }}" alt=""
                                     style="padding-left: 80px;"></a>
                         </div>
                     </div>
@@ -28,11 +93,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="showcase-block ">
                         <div class="display-logo ">
-                            <a href="#"> <img src="./images/samsung.png" alt="">
+                            <a href="#"> <img src="{{ asset('user/images/samsung.png') }}" alt="">
                             </a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"><img src="./images/display_img_3.png" alt=""> </a>
+                            <a href="#"><img src="{{ asset('user/images/display_img_3.png') }}" alt=""> </a>
                         </div>
                     </div>
                 </div>
@@ -41,20 +106,20 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="showcase-block">
                         <div class="display-logo ">
-                            <a href="#"><img src="./images/htc.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('user/images/htc.png') }}" alt=""></a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"><img src="./images/display_img_4.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('user/images/display_img_4.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="showcase-block">
                         <div class="display-logo">
-                            <a href="#"> <img src="./images/alcatel.png" alt=""></a>
+                            <a href="#"> <img src="{{ asset('user/images/alcatel.png') }}" alt=""></a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"> <img src="./images/display_img_5.png" alt="">
+                            <a href="#"> <img src="{{ asset('user/images/display_img_5.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -62,20 +127,20 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="showcase-block">
                         <div class="display-logo ">
-                            <a href="#"><img src="./images/pixel.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('user/images/pixel.png') }}" alt=""></a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"> <img src="./images/display_img_6.png" alt=""></a>
+                            <a href="#"> <img src="{{ asset('user/images/display_img_6.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="showcase-block">
                         <div class="display-logo ">
-                            <a href="#"> <img src="./images/vivo.png" alt=""></a>
+                            <a href="#"> <img src="{{ asset('user/images/vivo.png') }}" alt=""></a>
                         </div>
                         <div class="showcase-img">
-                            <a href="#"><img src="./images/display_img_7.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('user/images/display_img_7.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +161,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_1.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_1.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Google Pixel <strong>(128GB,
@@ -118,7 +183,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_2.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_2.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">HTC U Ultra <strong>(64GB,
@@ -140,7 +205,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_3.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_3.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Samsung Galaxy Note 8</a></h5>
@@ -161,7 +226,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_4.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_4.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Vivo V5 Plus <strong>(Matte
@@ -206,7 +271,7 @@
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_5.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_5.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Apple iPhone 6 <strong>(32 GB,
@@ -230,7 +295,7 @@
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_6.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_6.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Apple iPhone 7 <strong>(256 GB,
@@ -254,7 +319,7 @@
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_7.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_7.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Apple iPhone 6S <strong>(32GB,
@@ -278,7 +343,7 @@
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_8.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_8.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Apple iPhone X <strong>(64 GB,
@@ -317,7 +382,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_3.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_3.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Samsung Galaxy Note 8</a></h5>
@@ -338,7 +403,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_4.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_4.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Vivo V5 Plus <strong>(Matte
@@ -360,7 +425,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_1.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_1.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">Google Pixel <strong>(128GB,
@@ -382,7 +447,7 @@
                             <!-- product -->
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="product-block">
-                                    <div class="product-img"><img src="./images/product_img_2.png" alt="">
+                                    <div class="product-img"><img src="{{ asset('user/images/product_img_2.png') }}" alt="">
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="#" class="product-title">HTC U Ultra <strong>(64GB,
