@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('12345'),
             ],
             [
-                'name' => Str::random(5),
+                'name' => 'admin',
                 'phone' => '0398039307',
                 'gender' => '1' || '2',
                 'address' => Str::random(5),               
