@@ -52,7 +52,7 @@
                                 </select>
                                 <select wire:model="sorting" class="form-control" style="margin-top:5px">
                                     <option value="deflaut" selected>Nổi bật</option>
-                                    <option value="price-asc" selected>Giá từ thấp đến cao</option>
+                                    <option value="price-asc">Giá từ thấp đến cao</option>
                                     <option value="price-desc">Giá từ cao đến thấp</option>
                                     {{-- <option value="phone">Điện thoại</option>
                                     <option value="laptop">Laptop</option> --}}

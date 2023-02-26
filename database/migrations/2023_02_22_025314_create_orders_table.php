@@ -14,11 +14,17 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->product_id();
-            $table->id();
-            $table->id();
-            $table->id();
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('price');
+            $table->integer('quantity');
+            $table->tinyInteger('status')->default('1')->comment('1 : Chờ duyệt, 2 : Duyệt thành công, 3 : Hủy hàng');
+            // foreign key
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

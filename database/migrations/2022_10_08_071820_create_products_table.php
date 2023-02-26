@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('price');
+            $table->integer('price');
+            $table->tinyInteger('status')->default('1')->comment('1 : Còn hàng, 2 : Hết hàng')->nullable();
+            $table->integer('quantity')->default('100')->nullable();
             $table->longText('image')->nullable();
             $table->longText('description');
             // foreign key

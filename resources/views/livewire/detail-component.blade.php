@@ -74,11 +74,11 @@
                                         <h5>Quantity</h5>
                                         <div class="quantity mb20" bis_skin_checked="1">
                                             <input type="number" class="input-text qty text" step="1"
-                                                min="1" max="6" name="quantity" value="1"
-                                                title="Qty" size="4" pattern="[0-9]*">
+                                                min="1" max="10" wire:model="quantity.{{ $product->id }}"
+                                                title="Qty" size="4">
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-default"><i
+                                    <button type="submit" wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->price }})" class="btn btn-default"><i
                                             class="fa fa-shopping-cart"></i>&nbsp;Add to cart</button>
 
                                 </div>

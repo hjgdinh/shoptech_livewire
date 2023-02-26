@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\DetailComponent;
+use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminProfileComponent;
 use App\Http\Livewire\Admin\User\AdminUserComponent;
@@ -32,7 +34,11 @@ Route::get('/', HomeComponent::class)->name('home.component');
 
 Route::get('/shop', ShopComponent::class)->name('shop.component');  
 
+Route::get('/cart', CartComponent::class)->name('cart.component');  
+
 Route::get('/shop/{slug?}', DetailComponent::class)->name('detail.product');    
+
+Route::get('/search', SearchComponent::class)->name('header.search');  
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
@@ -57,20 +63,6 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
 Route::middleware(['auth:sanctum','verified'])->group(function() {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
 
-    // view customer
-    Route::get('/customers', [CustomersController::class, 'customer_login'])->name('customers.index');
-    // create customer
-    Route::get('/customers_register', [CustomersController::class, 'customer_index'])->name('customers.regiter');
-    Route::post('/customers_register', [CustomersController::class, 'store'])->name('customers.store');
-    // update customer
-    Route::get('customers/edit/{id}', [CustomersController::class, 'edit'])->name('customers.edit');
-    Route::put('customers/edit/{id}', [CustomersController::class, 'update'])->name('customers.update');
-    // delete customer
-    Route::delete('customers/{id}', [CustomersController::class, 'destroy'])->name('customers.delete');
-    // login customer
-    // Route::get('/customers', [CustomersController::class, 'customer_login'])->name('customers.login.view');
-    Route::post('/customers', [CustomersController::class, 'login'])->name('customers.login');
-    Route::get('/logout', [CustomersController::class, 'getLogout'])->name('customers.logout');
 });
 
 

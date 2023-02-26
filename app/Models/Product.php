@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class Product extends Model
 {
@@ -20,6 +21,20 @@ class Product extends Model
     //protected $dateFormat = 'd-m-Y';
     protected $fillable = ['name', 'price', 'image', 'description', 'category_id'];
 
+
+    public function getBuyableIdentifier($options = null) {
+        return $this->id;
+    }
+    public function getBuyableDescription($options = null) {
+        return $this->name;
+    }
+    public function getBuyablePrice($options = null) {
+        return $this->price;
+    }
+    public function getBuyableWeight($options = null) {
+        return $this->weight;
+    }
+    
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

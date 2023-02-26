@@ -12,7 +12,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="{{ route('customers.store') }}" enctype="multipart/form-data" method="post">
+                            <form class="user" action="" enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
