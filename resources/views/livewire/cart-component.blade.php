@@ -1,144 +1,182 @@
-<div class="space-medium" bis_skin_checked="1">
-    <div class="container" bis_skin_checked="1">
-        <div class="row" bis_skin_checked="1">
-            @if (Session::has('message'))
-                <div class="alert alert-success">{{ Session::get('message') }}</div>
-            @endif
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" bis_skin_checked="1">
-                <div class="box" bis_skin_checked="1">
-                    <div class="box-head" bis_skin_checked="1">
-                        <h3 class="head-title">My Cart ({{ Cart::count() }})</h3>
-                    </div>
-                    <!-- cart-table-section -->
-                    <div class="box-body" bis_skin_checked="1">
-                        <div class="table-responsive" bis_skin_checked="1">
-                            <div class="cart" bis_skin_checked="1">
-                                @if (Cart::count() > 0)
-                                    <table class="table table-bordered ">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <span>Item</span>
-                                                </th>
-                                                <th>
-                                                    <span>Price</span>
-                                                </th>
-                                                <th>
-                                                    <span>Quantity</span>
-                                                </th>
-                                                <th>
-                                                    <span>Total</span>
-                                                </th>
-                                                <th>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (Cart::content() as $item)
-                                                <tr>
-                                                    <td>
-                                                        <a href="#">
-                                                            <img src="./images/cart_product_2.png" alt=""></a>
-                                                        <span><a href="#">{{ $item->name }}</a></span>
-                                                    </td>
-                                                    <td>{{ $item->price }} VND</td>
-                                                    <td>{{ $item->quantity }} VND</td>
-                                                    <td>
-                                                        <div class="product-quantity" bis_skin_checked="1">
-                                                            <div class="quantity" bis_skin_checked="1">
-                                                                <input type="number" class="input-text qty text"
-                                                                    step="1" min="1" max="6"
-                                                                    wire:model="quantity.{{ $item->id }}" value="{{ $item->quantity }}" title="Qty"
-                                                                    size="4" pattern="[0-9]*">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $item->subtotal() }} VND</td>
-                                                    <th scope="row">
-                                                        <a href="#" wire:click="destroy('{{ $item->rowId }}')"
-                                                            class="btn-close">
-                                                            <i class="fa fa-times-circle-o"></i></a>
-                                                    </th>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @else
-                                    <p>Không có gì trong giỏ hàng</p>
-                                @endif
-                            </div>
-                            <!-- /.cart-table-section -->
-                        </div>
-                    </div>
-                </div>
-                <a href="{{ route('shop.component') }}" class="btn-link"><i class="fa fa-angle-left"></i> back to
-                    shopping</a>
-            </div>
-            <!-- cart-total -->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                <div class="box mb30" bis_skin_checked="1">
-                    <div class="box-head" bis_skin_checked="1">
-                        <h3 class="head-title">Price Details</h3>
-                    </div>
-                    <div class="box-body" bis_skin_checked="1">
-                        <div class=" table-responsive" bis_skin_checked="1">
-                            <div class="pay-amount " bis_skin_checked="1">
-                                <table class="table mb20">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                <span>Price ({{ Cart::count() }} items)</span>
-                                            </th>
-                                            <td>{{ Cart::total() }} VND</td>
-                                            {{-- <td>{{ Cart::tax() }} VND</td> --}}
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <span>Delivery Charges</span>
-                                            </th>
-                                            <td><strong class="text-green">Free</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <span>Tax</span>
-                                            </th>
-                                            <td><strong class="text-green">Free</strong></td>
-                                        </tr>
-                                    </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                <span class="mb0" style="font-weight: 700;">Amount Payable</span>
-                                            </th>
-                                            <td style="font-weight: 700; color: #1c1e1e; ">
-                                                {{ Cart::total() }} VND</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button class="btn btn-primary btn-block">Proceed To Checkout</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- coupon-section -->
-                <div class="box mb30" bis_skin_checked="1">
-                    <div class="box-head" bis_skin_checked="1">
-                        <h3 class="head-title">Coupons &amp; Offers</h3>
-                    </div>
-                    <div class="box-body" bis_skin_checked="1">
-                        <form>
-                            <div class="coupon-form" bis_skin_checked="1">
-                                <input type="text" name="coupon_code" class="form-control" id="coupon_code"
-                                    value="" placeholder="Coupon code">
-                                <input type="submit" class="btn btn-primary btn-block" name="apply_coupon"
-                                    value="Apply coupon">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- /.coupon-section -->
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow">Home</a>
+                <span></span> Shop
+                <span></span> Your Cart
             </div>
         </div>
-        <!-- /.cart-total -->
     </div>
-</div>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">{{ Session::get('message') }}</div>
+                        @endif
+                        @if (Cart::count() > 0)
+                            <table class="table shopping-summery text-center clean">
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Cart::content() as $item)
+                                        <tr>
+                                            <td class="image">
+                                               @if ($item->options->image)
+                                                    <img src="{{ url('images/' . $item->options->image) }}" alt="Error">
+                                                @else
+                                                    <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                                @endif
+                                            </td>
+                                            <td class="product-des">
+                                                <h5 class="product-name"><a
+                                                        href="product-details.html">{{ $item->name }}</a></h5>
+                                                {{-- <p class="font-xs">{{ $item->description }}<br>
+                                                </p> --}}
+                                            </td>
+                                            <td class="price" data-title="Price"><span>{{ number_format($item->price, 0, '', ',') }} VND</span>
+                                            </td>
+                                            <td class="text-center" data-title="Stock">
+                                                <div class="detail-qty border radius  m-auto">
+                                                    <a class="qty-down" wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')">
+                                                        <i class="fi-rs-angle-small-down"></i></a>
+                                                    <i class="qty-val">{{ $item->qty }}</i>
+                                                    <a class="qty-up" wire:click.prevent="increaseQuantity('{{ $item->rowId }}')">
+                                                        <i class="fi-rs-angle-small-up"></i></a>
+                                                </div>
+                                            </td>
+                                            <td class="text-right" data-title="Cart">
+                                                <span>{{ number_format($item->subtotal, 0, '', ',') }} VND</span>
+                                            </td>
+                                            <td class="action" data-title="Remove">
+                                                <a wire:click="destroy('{{ $item->rowId }}')" class="text-muted"><i
+                                                        class="fi-rs-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td colspan="6" class="text-end">
+                                            <a wire:click="clearAll()" class="text-muted"> <i class="fi-rs-cross-small"></i>
+                                                Clear Cart</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        @else
+                            <p>Không có gì trong giỏ hàng</p>
+                        @endif
+                    </div>
+                    <div class="cart-action text-end">
+                        <a class="btn  mr-10 mb-sm-15" onClick="window.location.reload();"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
+                        <a class="btn" href="{{ route('shop.component') }}"><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                    </div>
+                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                    <div class="row mb-50">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="heading_s1 mb-3">
+                                <h4>Calculate Shipping</h4>
+                            </div>
+                            <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">5%</span></p>
+                            <form class="field_form shipping_calculator">
+                                <div class="form-row">
+                                    <div class="form-group col-lg-12">
+                                        <div class="custom_select">
+                                            <select class="form-control select-active">
+                                                <option value="">Choose a option...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row">
+                                    <div class="form-group col-lg-6">
+                                        <input required="required" placeholder="State / Country" name="name"
+                                            type="text">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <input required="required" placeholder="PostCode / ZIP" name="name"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-lg-12">
+                                        <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="mb-30 mt-50">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Apply Coupon</h4>
+                                </div>
+                                <div class="total-amount">
+                                    <div class="left">
+                                        <div class="coupon">
+                                            <form action="#" target="_blank">
+                                                <div class="form-row row justify-content-center">
+                                                    <div class="form-group col-lg-6">
+                                                        <input class="font-medium" name="Coupon"
+                                                            placeholder="Enter Your Coupon">
+                                                    </div>
+                                                    <div class="form-group col-lg-6">
+                                                        <button class="btn  btn-sm"><i
+                                                                class="fi-rs-label mr-10"></i>Apply</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                <div class="heading_s1 mb-3">
+                                    <h4>Cart Totals</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cart_total_label">Cart Subtotal</td>
+                                                <td class="cart_total_amount">
+                                                    <span class="font-lg fw-900 text-brand">{{ Cart::subtotal() }} VND</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Shipping Fee</td>
+                                                <td class="cart_total_amount">
+                                                    <span class="font-lg fw-900 text-brand">{{ Cart::tax() }} VND</span>
+                                                </td>
+                                            </tr>
+                                            {{-- <tr>
+                                                <td class="cart_total_label">Shipping</td>
+                                                <td class="cart_total_amount"><i class="ti-gift mr-5"></i>Free Shipping</td>
+                                            </tr> --}}
+                                            <tr>
+                                                <td class="cart_total_label">Total</td>
+                                                <td class="cart_total_amount"><strong>
+                                                        <span class="font-xl fw-900 text-brand">{{ Cart::total() }} VND</span></strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed
+                                    To CheckOut</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

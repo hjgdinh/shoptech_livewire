@@ -69,49 +69,53 @@
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="cart.html">
+                                <a class="mini-cart-icon" href="{{ route('cart.component') }}">
                                     <img alt="Surfside Media"
                                         src="{{ asset('assets/imgs/theme/icons/icon-cart.svg') }}">
                                     <span class="pro-count blue">@livewire('cart-count-component')</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="{{ asset('assets/imgs/shop/thumbnail-3.jpg') }}"></a>
+                                    @if (Cart::count() > 0)
+                                        <ul>
+                                            @foreach (Cart::content() as $item)
+                                                <li>
+                                                    <div class="shopping-cart-img">
+                                                        <a href="product-details.html">
+                                                            @if ($item->options->image)
+                                                                <img src="{{ url('images/' . $item->options->image) }}"
+                                                                    alt="Error">
+                                                            @else
+                                                                <img src="{{ url('images/deflaut_product.png') }}"
+                                                                    alt="Error">
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="product-details.html">{{ $item->name }}</a></h4>
+                                                        <h4><span>{{ $item->qty }} ×
+                                                            </span>{{ number_format($item->price, 0, '', ',') }} VND
+                                                        </h4>
+                                                        {{-- <h4><span>Subtotal: </span>{{ number_format($item->subtotal, 0, '', ',') }} VND</h4>                                     --}}
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a wire:click="destroy('{{ $item->rowId }}')"><i
+                                                                class="fi-rs-cross-small"></i></a>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        <div class="shopping-cart-footer">
+                                            <div class="shopping-cart-total">
+                                                <h4>Total <span>{{ Cart::subtotal() }} VND</span></h4>
                                             </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
+                                            <div class="shopping-cart-button">
+                                                <a href="{{ route('cart.component') }}" class="outline">View cart</a>
+                                                <a href="checkout.html">Checkout</a>
                                             </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="{{ asset('assets/imgs/shop/thumbnail-2.jpg') }}"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
                                         </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="cart.html" class="outline">View cart</a>
-                                            <a href="checkout.html">Checkout</a>
-                                        </div>
-                                    </div>
+                                    @else
+                                        <p>Không có gì trong giỏ hàng</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -293,11 +297,6 @@
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                                                     </li>
-                                                    <li><a href="#">Products</a></li>
-                                                    <li><a href="#">Categories</a></li>
-                                                    <li><a href="#">Coupons</a></li>
-                                                    <li><a href="#">Orders</a></li>
-                                                    <li><a href="#">Customers</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <li><a href="{{ route('logout') }}"
@@ -314,10 +313,6 @@
                                                     <li><a href="{{ route('user.dashboard') }}">User Dashboard</a>
                                                     </li>
                                                     <li><a href="#">Products</a></li>
-                                                    <li><a href="#">Categories</a></li>
-                                                    <li><a href="#">Coupons</a></li>
-                                                    <li><a href="#">Orders</a></li>
-                                                    <li><a href="#">Customers</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <li><a href="{{ route('logout') }}"
@@ -330,13 +325,7 @@
                                     @else
                                         <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Dashboard</a>
-                                                </li>
-                                                <li><a href="#">Products</a></li>
-                                                <li><a href="#">Categories</a></li>
-                                                <li><a href="#">Coupons</a></li>
-                                                <li><a href="#">Orders</a></li>
-                                                <li><a href="#">Customers</a></li>
+                                                <li><a href="#">Dashboard</a></li>
                                                 <li><a href="{{ route('login') }}">Login</a></li>
                                                 <li><a href="{{ route('register') }}">Register</a></li>
                                             </ul>
@@ -363,7 +352,7 @@
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="cart.html">
+                                <a class="mini-cart-icon" href="{{ route('cart.component') }}">
                                     <img alt="Surfside Media" src="{{ asset('assets/imgs/theme/icons/icon') }}-cart.svg">
                                     <span class="pro-count white">2</span>
                                 </a>
@@ -401,7 +390,7 @@
                                             <h4>Total <span>$383.00</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="cart.html">View cart</a>
+                                            <a href="{{ route('cart.component') }}">View cart</a>
                                             <a href="shop-checkout.php">Checkout</a>
                                         </div>
                                     </div>

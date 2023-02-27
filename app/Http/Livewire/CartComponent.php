@@ -21,19 +21,28 @@ class CartComponent extends Component
 
     public function increaseQuantity($rowId) {
         $product = Cart::get($rowId);
-        $qty = $product->quantity + 1;
+        $qty = $product->qty + 1;
         Cart::update($rowId,$qty);
+        return redirect()->route('cart.component');
     }
 
     public function decreaseQuantity($rowId) {
         $product = Cart::get($rowId);
-        $qty = $product->quantity - 1;
+        $qty = $product->qty - 1;
         Cart::update($rowId,$qty);
+        return redirect()->route('cart.component');
     }
 
     public function destroy($rowId) {
         Cart::remove($rowId);
         session()->flash('message','xóa thành công');
+        return redirect()->route('cart.component');
+        $this->emit('cart_updated');
+    }
+
+    public function clearAll() {
+        Cart::destroy();
+        return redirect()->route('cart.component');
         $this->emit('cart_updated');
     }
 

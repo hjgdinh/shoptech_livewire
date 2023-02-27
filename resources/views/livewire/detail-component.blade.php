@@ -121,7 +121,7 @@
                                     <div class="product-extra-link2">
                                         <button type="submit" class="button button-add-to-cart">Add to cart</button>
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                            href=""><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
                                                 class="fi-rs-shuffle"></i></a>
                                     </div>
@@ -230,7 +230,7 @@
                                     </div>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
-                                            <ins><span class="text-brand">{{ $product->price }} VND</span></ins>
+                                            <ins><span class="text-brand">{{ number_format($product->price, 0, '', ',') }} VND</span></ins>
                                             {{-- <ins><span class="old-price font-md ml-15">$200.00</span></ins>
                                             <span class="save-price  font-md color3 ml-15">25% Off</span> --}}
                                         </div>
@@ -279,17 +279,21 @@
                                     </div> --}}
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                     <div class="detail-extralink">
-                                        <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i
-                                                    class="fi-rs-angle-small-down"></i></a>
-                                            <span class="qty-val">1</span>
-                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        <div class="detail-qty border radius" style="padding:0px">
+                                            <input class="qty-val" wire:model="quantity.{{ $product->id }}">
+                                            {{-- <a href="#" class="qty-down">
+                                                <i class="fi-rs-angle-small-down"></i></a>
+                                            <a href="#" class="qty-up">
+                                                <i class="fi-rs-angle-small-up"></i></a> --}}
                                         </div>
+                                        <br>
                                         <div class="product-extra-link2">
-                                            <button type="submit" class="button button-add-to-cart">Add to
+                                            <button type="submit"
+                                                wire:click.prevent="addToCart('{{ $product->id }}')"
+                                                class="button button-add-to-cart">Add to
                                                 cart</button>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                href=""><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
                                                     class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -675,15 +679,15 @@
                                                         {{-- <a aria-label="Quick view" class="action-btn small hover-up"
                                                             data-bs-toggle="modal" wire:click.prevent="quickView({{ $item->id }})" data-bs-target="#quickViewModal"><i
                                                                 class="fi-rs-search"></i></a> --}}
+                                                        {{-- <a aria-label="Compare" class="action-btn small hover-up"
+                                                                    href="" tabindex="0"><i
+                                                                        class="fi-rs-shuffle"></i></a> --}}
                                                         <a aria-label="Add To Wishlist"
                                                             class="action-btn small hover-up" href=""
                                                             tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                        {{-- <a aria-label="Compare" class="action-btn small hover-up"
-                                                            href="" tabindex="0"><i
-                                                                class="fi-rs-shuffle"></i></a> --}}
                                                         <a aria-label="Add To Cart" class="action-btn small hover-up"
-                                                            href="shop-cart.php"><i
-                                                                class="fi-rs-shopping-bag-add"></i></a>
+                                                            wire:click.prevent="addToCart('{{ $item->id }}')">
+                                                            <i class="fi-rs-shopping-bag-add"></i></a>
                                                     </div>
                                                     <div
                                                         class="product-badges product-badges-position product-badges-mrg">
@@ -698,7 +702,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>{{ $item->price }} VND</span>
+                                                        <span>{{ number_format($item->price, 0, '', ',') }} VND</span>
                                                         <span class="old-price">$1245.8</span>
                                                     </div>
                                                 </div>
@@ -808,7 +812,7 @@
                                     <h6><a
                                             href="{{ route('detail.product', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
                                     </h6>
-                                    <p class="price mb-0 mt-5">{{ $item->price }} VND</p>
+                                    <p class="price mb-0 mt-5">{{ number_format($item->price, 0, '', ',') }} VND</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:60%"></div>
                                     </div>

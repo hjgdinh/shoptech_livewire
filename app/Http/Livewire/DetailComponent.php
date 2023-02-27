@@ -27,14 +27,25 @@ class DetailComponent extends Component
         $this->quick_view = $id;
     }
 
-    public function store($product_id, $product_name, $product_price)
+    public function addToCart($product_id)
     {
-        Cart::add(
-            $product_id,
-            $product_name,
-            $this->quantity[$product_id],
-            $product_price,
-        )->associate('App\Models\Product');
+        $product = Product::findOrFail($product_id);
+        if (isset($product->image)) {
+            Cart::add(
+                $product->id,
+                $product->name,
+                $this->quantity[$product_id], // quantity
+                $product->price,
+                ['image' => $product->image[0]]
+            );
+        } else {
+            Cart::add(
+                $product->id,
+                $product->name,
+                $this->quantity[$product_id], // quantity
+                $product->price
+            );
+        }
         session()->flash('message', 'Thêm vào giỏ thành công');
         return redirect()->route('shop.component');
         $this->emit('cart_updated');

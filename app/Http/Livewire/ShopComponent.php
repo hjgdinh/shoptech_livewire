@@ -16,9 +16,25 @@ class ShopComponent extends Component
     public $orderBy = "Deflaut Sorting";
     public $pageSize = 12;
     
-    public function store($product_id,$product_name,$product_price)
+    public function addToCart($product_id)
     {
-        Cart::add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
+        $product = Product::findOrFail($product_id);
+        if (isset($product->image)) {
+            Cart::add(
+                $product->id,
+                $product->name,
+                1, // quantity
+                $product->price,
+                ['image' => $product->image[0]]
+            );
+        } else {
+            Cart::add(
+                $product->id,
+                $product->name,
+                1, // quantity
+                $product->price
+            );
+        }
         session()->flash('message', 'Thêm vào giỏ thành công');
         return redirect()->route('shop.component');
         $this->emit('cart_updated');

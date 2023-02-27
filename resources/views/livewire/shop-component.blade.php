@@ -100,7 +100,7 @@
                                             {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
                                                     class="fi-rs-shuffle"></i></a> --}}
                                             <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                href="" wire:click.prevent="addToCart({{ $product->id }})"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
                                             <span class="hot">Hot</span>
@@ -119,12 +119,12 @@
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>{{ $product->price }} VND</span>
+                                            <span>{{ number_format($product->price, 0, '', ',') }} VND</span>
                                             <span class="old-price">$245.8</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                wire:click.prevent="addToCart({{ $product->id }})"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>
                                 </div>
