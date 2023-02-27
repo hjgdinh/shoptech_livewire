@@ -1,550 +1,823 @@
-<div class="content" bis_skin_checked="1">
-    <div class="container" bis_skin_checked="1">
-        <div class="row" bis_skin_checked="1">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                <div class="box" bis_skin_checked="1">
-                    <!-- product-description -->
-                    <div class="box-body" bis_skin_checked="1">
-                        <div class="row" bis_skin_checked="1">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" bis_skin_checked="1">
-                                <ul class="slideshow_thumbs scrollbar" id="style-5"
-                                    style="height:350px;overflow:auto">
-                                    {{-- id="demo1_thumbs" --}}
+<main class="main">
+    <!-- Quick view -->
+    {{-- <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="detail-gallery">
+                                <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                <!-- MAIN SLIDES -->
+                                <div class="product-image-slider">
                                     @if ($product->image)
                                         @foreach ($product->image as $img)
-                                            <li class="">
-                                                <div class="thumb-img" bis_skin_checked="1">
-                                                    <img class="" src="{{ url('images/' . $img) }}" alt="">
-                                                </div>
-                                            </li>
+                                            <figure class="border-radius-10">
+                                                <img src="{{ url('images/' . $img) }}" alt="product image">
+                                            </figure>
                                         @endforeach
                                     @else
-                                        <li>
-                                            <a href="{{ url('images/deflaut_product.png') }}" data-desoslide-index="0">
-                                                <div class=" thumb-img" bis_skin_checked="1">
-                                                    <img src="{{ url('images/deflaut_product.png') }}" alt="">
-                                                </div>
-                                            </a>
-                                        </li>
+                                        <figure class="border-radius-10">
+                                            <img src="{{ url('images/deflaut_product.png') }}" alt="product image">
+                                        </figure>
                                     @endif
+                                </div>
+                                <!-- THUMBNAILS -->
+                                <div class="slider-nav-thumbnails pl-15 pr-15">
+                                    @if ($product->image)
+                                        @foreach ($product->image as $img)
+                                            <div>
+                                                <img src="{{ url('images/' . $img) }}" alt="product image">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div>
+                                            <img src="{{ url('images/deflaut_product.png') }}" alt="product image">
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- End Gallery -->
+                            <div class="social-icons single-share">
+                                <ul class="text-grey-5 d-inline-block">
+                                    <li><strong class="mr-10">Share this:</strong></li>
+                                    <li class="social-facebook"><a href="#"><img
+                                                src="{{ asset('assets/imgs/theme/icons/icon-facebook.svg') }}" alt=""></a></li>
+                                    <li class="social-twitter"> <a href="#"><img
+                                                src="{{ asset('assets/imgs/theme/icons/icon-twitter.svg') }}" alt=""></a></li>
+                                    <li class="social-instagram"><a href="#"><img
+                                                src="{{ asset('assets/imgs/theme/icons/icon-instagram.svg') }}" alt=""></a>
+                                    </li>
+                                    <li class="social-linkedin"><a href="#"><img
+                                                src="{{ asset('assets/imgs/theme/icons/icon-pinterest.svg') }}" alt=""></a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                <div id="slideshow" bis_skin_checked="1">
-                                    <div class="desoslide-wrapper" bis_skin_checked="1">
-                                        @if ($product->image)
-                                            <div class="slider owl-carousel owl-one owl-theme">
-                                                @foreach ($product->image as $img)
-                                                    <div class="item">
-                                                        <img class="img-responsive animated fadeIn"
-                                                            src="{{ url('images/' . $img) }}">
-                                                    </div>
-                                                @endforeach
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="detail-info">
+                                <h3 class="title-detail mt-30">{{ $product->name }}</h3>
+                                <div class="product-detail-rating">
+                                    <div class="pro-details-brand">
+                                        <span> Brands: <a href="shop.html">{{ $product->category->name }}</a></span>
+                                    </div>
+                                    <div class="product-rate-cover text-end">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:90%">
                                             </div>
-                                        @else
-                                            <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
-                                        @endif
-                                        <div class="desoslide-overlay" bis_skin_checked="1"
-                                            style="left: 0px; top: 241px; width: 273px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; opacity: 0.7;">
-                                            <div class="desoslide-controls-wrapper" bis_skin_checked="1"><a
-                                                    class="desoslide-controls prev" href="#prev"></a><a
-                                                    class="desoslide-controls pause" href="#pause"
-                                                    style="display: none;"></a><a class="desoslide-controls play"
-                                                    href="#play"></a><a class="desoslide-controls next"
-                                                    href="#next"></a></div>
                                         </div>
+                                        <span class="font-small ml-5 text-muted"> (25 reviews)</span>
                                     </div>
                                 </div>
+                                <div class="clearfix product-price-cover">
+                                    <div class="product-price primary-color float-left">
+                                        <ins><span class="text-brand">{{ $product->price }} VND</span></ins>
+                                        <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                        <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                    </div>
+                                </div>
+                                <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                <div class="short-desc mb-30">
+                                    <p class="font-sm">{{ $product->description }}</p>
+                                </div>
+                                <div class="attr-detail attr-color mb-15">
+                                    <strong class="mr-10">Color</strong>
+                                    <ul class="list-filter color-filter">
+                                        <li><a href="#" data-color="Red"><span
+                                                    class="product-color-red"></span></a></li>
+                                        <li><a href="#" data-color="Yellow"><span
+                                                    class="product-color-yellow"></span></a></li>
+                                        <li class="active"><a href="#" data-color="White"><span
+                                                    class="product-color-white"></span></a></li>
+                                        <li><a href="#" data-color="Orange"><span
+                                                    class="product-color-orange"></span></a></li>
+                                        <li><a href="#" data-color="Cyan"><span
+                                                    class="product-color-cyan"></span></a></li>
+                                        <li><a href="#" data-color="Green"><span
+                                                    class="product-color-green"></span></a></li>
+                                        <li><a href="#" data-color="Purple"><span
+                                                    class="product-color-purple"></span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="attr-detail attr-size">
+                                    <strong class="mr-10">Size</strong>
+                                    <ul class="list-filter size-filter font-small">
+                                        <li><a href="#">S</a></li>
+                                        <li class="active"><a href="#">M</a></li>
+                                        <li><a href="#">L</a></li>
+                                        <li><a href="#">XL</a></li>
+                                        <li><a href="#">XXL</a></li>
+                                    </ul>
+                                </div>
+                                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                <div class="detail-extralink">
+                                    <div class="detail-qty border radius">
+                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                        <span class="qty-val">1</span>
+                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                    </div>
+                                    <div class="product-extra-link2">
+                                        <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
+                                                class="fi-rs-shuffle"></i></a>
+                                    </div>
+                                </div>
+                                <ul class="product-meta font-xs color-grey mt-50">
+                                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                                    <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a
+                                            href="#" rel="tag">Women</a>, <a href="#"
+                                            rel="tag">Dress</a> </li>
+                                    <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" bis_skin_checked="1">
-                                <div class="product-single" bis_skin_checked="1">
-                                    <h2>{{ $product->name }}</h2>
-                                    <div class="product-rating" bis_skin_checked="1">
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                        <span class="text-secondary">&nbsp;(4.8 Review Stars)</span>
-                                    </div>
-                                    <p class="product-price" style="font-size: 38px;">{{ $product->price }}
-                                        VND<strike>$1300</strike></p>
-                                    <p>{{ $product->description }}</p>
-                                    <div class="product-quantity" bis_skin_checked="1">
-                                        <h5>Quantity</h5>
-                                        <div class="quantity mb20" bis_skin_checked="1">
-                                            <input type="number" class="input-text qty text" step="1"
-                                                min="1" max="10" wire:model="quantity.{{ $product->id }}"
-                                                title="Qty" size="4">
-                                        </div>
-                                    </div>
-                                    <button type="submit" wire:click.prevent="store({{ $product->id }},'{{ $product->name }}',{{ $product->price }})" class="btn btn-default"><i
-                                            class="fa fa-shopping-cart"></i>&nbsp;Add to cart</button>
+                            <!-- Detail Info -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html" rel="nofollow">Home</a>
+                <span></span> Fashion
+                <span></span> Abstract Print Patchwork Dress
             </div>
         </div>
     </div>
-    <div class="container" bis_skin_checked="1">
-        <div class="row" bis_skin_checked="1">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                <div class="box-head scroll-nav" bis_skin_checked="1">
-                    <div class="head-title" bis_skin_checked="1"> <a class="page-scroll active" href="#product">Product
-                            Details</a>
-                        <a class="page-scroll" href="#rating">Ratings &amp; Reviews</a>
-                        <a class="page-scroll" href="#review">Add Your Reviews</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- highlights -->
-        <div class="row" bis_skin_checked="1">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                <div class="box" id="product" bis_skin_checked="1">
-                    <div class="box-body" bis_skin_checked="1">
-                        <div class="highlights" bis_skin_checked="1">
-                            <h4 class="product-small-title">Highlights</h4>
-                            <div class="row" bis_skin_checked="1">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                    <ul class="arrow">
-                                        <li>12.2 MP Rear | 8 MP Front Camera </li>
-                                        <li>4GB RAM </li>
-                                        <li>2700 mAh battery</li>
-                                    </ul>
+    <section class="mt-50 mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="product-detail accordion-detail">
+                        <div class="row mb-50">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="detail-gallery">
+                                    <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                    <!-- MAIN SLIDES -->
+                                    <div class="product-image-slider">
+                                        @if ($product->image)
+                                            @foreach ($product->image as $img)
+                                                <figure class="border-radius-10">
+                                                    <img src="{{ url('images/' . $img) }}" alt="product image">
+                                                </figure>
+                                            @endforeach
+                                        @else
+                                            <figure class="border-radius-10">
+                                                <img src="{{ url('images/deflaut_product.png') }}" alt="product image">
+                                            </figure>
+                                        @endif
+                                    </div>
+                                    <!-- THUMBNAILS -->
+                                    <div class="slider-nav-thumbnails pl-15 pr-15">
+                                        @if ($product->image)
+                                            @foreach ($product->image as $img)
+                                                <div>
+                                                    <img src="{{ url('images/' . $img) }}" alt="product image">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div>
+                                                <img src="{{ url('images/deflaut_product.png') }}" alt="product image">
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                    <ul class="arrow">
-                                        <li>Android 8.0 </li>
-                                        <li>Qualcomm Snapdragon 835</li>
-                                        <li>Fingerprint Sensor</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="highlights" bis_skin_checked="1">
-                            <h4 class="product-small-title">Specification</h4>
-                            <div class="row" bis_skin_checked="1">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                    <h4>General</h4>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb30" bis_skin_checked="1">
-                                    <ul>
-                                        <li>Brand</li>
-                                        <li>Model Number </li>
-                                        <li>Body Material</li>
-                                        <li>Sim Size</li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb30" bis_skin_checked="1">
-                                    <ul>
-                                        <li style="color: #1c1e1e;">Google Pixel </li>
-                                        <li style="color: #1c1e1e;">Google XYZ</li>
-                                        <li style="color: #1c1e1e;">Metal and Polycarbonate</li>
-                                        <li style="color: #1c1e1e;">Micro</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row" bis_skin_checked="1">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                    <h4>Display</h4>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                    <ul>
-                                        <li>Screen Size </li>
-                                        <li>Display Resolution </li>
-                                        <li>Pixel Density</li>
-                                        <li>Screen Protection </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                    <ul>
-                                        <li style="color: #1c1e1e;">5 inch </li>
-                                        <li style="color: #1c1e1e;">1280 X 720 Pixels</li>
-                                        <li style="color: #1c1e1e;">294 PPI</li>
-                                        <li style="color: #1c1e1e;">Gorilla Glass 4</li>
+                                <!-- End Gallery -->
+                                <div class="social-icons single-share">
+                                    <ul class="text-grey-5 d-inline-block">
+                                        <li><strong class="mr-10">Share this:</strong></li>
+                                        <li class="social-facebook"><a href="#"><img
+                                                    src="{{ asset('assets/imgs/theme/icons/icon-facebook.svg') }}"
+                                                    alt=""></a>
+                                        </li>
+                                        <li class="social-twitter"> <a href="#"><img
+                                                    src="{{ asset('assets/imgs/theme/icons/icon-twitter.svg') }}"
+                                                    alt=""></a>
+                                        </li>
+                                        <li class="social-instagram"><a href="#"><img
+                                                    src="{{ asset('assets/imgs/theme/icons/icon-instagram.svg') }}"
+                                                    alt=""></a>
+                                        </li>
+                                        <li class="social-linkedin"><a href="#"><img
+                                                    src="{{ asset('assets/imgs/theme/icons/icon-pinterest.svg') }}"
+                                                    alt=""></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rating reviews  -->
-        <div id="rating" bis_skin_checked="1">
-            <div class="row" bis_skin_checked="1">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                    <div class="box" bis_skin_checked="1">
-                        <div class="box-head" bis_skin_checked="1">
-                            <h3 class="head-title">Rating &amp; Reviews</h3>
-                        </div>
-                        <div class="box-body" bis_skin_checked="1">
-                            <div class="row" bis_skin_checked="1">
-                                <div class="rating-review" bis_skin_checked="1">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                        <h1>4.8</h1>
-                                        <div class="product-rating" bis_skin_checked="1">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="detail-info">
+                                    <h2 class="title-detail">{{ $product->name }}</h2>
+                                    <div class="product-detail-rating">
+                                        <div class="pro-details-brand">
+                                            <span> Brands: <a href="shop.html">{{ $product->category->name }}</a></span>
                                         </div>
-                                        <p class="text-secondary">20 Ratings &amp; 10 Reviews</p>
+                                        <div class="product-rate-cover text-end">
+                                            <div class="product-rate d-inline-block">
+                                                <div class="product-rating" style="width:90%">
+                                                </div>
+                                            </div>
+                                            <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                        <h2>80%</h2>
-                                        <p class="text-secondary">Based on 20 Recommendations.</p>
+                                    <div class="clearfix product-price-cover">
+                                        <div class="product-price primary-color float-left">
+                                            <ins><span class="text-brand">{{ $product->price }} VND</span></ins>
+                                            {{-- <ins><span class="old-price font-md ml-15">$200.00</span></ins>
+                                            <span class="save-price  font-md color3 ml-15">25% Off</span> --}}
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" bis_skin_checked="1">
-                                        <h4>Have you used this product?</h4>
-                                        <a href="#" class="btn btn-primary btn-sm">review</a>
+                                    <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                    <div class="short-desc mb-30">
+                                        <p>{{ $product->description }}</p>
                                     </div>
+                                    {{-- <div class="product_sort_info font-xs mb-30">
+                                        <ul>
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand
+                                                Warranty</li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy
+                                            </li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                        </ul>
+                                    </div> --}}
+                                    {{-- <div class="attr-detail attr-color mb-15">
+                                        <strong class="mr-10">Color</strong>
+                                        <ul class="list-filter color-filter">
+                                            <li><a href="#" data-color="Red"><span
+                                                        class="product-color-red"></span></a></li>
+                                            <li><a href="#" data-color="Yellow"><span
+                                                        class="product-color-yellow"></span></a></li>
+                                            <li class="active"><a href="#" data-color="White"><span
+                                                        class="product-color-white"></span></a></li>
+                                            <li><a href="#" data-color="Orange"><span
+                                                        class="product-color-orange"></span></a></li>
+                                            <li><a href="#" data-color="Cyan"><span
+                                                        class="product-color-cyan"></span></a></li>
+                                            <li><a href="#" data-color="Green"><span
+                                                        class="product-color-green"></span></a></li>
+                                            <li><a href="#" data-color="Purple"><span
+                                                        class="product-color-purple"></span></a></li>
+                                        </ul>
+                                    </div> --}}
+                                    {{-- <div class="attr-detail attr-size">
+                                        <strong class="mr-10">Size</strong>
+                                        <ul class="list-filter size-filter font-small">
+                                            <li><a href="#">S</a></li>
+                                            <li class="active"><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                            <li><a href="#">XXL</a></li>
+                                        </ul>
+                                    </div> --}}
+                                    <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                    <div class="detail-extralink">
+                                        <div class="detail-qty border radius">
+                                            <a href="#" class="qty-down"><i
+                                                    class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val">1</span>
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                        <div class="product-extra-link2">
+                                            <button type="submit" class="button button-add-to-cart">Add to
+                                                cart</button>
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
+                                                    class="fi-rs-shuffle"></i></a>
+                                        </div>
+                                    </div>
+                                    <ul class="product-meta font-xs color-grey mt-50">
+                                        <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                                        <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a
+                                                href="#" rel="tag">Women</a>, <a href="#"
+                                                rel="tag">Dress</a> </li>
+                                        <li>Availability:<span class="in-stock text-success ml-5">8 Items In
+                                                Stock</span></li>
+                                    </ul>
                                 </div>
+                                <!-- Detail Info -->
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.rating reviews  -->
-            <!-- customers review  -->
-            <div class="row" bis_skin_checked="1">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                    <div class="box" bis_skin_checked="1">
-                        <div class="box-head" bis_skin_checked="1">
-                            <h3 class="head-title">Customer Reviews</h3>
-                        </div>
-                        <div class="box-body" bis_skin_checked="1">
-                            <div class="row" bis_skin_checked="1">
-                                <div class="customer-reviews" bis_skin_checked="1">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                        <div class="product-rating" bis_skin_checked="1">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                        </div>
-                                        <p class="reviews-text">By <span class="text-default">Michael Byrd</span> on
-                                            14 August 2017 </p>
-                                        <p>Mauris aliquet augue seenim finibusat consectetur metus congutiam convallis
-                                            aliquam conguen ornare exdolornon scelerisque nisl fringilla ut. Maecenas
-                                            faucibus purus id elementum laoreen a hendrerit ested laoreet nibh vel lacus
-                                            sagittis, eu laoreet metus viverraed rutrum.</p>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                        <div class="divider-line" bis_skin_checked="1"></div>
-                                    </div>
-                                </div>
-                                <div class="customer-reviews" bis_skin_checked="1">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                        <div class="product-rating" bis_skin_checked="1">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                        </div>
-                                        <p class="reviews-text">By <span class="text-default">Marc Scott</span> on 13
-                                            August 2017 </p>
-                                        <p>Vivamus molestie enim ut libero condimentumvel malesuada mivulpuorem ipsum
-                                            dolor sitamet consectetur adipiscing elinec semper orcinec ultricies
-                                            ultricieunc velitest variussed suscipit sed dignissim acanteras aliquet
-                                            magna ipsum dictum vulputate dolor suscipit non. </p>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                        <div class="divider-line" bis_skin_checked="1"></div>
-                                    </div>
-                                </div>
-                                <div class="customer-reviews" bis_skin_checked="1">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                        <div class="product-rating" bis_skin_checked="1">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                        </div>
-                                        <p class="reviews-text">By <span class="text-default">William Cassidy</span>
-                                            on 13 August 2017 </p>
-                                        <p>Suspendisse viverra nibh vel mattis aliqueroin ultricies vitaeex quis
-                                            sceleriuisque eleifend convallis leoorbi ultricies turpis nullanec accumsan
-                                            mi molestie nonaecenas cursus massa quis condimentum venenati uspendisse
-                                            idmassaut lacus dignissim vestibuonec malesuada ultricies euismod. </p>
+                        <div class="tab-style3">
+                            <ul class="nav nav-tabs text-uppercase">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
+                                        href="#Description">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
+                                        href="#Additional-info">Additional info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
+                                        href="#Reviews">Reviews (3)</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content shop_info_tab entry-main-content">
+                                <div class="tab-pane fade show active" id="Description">
+                                    <div class="">
+                                        {{ $product->description }}
+                                        {{-- <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending
+                                            and much yikes off far quetzal goodness and from for grimaced goodness
+                                            unaccountably and meadowlark near unblushingly crucial scallop
+                                            tightly neurotic hungrily some and dear furiously this apart.</p>
+                                        <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly much
+                                            hello on spoon-fed that alas rethought much decently richly and wow against
+                                            the frequent fluidly at formidable acceptably flapped
+                                            besides and much circa far over the bucolically hey precarious goldfinch
+                                            mastodon goodness gnashed a jellyfish and one however because.
+                                        </p>
+                                        <ul class="product-more-infor mt-30">
+                                            <li><span>Type Of Packing</span> Bottle</li>
+                                            <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
+                                            <li><span>Quantity Per Case</span> 100ml</li>
+                                            <li><span>Ethyl Alcohol</span> 70%</li>
+                                            <li><span>Piece In One</span> Carton</li>
+                                        </ul>
+                                        <hr class="wp-block-separator is-style-dots">
+                                        <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello
+                                            far meadowlark imitatively egregiously hugged that yikes minimally unanimous
+                                            pouted flirtatiously as beaver beheld above forward
+                                            energetic across this jeepers beneficently cockily less a the raucously that
+                                            magic upheld far so the this where crud then below after jeez enchanting
+                                            drunkenly more much wow callously irrespective limpet.</p>
+                                        <h4 class="mt-30">Packaging & Delivery</h4>
+                                        <hr class="wp-block-separator is-style-wide">
+                                        <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly
+                                            scratched far while thus cackled sheepishly rigid after due one assenting
+                                            regarding censorious while occasional or this more crane
+                                            went more as this less much amid overhung anathematic because much held one
+                                            exuberantly sheep goodness so where rat wry well concomitantly.
+                                        </p>
+                                        <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously
+                                            and and less rattlesnake contrary caustic wow this near alas and next and
+                                            pled the yikes articulate about as less cackled dalmatian
+                                            in much less well jeering for the thanks blindly sentimental whimpered less
+                                            across objectively fanciful grimaced wildly some wow and rose jeepers
+                                            outgrew lugubrious luridly irrationally attractively
+                                            dachshund.
+                                        </p> --}}
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- customers review  -->
-            <!-- reviews-form -->
-            <div id="review" bis_skin_checked="1">
-                <div class="row" bis_skin_checked="1">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                        <div class="box" bis_skin_checked="1">
-                            <div class="box-head" bis_skin_checked="1">
-                                <h3 class="head-title">Add A Reviews</h3>
-                            </div>
-                            <div class="box-body" bis_skin_checked="1">
-                                <div class="row" bis_skin_checked="1">
-                                    <div class="review-form" bis_skin_checked="1">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                                            <div class="review-rating" bis_skin_checked="1">
-                                                <h5>Your Rating : &nbsp;</h5>
-                                                <div class="star-rate jq-ry-container" id="rateYo"
-                                                    style="width: 80px;" bis_skin_checked="1">
-                                                    <div class="jq-ry-group-wrapper" bis_skin_checked="1">
-                                                        <div class="jq-ry-normal-group jq-ry-group"
-                                                            bis_skin_checked="1">
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="gray">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="gray"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="gray"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="gray"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="gray"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
+                                <div class="tab-pane fade" id="Additional-info">
+                                    <table class="font-md">
+                                        <tbody>
+                                            <tr class="stand-up">
+                                                <th>Stand Up</th>
+                                                <td>
+                                                    <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="folded-wo-wheels">
+                                                <th>Folded (w/o wheels)</th>
+                                                <td>
+                                                    <p>32.5″L x 18.5″W x 16.5″H</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="folded-w-wheels">
+                                                <th>Folded (w/ wheels)</th>
+                                                <td>
+                                                    <p>32.5″L x 24″W x 18.5″H</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="door-pass-through">
+                                                <th>Door Pass Through</th>
+                                                <td>
+                                                    <p>24</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="frame">
+                                                <th>Frame</th>
+                                                <td>
+                                                    <p>Aluminum</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="weight-wo-wheels">
+                                                <th>Weight (w/o wheels)</th>
+                                                <td>
+                                                    <p>20 LBS</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="weight-capacity">
+                                                <th>Weight Capacity</th>
+                                                <td>
+                                                    <p>60 LBS</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="width">
+                                                <th>Width</th>
+                                                <td>
+                                                    <p>24″</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="handle-height-ground-to-handle">
+                                                <th>Handle height (ground to handle)</th>
+                                                <td>
+                                                    <p>37-45″</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="wheels">
+                                                <th>Wheels</th>
+                                                <td>
+                                                    <p>12″ air / wide track slick tread</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="seat-back-height">
+                                                <th>Seat back height</th>
+                                                <td>
+                                                    <p>21.5″</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="head-room-inside-canopy">
+                                                <th>Head room (inside canopy)</th>
+                                                <td>
+                                                    <p>25″</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="pa_color">
+                                                <th>Color</th>
+                                                <td>
+                                                    <p>Black, Blue, Red, White</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="pa_size">
+                                                <th>Size</th>
+                                                <td>
+                                                    <p>M, S</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="Reviews">
+                                    <!--Comments-->
+                                    <div class="comments-area">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <h4 class="mb-30">Customer questions & answers</h4>
+                                                <div class="comment-list">
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="assets/imgs/page/avatar-6.jpg"
+                                                                    alt="">
+                                                                <h6><a href="#">Jacky Chan</a></h6>
+                                                                <p class="font-xxs">Since 2012</p>
+                                                            </div>
+                                                            <div class="desc">
+                                                                <div class="product-rate d-inline-block">
+                                                                    <div class="product-rating" style="width:90%">
+                                                                    </div>
+                                                                </div>
+                                                                <p>Thank you very fast shipping from Poland only 3days.
+                                                                </p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="font-xs mr-30">December 4, 2020 at
+                                                                            3:12 pm </p>
+                                                                        <a href="#"
+                                                                            class="text-brand btn-reply">Reply <i
+                                                                                class="fi-rs-arrow-right"></i> </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="jq-ry-rated-group jq-ry-group" style="width: 72%;"
-                                                            bis_skin_checked="1">
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="#f39c12">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="#f39c12"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="#f39c12"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="#f39c12"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
-                                                            <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 12.705 512 486.59" x="0px"
-                                                                y="0px" xml:space="preserve" width="16px"
-                                                                height="16px" fill="#f39c12"
-                                                                style="margin-left: 0px;">
-                                                                <polygon
-                                                                    points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                </polygon>
-                                                            </svg>
+                                                    </div>
+                                                    <!--single-comment -->
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="assets/imgs/page/avatar-7.jpg"
+                                                                    alt="">
+                                                                <h6><a href="#">Ana Rosie</a></h6>
+                                                                <p class="font-xxs">Since 2008</p>
+                                                            </div>
+                                                            <div class="desc">
+                                                                <div class="product-rate d-inline-block">
+                                                                    <div class="product-rating" style="width:90%">
+                                                                    </div>
+                                                                </div>
+                                                                <p>Great low price and works well.</p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="font-xs mr-30">December 4, 2020 at
+                                                                            3:12 pm </p>
+                                                                        <a href="#"
+                                                                            class="text-brand btn-reply">Reply <i
+                                                                                class="fi-rs-arrow-right"></i> </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <!--single-comment -->
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="assets/imgs/page/avatar-8.jpg"
+                                                                    alt="">
+                                                                <h6><a href="#">Steven Keny</a></h6>
+                                                                <p class="font-xxs">Since 2010</p>
+                                                            </div>
+                                                            <div class="desc">
+                                                                <div class="product-rate d-inline-block">
+                                                                    <div class="product-rating" style="width:90%">
+                                                                    </div>
+                                                                </div>
+                                                                <p>Authentic and Beautiful, Love these way more than
+                                                                    ever expected They are Great earphones</p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="font-xs mr-30">December 4, 2020 at
+                                                                            3:12 pm </p>
+                                                                        <a href="#"
+                                                                            class="text-brand btn-reply">Reply <i
+                                                                                class="fi-rs-arrow-right"></i> </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--single-comment -->
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4 class="mb-30">Customer reviews</h4>
+                                                <div class="d-flex mb-30">
+                                                    <div class="product-rate d-inline-block mr-15">
+                                                        <div class="product-rating" style="width:90%">
+                                                        </div>
+                                                    </div>
+                                                    <h6>4.8 out of 5</h6>
+                                                </div>
+                                                <div class="progress">
+                                                    <span>5 star</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 50%;"
+                                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%
+                                                    </div>
+                                                </div>
+                                                <div class="progress">
+                                                    <span>4 star</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 25%;"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                                                    </div>
+                                                </div>
+                                                <div class="progress">
+                                                    <span>3 star</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 45%;"
+                                                        aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
+                                                    </div>
+                                                </div>
+                                                <div class="progress">
+                                                    <span>2 star</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 65%;"
+                                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%
+                                                    </div>
+                                                </div>
+                                                <div class="progress mb-30">
+                                                    <span>1 star</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 85%;"
+                                                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="font-xs text-muted">How are ratings
+                                                    calculated?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--comment form-->
+                                    <div class="comment-form">
+                                        <h4 class="mb-15">Add a review</h4>
+                                        <div class="product-rate d-inline-block mb-30">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-12">
+                                                <form class="form-contact comment_form" action="#"
+                                                    id="commentForm">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                                                    placeholder="Write Comment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <input class="form-control" name="name"
+                                                                    id="name" type="text" placeholder="Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <input class="form-control" name="email"
+                                                                    id="email" type="email"
+                                                                    placeholder="Email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <input class="form-control" name="website"
+                                                                    id="website" type="text"
+                                                                    placeholder="Website">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit"
+                                                            class="button button-contactForm">Submit
+                                                            Review</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-60">
+                            <div class="col-12">
+                                <h3 class="section-title style-1 mb-30">Related products</h3>
+                            </div>
+                            <div class="col-12">
+                                <div class="row related-products">
+                                    @foreach ($related as $item)
+                                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                            <div class="product-cart-wrap small hover-up">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom">
+                                                        <a href="{{ route('detail.product', ['slug' => $item->slug]) }}"
+                                                            tabindex="0">
+                                                            @if ($item->image)
+                                                                <img class="default-img"
+                                                                    src="{{ url('images/' . $item->image[0]) }}"
+                                                                    alt="Error">
+                                                            @else
+                                                                <img src="{{ url('images/deflaut_product.png') }}"
+                                                                    alt="Error">
+                                                            @endif
+                                                            {{-- <img class="default-img"
+                                                                src="{{ asset('assets/imgs/shop/product-4-1.jpg') }}"
+                                                                alt="">
+                                                            <img class="hover-img"
+                                                                src="{{ asset('assets/imgs/shop/product-4-2.jpg') }}"
+                                                                alt=""> --}}
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        {{-- <a aria-label="Quick view" class="action-btn small hover-up"
+                                                            data-bs-toggle="modal" wire:click.prevent="quickView({{ $item->id }})" data-bs-target="#quickViewModal"><i
+                                                                class="fi-rs-search"></i></a> --}}
+                                                        <a aria-label="Add To Wishlist"
+                                                            class="action-btn small hover-up" href=""
+                                                            tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                        {{-- <a aria-label="Compare" class="action-btn small hover-up"
+                                                            href="" tabindex="0"><i
+                                                                class="fi-rs-shuffle"></i></a> --}}
+                                                        <a aria-label="Add To Cart" class="action-btn small hover-up"
+                                                            href="shop-cart.php"><i
+                                                                class="fi-rs-shopping-bag-add"></i></a>
+                                                    </div>
+                                                    <div
+                                                        class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="new">New</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content-wrap">
+                                                    <h2><a href="{{ route('detail.product', ['slug' => $item->slug]) }}"
+                                                            tabindex="0">{{ $item->name }}</a></h2>
+                                                    <div class="rating-result" title="90%">
+                                                        <span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span>{{ $item->price }} VND</span>
+                                                        <span class="old-price">$1245.8</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <form>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" bis_skin_checked="1">
-                                                <div class="form-group" bis_skin_checked="1">
-                                                    <label class="control-label sr-only " for="name"></label>
-                                                    <input id="name" type="text" class="form-control"
-                                                        placeholder="Name" required="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" bis_skin_checked="1">
-                                                <div class="form-group" bis_skin_checked="1">
-                                                    <label class="control-label sr-only " for="email"></label>
-                                                    <input id="email" type="text" class="form-control"
-                                                        placeholder="Email" required="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12" bis_skin_checked="1">
-                                                <div class="form-group" bis_skin_checked="1">
-                                                    <label class="control-label sr-only " for="textarea"></label>
-                                                    <textarea class="form-control" id="textarea" name="textarea" rows="4" placeholder="Enter your Reviews"></textarea>
-                                                </div>
-                                                <button id="submit" name="singlebutton"
-                                                    class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </form>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                    <div class="widget-category mb-30">
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                        <ul class="categories">
+                            @foreach ($category as $item)
+                                <li><a href="" {{ $item->id }}>{{ $item->name }}</a></li>
+                                @if ($item->parent_id == 0)
+                                    @foreach ($item->children as $child)
+                                        <li style="margin-left: 15px;list-style: inside">
+                                            <a href="" {{ $child->id }}>{{ $child->name }}</a>
+                                        </li>
+                                        @foreach ($child->children as $son)
+                                            <li style="margin-left: 35px;list-style: inside;">
+                                                <a href="" {{ $son->id }}>{{ $son->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    <!-- Fillter By Price -->
+                    <div class="sidebar-widget price_range range mb-30">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Fill by price</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        <div class="price-filter">
+                            <div class="price-filter-inner">
+                                <div id="slider-range"></div>
+                                <div class="price_slider_amount">
+                                    <div class="label-input">
+                                        <span>Range:</span><input type="text" id="amount" name="price"
+                                            placeholder="Add Your Price">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="list-group">
+                            <div class="list-group-item mb-10 mt-10">
+                                <label class="fw-900">Color</label>
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox1" value="">
+                                    <label class="form-check-label" for="exampleCheckbox1"><span>Red
+                                            (56)</span></label>
+                                    <br>
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox2" value="">
+                                    <label class="form-check-label" for="exampleCheckbox2"><span>Green
+                                            (78)</span></label>
+                                    <br>
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox3" value="">
+                                    <label class="form-check-label" for="exampleCheckbox3"><span>Blue
+                                            (54)</span></label>
+                                </div>
+                                <label class="fw-900 mt-15">Item Condition</label>
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox11" value="">
+                                    <label class="form-check-label" for="exampleCheckbox11"><span>New
+                                            (1506)</span></label>
+                                    <br>
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox21" value="">
+                                    <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished
+                                            (27)</span></label>
+                                    <br>
+                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                        id="exampleCheckbox31" value="">
+                                    <label class="form-check-label" for="exampleCheckbox31"><span>Used
+                                            (45)</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
+                            Fillter</a>
+                    </div>
+                    <!-- Product sidebar Widget -->
+                    <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">New products</h5>
+                            <div class="bt-1 border-color-1"></div>
+                        </div>
+                        @foreach ($new_product as $item)
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    @if ($item->image)
+                                        <img src="{{ url('images/' . $item->image[0]) }}" alt="Error">
+                                    @else
+                                        <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                    @endif
+                                </div>
+                                <div class="content pt-10">
+                                    <h6><a
+                                            href="{{ route('detail.product', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
+                                    </h6>
+                                    <p class="price mb-0 mt-5">{{ $item->price }} VND</p>
+                                    <div class="product-rate">
+                                        <div class="product-rating" style="width:60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <!-- /.reviews-form -->
         </div>
-    </div>
-    <!-- /.product-description -->
-    <div class="container" bis_skin_checked="1">
-        <div class="row" bis_skin_checked="1">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" bis_skin_checked="1">
-                <div class="box-head" bis_skin_checked="1">
-                    <h3 class="head-title">Related Product</h3>
-                </div>
-            </div>
-        </div>
-        <div class="box" bis_skin_checked="1">
-            <div class="box-body" bis_skin_checked="1">
-                <div class="row" bis_skin_checked="1">
-                    <!-- product -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb30" bis_skin_checked="1">
-                        <div class="product-block" bis_skin_checked="1">
-                            <div class="product-img" bis_skin_checked="1"><img src="./images/product_img_1.png"
-                                    alt=""></div>
-                            <div class="product-content" bis_skin_checked="1">
-                                <h5><a href="#" class="product-title">{{ $product->name }} <strong>(128GB,
-                                            Black)</strong></a></h5>
-                                <div class="product-meta" bis_skin_checked="1"><a href="#"
-                                        class="product-price">{{ $product->price }}</a>
-                                    <a href="#" class="discounted-price">$1400</a>
-                                    <span class="offer-price">20%off</span>
-                                </div>
-                                <div class="shopping-btn" bis_skin_checked="1">
-                                    <a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="product-btn btn-cart"><i
-                                            class="fa fa-shopping-cart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                    <!-- product -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb30" bis_skin_checked="1">
-                        <div class="product-block" bis_skin_checked="1">
-                            <div class="product-img" bis_skin_checked="1"><img src="./images/product_img_2.png"
-                                    alt=""></div>
-                            <div class="product-content" bis_skin_checked="1">
-                                <h5><a href="#" class="product-title">HTC U Ultra <strong>(64GB,
-                                            Blue)</strong></a></h5>
-                                <div class="product-meta" bis_skin_checked="1"><a href="#"
-                                        class="product-price">$1200</a>
-                                    <a href="#" class="discounted-price">$1700</a>
-                                    <span class="offer-price">10%off</span>
-                                </div>
-                                <div class="shopping-btn" bis_skin_checked="1">
-                                    <a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="product-btn btn-cart"><i
-                                            class="fa fa-shopping-cart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                    <!-- product -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb30" bis_skin_checked="1">
-                        <div class="product-block" bis_skin_checked="1">
-                            <div class="product-img" bis_skin_checked="1"><img src="./images/product_img_3.png"
-                                    alt=""></div>
-                            <div class="product-content" bis_skin_checked="1">
-                                <h5><a href="#" class="product-title">Samsung Galaxy Note 8</a></h5>
-                                <div class="product-meta" bis_skin_checked="1"><a href="#"
-                                        class="product-price">$1500</a>
-                                    <a href="#" class="discounted-price">$2000</a>
-                                    <span class="offer-price">40%off</span>
-                                </div>
-                                <div class="shopping-btn" bis_skin_checked="1">
-                                    <a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
-                                    <a href="#" class="product-btn btn-cart"><i
-                                            class="fa fa-shopping-cart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                    <!-- product -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb30" bis_skin_checked="1">
-                        <div class="product-block" bis_skin_checked="1">
-                            <div class="product-img" bis_skin_checked="1"><img src="./images/product_img_4.png"
-                                    alt=""></div>
-                            <div class="product-content" bis_skin_checked="1">
-                                <h5><a href="#" class="product-title">Vivo V5 Plus <strong>(Matte
-                                            Black)</strong></a></h5>
-                                <div class="product-meta" bis_skin_checked="1"><a href="#"
-                                        class="product-price">$1500</a>
-                                    <a href="#" class="discounted-price">$2000</a>
-                                    <span class="offer-price">15%off</span>
-                                </div>
-                                <div class="shopping-btn" bis_skin_checked="1">
-                                    <a href="#" class="product-btn btn-like">
-                                        <i class="fa fa-heart"></i></a>
-                                    <a href="#" class="product-btn btn-cart"><i
-                                            class="fa fa-shopping-cart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.product-single -->
-</div>
+    </section>
+</main>

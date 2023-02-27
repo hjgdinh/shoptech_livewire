@@ -42,7 +42,7 @@
                                                         <span><a href="#">{{ $item->name }}</a></span>
                                                     </td>
                                                     <td>{{ $item->price }} VND</td>
-                                                    <td>{{ $item->quantity }} VND a</td>
+                                                    <td>{{ $item->quantity }} VND</td>
                                                     <td>
                                                         <div class="product-quantity" bis_skin_checked="1">
                                                             <div class="quantity" bis_skin_checked="1">

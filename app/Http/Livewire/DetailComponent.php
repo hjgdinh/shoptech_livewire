@@ -5,10 +5,12 @@ namespace App\Http\Livewire;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Category;
 
 class DetailComponent extends Component
 {
     public $slug;
+    public $quick_view;
     public $products;
     public array $quantity = [];
 
@@ -19,6 +21,10 @@ class DetailComponent extends Component
         foreach ($this->products as $product) {
             $this->quantity[$product->id] = 1;
         }
+    }
+
+    public function quickView($id) {
+        $this->quick_view = $id;
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -36,7 +42,11 @@ class DetailComponent extends Component
 
     public function render()
     {
+        $category = Category::where('parent_id', 0)->with(['children'])->get();
         $product = Product::where('slug', $this->slug)->first();
-        return view('livewire.detail-component', compact('product'))->layout('layouts.base');
+        $new_product = Product::inRandomOrder()->limit(3)->get();
+        $related = Product::where('category_id', $product->category_id)->inRandomOrder()->limit(5)->get();
+        return view('livewire.detail-component', compact('product','category','related','new_product'))
+        ->layout('layouts.base');
     }
 }

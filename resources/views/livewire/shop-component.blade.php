@@ -48,13 +48,15 @@
                                         <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
                                     </div>
                                     <div class="sort-by-dropdown-wrap">
-                                        <span>  <i class="fi-rs-angle-small-down"></i></span>
+                                        <span> <i class="fi-rs-angle-small-down"></i></span>
                                     </div>
                                 </div>
                                 <div class="sort-by-dropdown">
                                     <ul>
-                                        <li><a type="submit" class="{{ $orderBy == 'Deflaut Sorting' ? 'active' : '' }}"
-                                                wire:click.prevent="changeOrderBy('Deflaut Sorting')">Deflaut Sorting</a>
+                                        <li><a type="submit"
+                                                class="{{ $orderBy == 'Deflaut Sorting' ? 'active' : '' }}"
+                                                wire:click.prevent="changeOrderBy('Deflaut Sorting')">Deflaut
+                                                Sorting</a>
                                         </li>
                                         <li><a type="submit" class="{{ $orderBy == 'DESC' ? 'active' : '' }}"
                                                 wire:click.prevent="changeOrderBy('DESC')">Giá từ cao đến thấp</a>
@@ -90,13 +92,15 @@
                                             alt=""> --}}
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up"
+                                            {{-- <a aria-label="Quick view" class="action-btn hover-up"
                                                 data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                <i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a> --}}
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                                 href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
-                                                    class="fi-rs-shuffle"></i></a>
+                                            {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
+                                                    class="fi-rs-shuffle"></i></a> --}}
+                                            <a aria-label="Add To Cart" class="action-btn hover-up"
+                                                href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
                                             <span class="hot">Hot</span>
@@ -162,13 +166,21 @@
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated animated animated animated animated"
                                 style="visibility: visible;">Category</h5>
                             <ul class="categories">
-                                <li><a href="shop.html">Shoes &amp; Bags</a></li>
-                                <li><a href="shop.html">Blouses &amp; Shirts</a></li>
-                                <li><a href="shop.html">Dresses</a></li>
-                                <li><a href="shop.html">Swimwear</a></li>
-                                <li><a href="shop.html">Beauty</a></li>
-                                <li><a href="shop.html">Jewelry &amp; Watch</a></li>
-                                <li><a href="shop.html">Accessories</a></li>
+                                @foreach ($category as $item)
+                                    <li><a href="" {{ $item->id }}>{{ $item->name }}</a></li>
+                                    @if ($item->parent_id == 0)
+                                        @foreach ($item->children as $child)
+                                            <li style="margin-left: 15px;list-style: inside">
+                                                <a href="" {{ $child->id }}>{{ $child->name }}</a>
+                                            </li>
+                                            @foreach ($child->children as $son)
+                                                <li style="margin-left: 35px;list-style: inside;">
+                                                    <a href="" {{ $son->id }}>{{ $son->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        @endforeach
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sidebar-widget price_range range mb-30">
