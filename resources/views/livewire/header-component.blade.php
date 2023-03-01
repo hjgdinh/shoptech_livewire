@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="shopping-cart-button">
                                                 <a href="{{ route('cart.component') }}" class="outline">View cart</a>
-                                                <a href="checkout.html">Checkout</a>
+                                                <a href="{{ route('checkout.component') }}">Checkout</a>
                                             </div>
                                         </div>
                                     @else
@@ -295,8 +295,7 @@
                                             <li><a href="#">My Account ({{ Auth::user()->name }})<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-                                                    </li>
+                                                    <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <li><a href="{{ route('logout') }}"
@@ -310,9 +309,10 @@
                                             <li><a href="#">My Account ({{ Auth::user()->name }})<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="{{ route('user.dashboard') }}">User Dashboard</a>
-                                                    </li>
-                                                    <li><a href="#">Products</a></li>
+                                                    <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
+                                                    <li><a href="{{ route('checkout.component') }}">Checkout</a></li>
+                                                    <li><a href="{{ route('cart.component') }}">Cart</a></li>
+                                                    <li><a href="{{ route('shop.component') }}">Products</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <li><a href="{{ route('logout') }}"
@@ -326,6 +326,7 @@
                                         <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
                                                 <li><a href="#">Dashboard</a></li>
+                                                <li><a href="{{ route('checkout.component') }}">Checkout</a></li>
                                                 <li><a href="{{ route('login') }}">Login</a></li>
                                                 <li><a href="{{ route('register') }}">Register</a></li>
                                             </ul>
@@ -391,7 +392,7 @@
                                         </div>
                                         <div class="shopping-cart-button">
                                             <a href="{{ route('cart.component') }}">View cart</a>
-                                            <a href="shop-checkout.php">Checkout</a>
+                                            <a href="{{ route('checkout.component') }}">Checkout</a>
                                         </div>
                                     </div>
                                 </div>

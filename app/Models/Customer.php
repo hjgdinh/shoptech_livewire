@@ -10,8 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Customer extends Authenticatable
 {
-    protected $guarded = [];
     use HasFactory;
+    protected $guarded = [];
     protected $table = 'users';
     protected $primaryKey = 'id';    
     public $timestamps = true;

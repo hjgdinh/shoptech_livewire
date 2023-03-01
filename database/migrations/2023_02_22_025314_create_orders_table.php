@@ -14,18 +14,27 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('price');
-            $table->integer('quantity');
+            $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('company');
+            $table->string('address');
+            $table->string('s_address');
+            $table->string('city');
+            $table->string('country');
+            $table->string('zip');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('note');           
+            $table->decimal('subtotal');
+            $table->decimal('total');
+            $table->decimal('discount')->default(0);
             $table->tinyInteger('status')->default('1')->comment('1 : Chờ duyệt, 2 : Duyệt thành công, 3 : Hủy hàng');
-            // foreign key
-            $table->unsignedInteger('product_id');
-            $table->foreign('product_id')
-                ->references('id')
-                ->on('products')
-                ->onDelete('cascade');
+            $table->tinyInteger('payment_method')->default('1')->comment('1 : Khi nhận hàng, 2 : Card/Visa, 3 : Paypal');
             $table->timestamps();
+            // foreign key
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

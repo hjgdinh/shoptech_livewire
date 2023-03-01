@@ -170,7 +170,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed
+                                <a wire:click.prevent="checkout" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed
                                     To CheckOut</a>
                             </div>
                         </div>

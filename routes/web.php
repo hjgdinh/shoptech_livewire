@@ -7,6 +7,7 @@ use App\Http\Livewire\DetailComponent;
 use App\Http\Livewire\AboutComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminProfileComponent;
 use App\Http\Livewire\Admin\User\AdminUserComponent;
@@ -42,6 +43,8 @@ Route::get('/about', AboutComponent::class)->name('about.component');
 Route::get('/shop/{slug?}', DetailComponent::class)->name('detail.product');    
 
 Route::get('/search', SearchComponent::class)->name('header.search');  
+
+Route::get('/checkout', CheckoutComponent::class)->name('checkout.component');  
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
