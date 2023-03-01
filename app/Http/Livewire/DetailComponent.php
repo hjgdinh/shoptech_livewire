@@ -31,7 +31,7 @@ class DetailComponent extends Component
     {
         $product = Product::findOrFail($product_id);
         if (isset($product->image)) {
-            Cart::add(
+            Cart::instance('cart')->add(
                 $product->id,
                 $product->name,
                 $this->quantity[$product_id], // quantity
@@ -39,7 +39,7 @@ class DetailComponent extends Component
                 ['image' => $product->image[0]]
             );
         } else {
-            Cart::add(
+            Cart::instance('cart')->add(
                 $product->id,
                 $product->name,
                 $this->quantity[$product_id], // quantity

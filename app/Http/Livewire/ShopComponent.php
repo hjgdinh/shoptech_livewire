@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Product;
 use App\Models\Category;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ShopComponent extends Component
 {
@@ -20,7 +21,7 @@ class ShopComponent extends Component
     {
         $product = Product::findOrFail($product_id);
         if (isset($product->image)) {
-            Cart::add(
+            Cart::instance('cart')->add(
                 $product->id,
                 $product->name,
                 1, // quantity
@@ -28,7 +29,7 @@ class ShopComponent extends Component
                 ['image' => $product->image[0]]
             );
         } else {
-            Cart::add(
+            Cart::instance('cart')->add(
                 $product->id,
                 $product->name,
                 1, // quantity
@@ -59,7 +60,12 @@ class ShopComponent extends Component
         }
         else {
             $products = Product::paginate($this->pageSize);
-        }       
+        }     
+        
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
+        
         return view('livewire.shop-component', compact('products','category'))->layout('layouts.base');
     }
 }

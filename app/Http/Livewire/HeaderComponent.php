@@ -9,7 +9,7 @@ use App\Models\Category;
 class HeaderComponent extends Component
 {
     public function destroy($rowId) {
-        Cart::remove($rowId);
+        Cart::instance('cart')->remove($rowId);
         session()->flash('message','xóa thành công');
         return redirect()->route('cart.component');
         $this->emit('cart_updated');

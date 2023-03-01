@@ -11,7 +11,7 @@ class CartCountComponent extends Component
 
     public function render()
     {
-        $cart_count = Cart::content()->count();
+        $cart_count = Cart::instance('cart')->count();
         return view('livewire.cart-count-component',compact('cart_count'))->layout('layouts.base');
     }
 }

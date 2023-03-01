@@ -16,7 +16,7 @@
                         @if (Session::has('message'))
                             <div class="alert alert-success">{{ Session::get('message') }}</div>
                         @endif
-                        @if (Cart::count() > 0)
+                        @if (Cart::instance('cart')->count() > 0)
                             <table class="table shopping-summery text-center clean">
                                 <thead>
                                     <tr class="main-heading">
@@ -29,7 +29,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (Cart::content() as $item)
+                                    @foreach (Cart::instance('cart')->content() as $item)
                                         <tr>
                                             <td class="image">
                                                @if ($item->options->image)
@@ -154,7 +154,7 @@
                                             <tr>
                                                 <td class="cart_total_label">Shipping Fee</td>
                                                 <td class="cart_total_amount">
-                                                    <span class="font-lg fw-900 text-brand">{{ Cart::tax() }} VND</span>
+                                                    <span class="font-lg fw-900 text-brand">Free Shipping</span>
                                                 </td>
                                             </tr>
                                             {{-- <tr>
@@ -164,7 +164,7 @@
                                             <tr>
                                                 <td class="cart_total_label">Total</td>
                                                 <td class="cart_total_amount"><strong>
-                                                        <span class="font-xl fw-900 text-brand">{{ Cart::total() }} VND</span></strong>
+                                                        <span class="font-xl fw-900 text-brand">{{ Cart::subtotal() }} VND</span></strong>
                                                 </td>
                                             </tr>
                                         </tbody>
