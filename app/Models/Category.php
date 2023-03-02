@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    use \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
+
     use HasFactory;
     protected $table = 'categories';
     protected $primaryKey = 'id'; 
@@ -20,5 +22,12 @@ class Category extends Model
     public function child() {
         return $this->belongsTo(Category::class,'parent_id');
     }
+
+    public function products()
+    {
+        return $this->hasManyOfDescendantsAndSelf(Product::class);
+    }
+    
 }
+
 

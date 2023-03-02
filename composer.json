@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.5",
         "rawilk/laravel-form-components": "^7.1",
+        "staudenmeir/laravel-adjacency-list": "^1.0",
         "symfony/var-dumper": "*"
     },
     "require-dev": {

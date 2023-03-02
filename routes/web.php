@@ -23,7 +23,9 @@ use App\Http\Livewire\Admin\Category\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminEditSubCategoryComponent;
 use App\Http\Livewire\Admin\Order\AdminOrderComponent;
 use App\Http\Livewire\Admin\Order\AdminOrderDetailComponent;
+use App\Http\Livewire\Admin\Contact\AdminContactComponent;
 use App\Http\Livewire\User\ContactComponent;
+use App\Http\Livewire\User\CategoryComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\UserOrderDetailComponent;
 
@@ -40,12 +42,13 @@ Route::middleware([
 Route::get('/', HomeComponent::class)->name('home.component');   
 
 Route::get('/shop', ShopComponent::class)->name('shop.component');  
+Route::get('/shop/detail/{slug?}', DetailComponent::class)->name('detail.product');  
+Route::get('/shop-category/{slug?}', CategoryComponent::class)->name('shop.category');  
 
 Route::get('/cart', CartComponent::class)->name('cart.component');
 
 Route::get('/about', AboutComponent::class)->name('about.component');  
 
-Route::get('/shop/{slug?}', DetailComponent::class)->name('detail.product');    
 
 Route::get('/search', SearchComponent::class)->name('header.search');  
 
@@ -54,6 +57,8 @@ Route::get('/checkout', CheckoutComponent::class)->name('checkout');
 Route::get('/thankyou', ThankYouComponent::class)->name('thankyou.component'); 
 
 Route::get('/contact', ContactComponent::class)->name('contact.component');  
+
+
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
@@ -76,6 +81,8 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
     // order
     Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.order');
     Route::get('/admin/orders/{order_id}', AdminOrderDetailComponent::class)->name('admin.orderdetail');
+    // Contact
+    Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contact');
 });
 
 /* CLIENT */

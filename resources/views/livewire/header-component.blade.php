@@ -240,27 +240,28 @@
                         <nav>
                             <ul>
                                 <li><a class="active" href="{{ route('home.component') }}">Home </a></li>
-                                <li><a href="{{ route('about.component') }}">About</a></li>
                                 <li><a href="{{ route('shop.component') }}">Shop</a></li>
-                                <li class="position-static"><a href="#">Our Collections <i
+                                <li class="position-static"><a href="{{ route('shop.component') }}">Our Collections <i
                                             class="fi-rs-angle-down"></i></a>
                                     <ul class="mega-menu">
                                         @foreach ($category as $item)
                                             <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                <a class="menu-title" href="#"
-                                                    {{ $item->id }}>{{ $item->name }}</a>
+                                                <a class="menu-title"
+                                                    href="{{ route('shop.category', ['slug' => $item->slug]) }}">
+                                                    {{ $item->name }}
+                                                </a>
                                                 @foreach ($item->children as $child)
                                                     <ul>
                                                         <li>
-                                                            <a href="#"
-                                                                {{ $child->id }}>{{ $child->name }}</a>
+                                                            <a
+                                                                href="{{ route('shop.category', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                         </li>
                                                     </ul>
                                                     @foreach ($child->children as $son)
                                                         <ul>
                                                             <li style="margin-left:15px">
-                                                                <a href="#"
-                                                                    {{ $son->id }}>{{ $son->name }}</a>
+                                                                <a
+                                                                    href="{{ route('shop.category', ['slug' => $son->slug]) }}">{{ $son->name }}</a>
                                                             </li>
                                                         </ul>
                                                     @endforeach
@@ -292,8 +293,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">Blog </a></li>
                                 <li><a href="{{ route('contact.component') }}">Contact</a></li>
+                                <li><a href="{{ route('about.component') }}">About</a></li>
                                 <!-- account -->
                                 @if (Route::has('login'))
                                     @auth
@@ -359,40 +360,40 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart.component') }}">
                                     <img alt="Surfside Media" src="{{ asset('assets/imgs/theme/icons/icon') }}-cart.svg">
-                                    <span class="pro-count white">2</span>
+                                    <span class="pro-count white">@livewire('cart-count-component')</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="{{ asset('assets/imgs/shop/thumbnail-3') }}.jpg"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Plain Striola Shirts</a></h4>
-                                                <h3><span>1 × </span>$800.00</h3>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="{{ asset('assets/imgs/shop/thumbnail-4') }}.jpg"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product-details.html">Macbook Pro 2022</a></h4>
-                                                <h3><span>1 × </span>$3500.00</h3>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
+                                        @foreach (Cart::instance('cart')->content() as $item)
+                                            <li>
+                                                <div class="shopping-cart-img">
+                                                    <a href="product-details.html">
+                                                        @if ($item->options->image)
+                                                            <img src="{{ url('images/' . $item->options->image) }}"
+                                                                alt="Error">
+                                                        @else
+                                                            <img src="{{ url('images/deflaut_product.png') }}"
+                                                                alt="Error">
+                                                        @endif
+                                                    </a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="product-details.html">{{ $item->name }}</a></h4>
+                                                    <h4><span>{{ $item->qty }} ×
+                                                        </span>{{ number_format($item->price, 0, '', ',') }} VND
+                                                    </h4>
+                                                    {{-- <h4><span>Subtotal: </span>{{ number_format($item->subtotal, 0, '', ',') }} VND</h4>                                     --}}
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <a wire:click="destroy('{{ $item->rowId }}')"><i
+                                                            class="fi-rs-cross-small"></i></a>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                     <div class="shopping-cart-footer">
                                         <div class="shopping-cart-total">
-                                            <h4>Total <span>$383.00</span></h4>
+                                            <h4>Total <span>{{ Cart::subtotal() }} VND</span></h4>
                                         </div>
                                         @if (Auth::check())
                                             <div class="shopping-cart-button">
@@ -476,23 +477,27 @@
                                     href="{{ route('shop.component') }}">Shop</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a
                                     href="{{ route('about.component') }}">About</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                    href="{{ route('contact.component') }}">Contact</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our
                                     Collections</a>
                                 <ul class="dropdown">
                                     @foreach ($category as $item)
                                         <li class="smenu-item-has-children">
-                                            <span class="menu-expand"></span><a href="#"
-                                                {{ $item->id }}>{{ $item->name }}</a>
+                                            <span class="menu-expand"></span><a
+                                                href="{{ route('shop.category', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
                                             @foreach ($item->children as $child)
                                                 <ul class="dropdown">
                                                     <li>
-                                                        <a href="#" {{ $child->id }}>{{ $child->name }}</a>
+                                                        <a
+                                                            href="{{ route('shop.category', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                     </li>
                                                 </ul>
                                                 @foreach ($child->children as $son)
                                                     <ul class="dropdown">
                                                         <li style="margin-left:15px">
-                                                            <a href="#" {{ $son->id }}>{{ $son->name }}</a>
+                                                            <a
+                                                                href="{{ route('shop.category', ['slug' => $son->slug]) }}">{{ $son->name }}</a>
                                                         </li>
                                                     </ul>
                                                 @endforeach
@@ -501,8 +506,6 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                    href="blog.html">Blog</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a
                                     href="#">Language</a>
                                 <ul class="dropdown">

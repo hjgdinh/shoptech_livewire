@@ -14,33 +14,52 @@
                     <div class="contact-from-area padding-20-row-col wow FadeInUp">
                         <h3 class="mb-10 text-center">Drop Us a Line</h3>
                         <p class="text-muted mb-30 text-center font-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                        @if (Session::has('message'))
+                            <div class="alert alert-success">{{ Session::get('message') }}</div>
+                        @endif
                         <form class="contact-form-style text-center" id="contact-form" action="#" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-style mb-20">
-                                        <input name="name" placeholder="First Name" type="text">
+                                        <input placeholder="First Name" type="text" wire:model="name">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-style mb-20">
-                                        <input name="email" placeholder="Your Email" type="email">
+                                        <input placeholder="Your Email" type="email" wire:model="email">
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-style mb-20">
-                                        <input name="telephone" placeholder="Your Phone" type="tel">
+                                        <input placeholder="Your Phone" type="tel" wire:model="telephone">
+                                        @error('telephone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-style mb-20">
-                                        <input name="subject" placeholder="Subject" type="text">
+                                        <input placeholder="Subject" type="text" wire:model="subject">
+                                        @error('subject')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div class="textarea-style mb-30">
-                                        <textarea name="message" placeholder="Message"></textarea>
+                                        <textarea placeholder="Message" wire:model="message"></textarea>
+                                        @error('message')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <button class="submit submit-auto-width" type="submit">Send message</button>
+                                    <button wire:click.prevent="sendContact" class="submit submit-auto-width"
+                                        type="submit">Send message</button>
                                 </div>
                             </div>
                         </form>

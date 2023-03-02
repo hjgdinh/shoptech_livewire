@@ -6,6 +6,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Category;
+
 class HeaderComponent extends Component
 {
     public function destroy($rowId) {

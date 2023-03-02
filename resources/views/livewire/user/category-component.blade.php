@@ -70,72 +70,76 @@
                         </div>
                     </div>
                     <div class="row product-grid-3">
-                        @if (Session::has('message'))
-                            <div class="alert alert-success">{{ Session::get('message') }}</div>
-                        @endif
-                        @foreach ($products as $product)
-                            <div class="col-lg-4 col-md-4 col-6 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
-                                                @if ($product->image)
-                                                    <img class="default-img"
-                                                        src="{{ url('images/' . $product->image[0]) }}" alt="Error">
-                                                @else
-                                                    <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
-                                                @endif
-                                            </a>
-                                            {{-- <img class="default-img" src="assets/imgs/shop/product-3-1.jpg"
-                                            alt="">
-                                        <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg"
-                                            alt=""> --}}
+                        @if ($products->count() > 0)
+                            @if (Session::has('message'))
+                                <div class="alert alert-success">{{ Session::get('message') }}</div>
+                            @endif
+                            @foreach ($products as $product)
+                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
+                                                    @if ($product->image)
+                                                        <img class="default-img"
+                                                            src="{{ url('images/' . $product->image[0]) }}" alt="Error">
+                                                    @else
+                                                        <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                                    @endif
+                                                </a>
+                                                {{-- <img class="default-img" src="assets/imgs/shop/product-3-1.jpg"
+                                                alt="">
+                                            <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg"
+                                                alt=""> --}}
+                                            </div>
+                                            <div class="product-action-1">
+                                                {{-- <a aria-label="Quick view" class="action-btn hover-up"
+                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                                    <i class="fi-rs-search"></i></a> --}}
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
+                                                        class="fi-rs-shuffle"></i></a> --}}
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href=""
+                                                    wire:click.prevent="addToCart({{ $product->id }})"><i
+                                                        class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">Hot</span>
+                                            </div>
                                         </div>
-                                        <div class="product-action-1">
-                                            {{-- <a aria-label="Quick view" class="action-btn hover-up"
-                                                data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                <i class="fi-rs-search"></i></a> --}}
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
-                                                    class="fi-rs-shuffle"></i></a> --}}
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href=""
-                                                wire:click.prevent="addToCart({{ $product->id }})"><i
-                                                    class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a
-                                                href="{{ route('shop.category', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a>
-                                        </div>
-                                        <h2><a
-                                                href="{{ route('detail.product', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
-                                        </h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>{{ number_format($product->price, 0, '', ',') }} VND</span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                wire:click.prevent="addToCart({{ $product->id }})"><i
-                                                    class="fi-rs-shopping-bag-add"></i></a>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a
+                                                    href="{{ route('shop.category', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a>
+                                            </div>
+                                            <h2><a
+                                                    href="{{ route('detail.product', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                            </h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>90%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>{{ number_format($product->price, 0, '', ',') }} VND</span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up"
+                                                    wire:click.prevent="addToCart({{ $product->id }})"><i
+                                                        class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach                           
+                        @else
+                            <p style="font-size:20px">Don't have any product right now!</p>
+                        @endif
                     </div>
                     <!--pagination-->
-                    <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                    <div class="paginatin-area mt-15 mb-sm-5 mb-lg-0">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
                                 {{ $products->links() }}

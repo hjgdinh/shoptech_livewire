@@ -140,6 +140,11 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Categories</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.contact') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Contacts</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
