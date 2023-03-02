@@ -293,7 +293,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="blog.html">Blog </a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ route('contact.component') }}">Contact</a></li>
                                 <!-- account -->
                                 @if (Route::has('login'))
                                     @auth
@@ -317,7 +317,6 @@
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
-                                                    <li><a href="{{ route('checkout') }}">Checkout</a></li>
                                                     <li><a href="{{ route('cart.component') }}">Cart</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
@@ -519,7 +518,7 @@
                 </div>
                 <div class="mobile-header-info-wrap mobile-header-border">
                     <div class="single-mobile-header-info mt-30">
-                        <a href="contact.html"> Our location </a>
+                        <a href="{{ route('contact.component') }}"> Our location </a>
                     </div>
                     @if (Auth::user())
                     @else

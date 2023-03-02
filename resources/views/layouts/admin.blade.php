@@ -114,7 +114,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Đơn hàng</h6>
-                        <a class="collapse-item" href="#">Đã đặt</a>
+                        <a class="collapse-item" href="{{ route('admin.order') }}">Đã đặt</a>
                         <a class="collapse-item" href="#">Đã hủy</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>

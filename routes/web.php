@@ -21,7 +21,11 @@ use App\Http\Livewire\Admin\Category\AdminCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\Category\AdminEditSubCategoryComponent;
+use App\Http\Livewire\Admin\Order\AdminOrderComponent;
+use App\Http\Livewire\Admin\Order\AdminOrderDetailComponent;
+use App\Http\Livewire\User\ContactComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\UserOrderDetailComponent;
 
 Route::middleware([
     'auth:sanctum',
@@ -47,11 +51,13 @@ Route::get('/search', SearchComponent::class)->name('header.search');
 
 Route::get('/checkout', CheckoutComponent::class)->name('checkout');  
 
-Route::get('/thankyou', ThankYouComponent::class)->name('thankyou.component');  
+Route::get('/thankyou', ThankYouComponent::class)->name('thankyou.component'); 
 
+Route::get('/contact', ContactComponent::class)->name('contact.component');  
 
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
+    Route::get('/admin', AdminDashboardComponent::class);
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
     Route::get('/admin/profile/{id}', AdminProfileComponent::class)->name('admin.profile');
     // user
@@ -67,12 +73,16 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
     Route::get('/admin/categories/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
     Route::get('/admin/categories/edit/{id}', AdminEditCategoryComponent::class)->name('admin.editcategory');
     Route::get('/admin/subcategories/edit/{id}', AdminEditSubCategoryComponent::class)->name('admin.editsubcategory');
+    // order
+    Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.order');
+    Route::get('/admin/orders/{order_id}', AdminOrderDetailComponent::class)->name('admin.orderdetail');
 });
 
 /* CLIENT */
 Route::middleware(['auth:sanctum','verified'])->group(function() {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
-
+    // order
+    Route::get('/user/orders/{order_id}', UserOrderDetailComponent::class)->name('user.orderdetail');
 });
 
 
