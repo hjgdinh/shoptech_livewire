@@ -300,7 +300,7 @@
                                     @auth
                                         @if (Auth::user()->utype === 'ADM')
                                             {{-- Admin --}}
-                                            <li><a href="#">My Account ({{ Auth::user()->name }})<i
+                                            <li><a href="{{ route('admin.dashboard') }}">My Account ({{ Auth::user()->name }})<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
@@ -314,7 +314,7 @@
                                             </li>
                                         @else
                                             {{-- User --}}
-                                            <li><a href="#">My Account ({{ Auth::user()->name }})<i
+                                            <li><a href="{{ route('user.dashboard') }}">My Account ({{ Auth::user()->name }})<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
@@ -329,7 +329,7 @@
                                             </li>
                                         @endif
                                     @else
-                                        <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                        <li><a href="{{ route('login') }}">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
                                                 <li><a href="#">Dashboard</a></li>
                                                 <li><a href="{{ route('login') }}">Login</a></li>
@@ -344,7 +344,7 @@
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-block">
-                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
+                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+84) 983-037-953 </p>
                     </div>
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%
                     </p>

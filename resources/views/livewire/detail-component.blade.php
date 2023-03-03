@@ -147,8 +147,8 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow">Home</a>
-                <span></span> Fashion
-                <span></span> Abstract Print Patchwork Dress
+                <span></span> {{ $product->category->slug }}
+                <span></span> {{ $product->name }}
             </div>
         </div>
     </div>
@@ -719,15 +719,15 @@
                         <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                         <ul class="categories">
                             @foreach ($category as $item)
-                                <li><a href="" {{ $item->id }}>{{ $item->name }}</a></li>
+                                <li><a href="{{ route('shop.category', ['slug' => $item->slug]) }}">{{ $item->name }}</a></li>
                                 @if ($item->parent_id == 0)
                                     @foreach ($item->children as $child)
                                         <li style="margin-left: 15px;list-style: inside">
-                                            <a href="" {{ $child->id }}>{{ $child->name }}</a>
+                                            <a href="{{ route('shop.category', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                         </li>
                                         @foreach ($child->children as $son)
                                             <li style="margin-left: 35px;list-style: inside;">
-                                                <a href="" {{ $son->id }}>{{ $son->name }}</a>
+                                                <a href="{{ route('shop.category', ['slug' => $son->slug]) }}">{{ $son->name }}</a>
                                             </li>
                                         @endforeach
                                     @endforeach
@@ -736,7 +736,7 @@
                         </ul>
                     </div>
                     <!-- Fillter By Price -->
-                    <div class="sidebar-widget price_range range mb-30">
+                    {{-- <div class="sidebar-widget price_range range mb-30">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">Fill by price</h5>
                             <div class="bt-1 border-color-1"></div>
@@ -792,7 +792,7 @@
                         </div>
                         <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
                             Fillter</a>
-                    </div>
+                    </div> --}}
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">

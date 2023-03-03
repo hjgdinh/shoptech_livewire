@@ -190,7 +190,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="sidebar-widget price_range range mb-30">
+                        {{-- <div class="sidebar-widget price_range range mb-30">
                             <div class="widget-header position-relative mb-20 pb-10">
                                 <h5 class="widget-title mb-10">Fill by price</h5>
                                 <div class="bt-1 border-color-1"></div>
@@ -256,7 +256,7 @@
                             </div>
                             <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
                                 Fillter</a>
-                        </div>
+                        </div> --}}
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                             <div class="widget-header position-relative mb-20 pb-10">
                                 <h5 class="widget-title mb-10">New products</h5>
@@ -286,7 +286,7 @@
                         </div>
                         <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none"
                             style="visibility: hidden; animation-name: none;">
-                            <img src="assets/imgs/banner/banner-11.jpg" alt="">
+                            <img src="{{ asset('assets/imgs/banner/banner-11.jpg') }}" alt="">
                             <div class="banner-text">
                                 <span>Women Zone</span>
                                 <h4>Save 17% on <br>Office Dress</h4>

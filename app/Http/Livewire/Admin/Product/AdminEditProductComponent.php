@@ -12,7 +12,7 @@ class AdminEditProductComponent extends Component
 {
     use WithFileUploads;
 
-    public $product_id; // id of user
+    public $product_id; // id of product
     public $name;
     public $slug;
     public $price;

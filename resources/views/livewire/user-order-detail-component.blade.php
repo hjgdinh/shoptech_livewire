@@ -17,11 +17,8 @@
                                 <ul class="nav flex-column" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('user.dashboard') }}">
-                                            <i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('shop.component') }}">
-                                            <i class="fi-rs-shopping-bag mr-10"></i>Shop</a>
+                                            <i class="fi-rs-arrow-left mr-10"></i>Back
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -40,33 +37,32 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Id</th>
-                                                        <th>Qty</th>
-                                                        <th>Price</th>
-                                                        <th>Image</th>
-                                                        <th>Total</th>
-                                                        <th>Created</th>
+                                                        <th>Tên SP</th>
+                                                        <th>Ảnh SP</th>
+                                                        <th>Giá (VND)</th>
+                                                        <th>SL</th>
+                                                        <th>Tổng (VND)</th>
+                                                        <th>Mua lúc</th>
                                                         {{-- <th>Updated</th> --}}
                                                     </tr>
                                                 </thead>
                                                 @foreach ($order->orderItem as $item)
                                                     <tbody>
                                                         <tr>
-                                                            <td>{{ $item->product_id }}</td>
-                                                            <td>{{ $item->quantity }}</td>
-                                                            <td>{{ $item->price }} VND</td>
+                                                            <td>{{ $item->id }}</td>
+                                                            <td>{{ $item->product->name }}</td>
                                                             <td>
                                                                 @if (isset($item->product->image))
-                                                                    @foreach ($item->product->image as $img)
-                                                                        <img src="{{ url('images/' . $img) }}"
-                                                                            alt=""
-                                                                            style="width:4rem;padding:2px">
-                                                                    @endforeach
+                                                                    <img src="{{ url('images/' . $item->product->image[0]) }}"
+                                                                        alt="" style="width:4rem;padding:2px">
                                                                 @else
                                                                     <img src="{{ url('images/deflaut_product.png') }}"
                                                                         alt="" style="width:4rem;padding:2px">
                                                                 @endif
                                                             </td>
-                                                            <td>{{ $item->quantity * $item->price }} VND</td>
+                                                            <td>{{ number_format($item->price, 0, '', ',') }}</td>
+                                                            <td>{{ $item->quantity }}</td>
+                                                            <td>{{ number_format($item->quantity * $item->price, 0, '', ',') }}</td>
                                                             <td>{{ $item->created_at }}</td>
                                                             {{-- <td>{{ $item->updated_at }}</td> --}}
                                                         </tr>
@@ -74,9 +70,9 @@
                                                 @endforeach
                                             </table>
                                             <div style="padding: 15px 0;">
-                                                <p>SubTotal: {{ $order->total }} VND</p>
+                                                <p>Tổng SP: {{ $order->total }} VND</p>
                                                 <p>Shipping: Free Shipping</p>
-                                                <p>Total: {{ $order->total }} VND</p>
+                                                <p>Tổng: {{ $order->total }} VND</p>
                                             </div>
                                             <a class="btn btn-primary" href="{{ route('user.dashboard') }}">
                                                 Back

@@ -4,7 +4,9 @@ namespace App\Http\Livewire\User;
 
 use Livewire\Component;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserDashboardComponent extends Component
 {

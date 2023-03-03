@@ -26,21 +26,26 @@
                                             role="tab" aria-controls="orders" aria-selected="false"><i
                                                 class="fi-rs-shopping-bag mr-10"></i>Orders</a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab"
                                             href="#track-orders" role="tab" aria-controls="track-orders"
                                             aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track
                                             Your Order</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address"
                                             role="tab" aria-controls="address" aria-selected="true"><i
                                                 class="fi-rs-marker mr-10"></i>My Address</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab"
-                                            href="#account-detail" role="tab" aria-controls="account-detail"
-                                            aria-selected="true"><i class="fi-rs-user mr-10"></i>Account details</a>
+                                        <a class="nav-link" id="account-detail-tab" href="{{ route('user.profile', ['id' => Auth::id()]) }}"
+                                            role="tab" aria-controls="account-detail" aria-selected="true"><i
+                                                class="fi-rs-user mr-10"></i>Account details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="account-detail-tab" href="{{ route('user.changepw') }}"
+                                            role="tab" aria-controls="account-detail" aria-selected="true"><i
+                                                class="fi-rs-user mr-10"></i>Change Password</a>
                                     </li>
                                     <li class="nav-item">
                                         <form method="POST" action="{{ route('logout') }}">
@@ -67,10 +72,11 @@
                                             <p>From your account dashboard. you can easily check &amp; view your <a
                                                     href="#">recent orders</a>, manage your <a
                                                     href="#">shipping and billing addresses</a> and <a
-                                                    href="#">edit your password and account details.</a></p>
+                                                    href="{{ route('user.changepw') }}">edit your password and account
+                                                    details.</a></p>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                              
                                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
@@ -112,8 +118,9 @@
                                                                 </td>
                                                                 <td>{{ $item->total }} VND for
                                                                     {{ $item->orderItem->count() }} item</td>
-                                                                <td><a href="{{ route('user.orderdetail', $item->id) }}" class="btn-small d-block">View</a>
-                                                                </td>                                               
+                                                                <td><a href="{{ route('user.orderdetail', $item->id) }}"
+                                                                        class="btn-small d-block">View</a>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -121,7 +128,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                               
+                                </div>
                                 <div class="tab-pane fade" id="track-orders" role="tabpanel"
                                     aria-labelledby="track-orders-tab">
                                     <div class="card">
@@ -188,60 +195,63 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="account-detail" role="tabpanel"
+                                {{-- <div class="tab-pane fade" id="account-detail" role="tabpanel"
                                     aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">
                                             <h5>Account Details</h5>
                                         </div>
                                         <div class="card-body">
-                                            <p>Already have an account? <a href="login.html">Log in instead!</a></p>
                                             <form method="post" name="enq">
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>First Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control square"
-                                                            name="name" type="text">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label>Last Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control square"
-                                                            name="phone">
-                                                    </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Display Name <span class="required">*</span></label>
+                                                        <label>Name <span class="required">*</span></label>
                                                         <input required="" class="form-control square"
-                                                            name="dname" type="text">
+                                                            name="name" type="text"
+                                                            value="{{ Auth::user()->name }}">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Email Address <span class="required">*</span></label>
                                                         <input required="" class="form-control square"
-                                                            name="email" type="email">
+                                                            name="email" type="email"
+                                                            value="{{ Auth::user()->email }}">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Current Password <span class="required">*</span></label>
                                                         <input required="" class="form-control square"
-                                                            name="password" type="password">
+                                                         type="password"
+                                                            wire:model="current_password">
+                                                        @error('current_password')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>New Password <span class="required">*</span></label>
                                                         <input required="" class="form-control square"
-                                                            name="npassword" type="password">
+                                                            name="password" type="password" wire:model="password">
+                                                        @error('password')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Confirm Password <span class="required">*</span></label>
                                                         <input required="" class="form-control square"
-                                                            name="cpassword" type="password">
+                                                            name="password_confirmation" type="password"
+                                                            wire:model="password_confirmation">
+                                                        @error('password_confirmation')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="col-md-12">
                                                         <button type="submit" class="btn btn-fill-out submit"
-                                                            name="submit" value="Submit">Save</button>
+                                                            name="submit" value="Submit"
+                                                            wire:click.prevent="changePw">Save</button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

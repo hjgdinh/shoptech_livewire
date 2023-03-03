@@ -27,6 +27,8 @@ use App\Http\Livewire\Admin\Contact\AdminContactComponent;
 use App\Http\Livewire\User\ContactComponent;
 use App\Http\Livewire\User\CategoryComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\ProfileComponent;
+use App\Http\Livewire\User\ChangePasswordComponent;
 use App\Http\Livewire\UserOrderDetailComponent;
 
 Route::middleware([
@@ -58,8 +60,6 @@ Route::get('/thankyou', ThankYouComponent::class)->name('thankyou.component');
 
 Route::get('/contact', ContactComponent::class)->name('contact.component');  
 
-
-
 /* ADMIN */
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
     Route::get('/admin', AdminDashboardComponent::class);
@@ -90,6 +90,10 @@ Route::middleware(['auth:sanctum','verified'])->group(function() {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     // order
     Route::get('/user/orders/{order_id}', UserOrderDetailComponent::class)->name('user.orderdetail');
+    // pw
+    Route::get('/user/change-password', ChangePasswordComponent::class)->name('user.changepw');
+    // profile
+    Route::get('/user/profile/{id}', ProfileComponent::class)->name('user.profile');
 });
 
 
