@@ -11,7 +11,7 @@ class OrderItem extends Model
 
     protected $table = 'order_item';
     protected $primaryKey = 'id';    
-
+    public $timestamps = true;
 
     public function order() {
         return $this->belongsTo(Order::class);

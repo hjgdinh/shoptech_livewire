@@ -100,7 +100,7 @@
                                 @foreach ($orders as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->first_name }} {{ $item->last_name }}</td>
+                                        <td>{{ $item->last_name }} {{ $item->first_name }}</td>
                                         <td>{{ $item->company }}</td>
                                         <td>{{ $item->address }}</td>
                                         <td>{{ $item->s_address }}</td>
@@ -158,8 +158,8 @@
                                                     Status
                                                 </button>
                                                 <ul class="dropdown-menu" style="min-width: 6rem">
-                                                    <li style="padding: 5px 10px;"><a href="">Giao hàng </a></li>
-                                                    <li style="padding: 5px 10px;"><a href="">Hủy hàng </a></li>
+                                                    <li style="padding: 5px 10px;"><a wire:click="updateStatus({{ $item->id }}, '2')">Giao hàng </a></li>
+                                                    <li style="padding: 5px 10px;"><a wire:click="updateStatus({{ $item->id }}, '3')">Hủy hàng </a></li>
                                                 </ul>
                                             </div>
                                         </td>
