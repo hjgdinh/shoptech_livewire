@@ -218,7 +218,8 @@
                                     <h2 class="title-detail">{{ $product->name }}</h2>
                                     <div class="product-detail-rating">
                                         <div class="pro-details-brand">
-                                            <span> Brands: <a href="shop.html">{{ $product->category->name }}</a></span>
+                                            <span> Brands: <a
+                                                    href="shop.html">{{ $product->category->name }}</a></span>
                                         </div>
                                         <div class="product-rate-cover text-end">
                                             <div class="product-rate d-inline-block">
@@ -230,14 +231,19 @@
                                     </div>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
-                                            <ins><span class="text-brand">{{ number_format($product->price, 0, '', ',') }} VND</span></ins>
+                                            <ins><span
+                                                    class="text-brand">{{ number_format($product->price, 0, '', ',') }}
+                                                    VND</span></ins>
                                             {{-- <ins><span class="old-price font-md ml-15">$200.00</span></ins>
                                             <span class="save-price  font-md color3 ml-15">25% Off</span> --}}
                                         </div>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                                     <div class="short-desc mb-30">
-                                        <p>{{ $product->description }}</p>
+                                        <p
+                                            style="text-align: justify;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">
+                                            {{ $product->description }}
+                                        </p>
                                     </div>
                                     {{-- <div class="product_sort_info font-xs mb-30">
                                         <ul>
@@ -320,14 +326,14 @@
                                     <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
                                         href="#Additional-info">Additional info</a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
                                         href="#Reviews">Reviews (3)</a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
                                 <div class="tab-pane fade show active" id="Description">
-                                    <div class="">
+                                    <div class="" style="text-align: justify;">
                                         {{ $product->description }}
                                         {{-- <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending
                                             and much yikes off far quetzal goodness and from for grimaced goodness
@@ -375,87 +381,93 @@
                                     <table class="font-md">
                                         <tbody>
                                             <tr class="stand-up">
-                                                <th>Stand Up</th>
+                                                <th>Màn hình</th>
                                                 <td>
-                                                    <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                                    @if (isset($variant->monitor))
+                                                        <p>{{ $variant->monitor }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="folded-wo-wheels">
-                                                <th>Folded (w/o wheels)</th>
+                                                <th>Hệ điều hành</th>
                                                 <td>
-                                                    <p>32.5″L x 18.5″W x 16.5″H</p>
+                                                    @if (isset($variant->operating))
+                                                        <p>{{ $variant->operating }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="folded-w-wheels">
-                                                <th>Folded (w/ wheels)</th>
+                                                <th>Camera sau</th>
                                                 <td>
-                                                    <p>32.5″L x 24″W x 18.5″H</p>
+                                                    @if (isset($variant->camera_behind))
+                                                        <p>{{ $variant->camera_behind }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="door-pass-through">
-                                                <th>Door Pass Through</th>
+                                                <th>Camera trước</th>
                                                 <td>
-                                                    <p>24</p>
+                                                    @if (isset($variant->camera_front))
+                                                        <p>{{ $variant->camera_front }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="frame">
-                                                <th>Frame</th>
+                                                <th>Chip</th>
                                                 <td>
-                                                    <p>Aluminum</p>
+                                                    @if (isset($variant->chip))
+                                                        <p>{{ $variant->chip }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="weight-wo-wheels">
-                                                <th>Weight (w/o wheels)</th>
+                                                <th>Ram</th>
                                                 <td>
-                                                    <p>20 LBS</p>
+                                                    @if (isset($variant->ram))
+                                                        <p>{{ $variant->ram }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="weight-capacity">
-                                                <th>Weight Capacity</th>
+                                                <th>Dung lượng lưu trữ</th>
                                                 <td>
-                                                    <p>60 LBS</p>
+                                                    @if (isset($variant->storage))
+                                                        <p>{{ $variant->storage }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="width">
-                                                <th>Width</th>
+                                                <th>SIM</th>
                                                 <td>
-                                                    <p>24″</p>
+                                                    @if (isset($variant->sim))
+                                                        <p>{{ $variant->sim }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr class="handle-height-ground-to-handle">
-                                                <th>Handle height (ground to handle)</th>
+                                                <th>Pin, Sạc</th>
                                                 <td>
-                                                    <p>37-45″</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="wheels">
-                                                <th>Wheels</th>
-                                                <td>
-                                                    <p>12″ air / wide track slick tread</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="seat-back-height">
-                                                <th>Seat back height</th>
-                                                <td>
-                                                    <p>21.5″</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="head-room-inside-canopy">
-                                                <th>Head room (inside canopy)</th>
-                                                <td>
-                                                    <p>25″</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="pa_color">
-                                                <th>Color</th>
-                                                <td>
-                                                    <p>Black, Blue, Red, White</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="pa_size">
-                                                <th>Size</th>
-                                                <td>
-                                                    <p>M, S</p>
+                                                    @if (isset($variant->battery))
+                                                        <p>{{ $variant->battery }}</p>
+                                                    @else
+                                                        <p>Không có thông số</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -719,15 +731,19 @@
                         <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                         <ul class="categories">
                             @foreach ($category as $item)
-                                <li><a href="{{ route('shop.category', ['slug' => $item->slug]) }}">{{ $item->name }}</a></li>
+                                <li><a
+                                        href="{{ route('shop.category', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
+                                </li>
                                 @if ($item->parent_id == 0)
                                     @foreach ($item->children as $child)
                                         <li style="margin-left: 15px;list-style: inside">
-                                            <a href="{{ route('shop.category', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                            <a
+                                                href="{{ route('shop.category', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                         </li>
                                         @foreach ($child->children as $son)
                                             <li style="margin-left: 35px;list-style: inside;">
-                                                <a href="{{ route('shop.category', ['slug' => $son->slug]) }}">{{ $son->name }}</a>
+                                                <a
+                                                    href="{{ route('shop.category', ['slug' => $son->slug]) }}">{{ $son->name }}</a>
                                             </li>
                                         @endforeach
                                     @endforeach

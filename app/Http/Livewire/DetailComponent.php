@@ -6,6 +6,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Variant;
 
 class DetailComponent extends Component
 {
@@ -55,9 +56,10 @@ class DetailComponent extends Component
     {
         $category = Category::where('parent_id', 0)->with(['children'])->get();
         $product = Product::where('slug', $this->slug)->first();
+        $variant = Variant::where('product_id', $product->id)->first();
         $new_product = Product::inRandomOrder()->limit(3)->get();
         $related = Product::where('category_id', $product->category_id)->inRandomOrder()->limit(5)->get();
-        return view('livewire.detail-component', compact('product','category','related','new_product'))
+        return view('livewire.detail-component', compact('product','category','related','new_product','variant'))
         ->layout('layouts.base');
     }
 }
