@@ -51,7 +51,6 @@ Route::get('/cart', CartComponent::class)->name('cart.component');
 
 Route::get('/about', AboutComponent::class)->name('about.component');  
 
-
 Route::get('/search', SearchComponent::class)->name('header.search');  
 
 Route::get('/checkout', CheckoutComponent::class)->name('checkout');  

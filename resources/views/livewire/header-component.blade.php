@@ -300,7 +300,7 @@
                                     @auth
                                         @if (Auth::user()->utype === 'ADM')
                                             {{-- Admin --}}
-                                            <li><a href="{{ route('admin.dashboard') }}">My Account ({{ Auth::user()->name }})<i
+                                            <li><a href="{{ route('admin.dashboard') }}">My Account (Admin)<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
@@ -314,7 +314,7 @@
                                             </li>
                                         @else
                                             {{-- User --}}
-                                            <li><a href="{{ route('user.dashboard') }}">My Account ({{ Auth::user()->name }})<i
+                                            <li><a href="{{ route('user.dashboard') }}">My Account (User)<i
                                                         class="fi-rs-angle-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
@@ -331,7 +331,7 @@
                                     @else
                                         <li><a href="{{ route('login') }}">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Dashboard</a></li>
+                                                <li><a href="{{ route('login') }}">Dashboard</a></li>
                                                 <li><a href="{{ route('login') }}">Login</a></li>
                                                 <li><a href="{{ route('register') }}">Register</a></li>
                                             </ul>

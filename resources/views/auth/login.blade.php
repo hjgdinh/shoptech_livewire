@@ -47,67 +47,75 @@
     </x-jet-authentication-card>
 </x-guest-layout> --}}
 <x-guest-layout>
-    <div class="container">
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow">Home</a>
+                    <span></span> Login
+                </div>
+            </div>
+        </div>
+        <section class="pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back</h1>
-                                    </div>
-                                    <x-jet-validation-errors class="mb-4" />
-                                    <form class="user" method="post" action="{{ route('login') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input name="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." type="email" name="email"
-                                                value="{{ old('email') }}" required autofocus />
+                            <div class="col-lg-5">
+                                <div
+                                    class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5">
+                                    <div class="padding_eight_all bg-white">
+                                        <div class="heading_s1">
+                                            <h3 class="mb-30">Login</h3>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password"
-                                                class="form-control form-control-user" id="exampleInputPassword"
-                                                placeholder="Password" required autocomplete="current-password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input name="remember" style="opacity: 1" class="custom-control-input"
-                                                    for="customCheck" id="customCheck" type="checkbox"
-                                                    value="forever">Remember Me
+                                        <x-jet-validation-errors class="mb-4 text-danger" />
+                                        <form method="post" action="{{ route('login') }}">
+                                            <div class="form-group">
+                                                <input type="email" required="" name="email"
+                                                    placeholder="Your Email" value="{{ old('email') }}" required
+                                                    autofocus />
                                             </div>
-                                        </div>
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-primary btn-user btn-block" type="submit"
-                                            name="submit">Login</button>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="{{ route('password.request') }}">Forgot
-                                            Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Create an Account!</a>
+                                            <div class="form-group">
+                                                <input required="" type="password" name="password"
+                                                    placeholder="Password" required autocomplete="current-password">
+                                            </div>
+                                            <div class="login_footer form-group">
+                                                <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox"
+                                                            id="exampleCheckbox1" value="">
+                                                        <label class="form-check-label"
+                                                            for="exampleCheckbox1"><span>Remember me</span></label>
+                                                    </div>
+                                                </div>
+                                                <a class="small" href="{{ route('password.request') }}">Forgot
+                                                    password?</a>
+                                                {{-- <a class="text-muted" href="{{ route('register') }}">Create an Account!</a> --}}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up">Log in</button>
+                                            </div>
+                                            {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                                                <i class="fab fa-google fa-fw"></i> Login with Google
+                                            </a>
+                                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                            </a> --}}
+                                            <div class="text-muted text-center">Create an account? <a
+                                                href="{{ route('register') }}">Register now</a></div>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-6">
+                                <img src="assets/imgs/login.png">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </x-guest-layout>

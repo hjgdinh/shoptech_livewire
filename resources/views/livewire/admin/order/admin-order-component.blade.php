@@ -92,6 +92,7 @@
                                     {{-- <th>Tạo lúc</th>
                                     <th>Cập nhật lúc</th> --}}
                                     <th>Detail</th>
+                                    <th colspan="2">Action</th>
                                     {{-- <th>Delete</th> --}}
                                 </tr>
                             </thead>
@@ -150,6 +151,17 @@
                                             <a href="{{ route('admin.orderdetail', $item->id) }}"
                                                 class="btn btn-danger">Detail
                                             </a>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-success" data-toggle="dropdown" type="button">
+                                                    Status
+                                                </button>
+                                                <ul class="dropdown-menu" style="min-width: 6rem">
+                                                    <li style="padding: 5px 10px;"><a href="">Giao hàng </a></li>
+                                                    <li style="padding: 5px 10px;"><a href="">Hủy hàng </a></li>
+                                                </ul>
+                                            </div>
                                         </td>
                                         {{-- <td>
                                             <a type="submit" wire:click.prevent="deleteProduct({{ $item->id }})"

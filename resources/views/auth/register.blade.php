@@ -60,109 +60,110 @@
 </x-guest-layout> --}}
 
 <x-guest-layout>
-
-    <body class="bg-gradient-primary">
-
-        <div class="container">
-
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                        <div class="col-lg-7">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                                </div>
-                                <form class="user" action="{{ route('register') }}"
-                                    enctype="multipart/form-data" method="post">
-                                    @csrf
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="exampleFirstName" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+    <style>
+        .flex-gender {
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        .flex-gender h5 {
+            font-weight: 500;
+            padding: 0 3px;
+        }
+    </style>
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow">Home</a>
+                    <span></span> Register
+                </div>
+            </div>
+        </div>
+        <section class="pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 m-auto">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="login_wrap widget-taber-content p-30 background-white border-radius-5">
+                                    <div class="padding_eight_all bg-white">
+                                        <div class="heading_s1">
+                                            <h3 class="mb-30">Create an Account</h3>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" placeholder="Email" name="email" value="{{ old('email') }}" required>
-                                        </div>
+                                        <x-jet-validation-errors class="mb-4 text-danger" />
+                                        <form action="{{ route('register') }}" enctype="multipart/form-data" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <input type="text" required name="name" placeholder="Name"
+                                                    value="{{ old('name') }}" autofocus autocomplete="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required name="email" placeholder="Email"
+                                                    value="{{ old('email') }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="address"
+                                                    placeholder="Address" value="{{ old('address') }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="phone" placeholder="Phone"
+                                                    value="{{ old('phone') }}" required>
+                                            </div>
+                                            <div class="form-group" style="display: flex;align-items: center;">
+                                                Gender:
+                                                <div class="flex-gender">
+                                                    <h5>Nam</h5>
+                                                    <input style="height:15px;width:10%"
+                                                        @if (old('gender') == 1) checked @endif name="gender"
+                                                        type="radio" value="1">
+                                                </div>
+                                                <div class="flex-gender">
+                                                    <h5>Nữ</h5>
+                                                    <input style="height:15px;width:10%"
+                                                        @if (old('gender') == 2) checked @endif name="gender"
+                                                        type="radio" value="2">
+                                                </div>
+                                            </div>                                           
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user"
+                                                placeholder="Password" name="password" required autocomplete="new-password">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user"
+                                                placeholder="Password confirmation" name="password_confirmation" required autocomplete="new-password">
+                                            </div>
+                                            <div class="login_footer form-group">
+                                                <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox"
+                                                            id="exampleCheckbox12" value="">
+                                                        <label class="form-check-label" for="exampleCheckbox12"><span>I
+                                                                agree to terms &amp; Policy.</span></label>
+                                                    </div>
+                                                </div>
+                                                <a href="privacy-policy.html"><i
+                                                        class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up"
+                                                    name="login">Submit &amp; Register</button>
+                                            </div>
+                                        </form>
+                                        <div class="text-muted text-center">Already have an account? <a
+                                            href="{{ route('login') }}">Sign in now</a></div>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" placeholder="Email confirmation"
-                                            name="email_confirmation">
-                                    </div> --}}
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleInputEmail" placeholder="Address" name="address" value="{{ old('address') }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" class="form-control form-control-user"
-                                            id="exampleInputEmail" placeholder="Phone" name="phone" value="{{ old('phone') }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Gender:</label>
-                                        <label>Nam</label> <input @if (old('gender') == 1) checked @endif name="gender" type="radio" value="1" >
-                                        <label>Nữ</label> <input @if (old('gender') == 2) checked @endif name="gender" type="radio" value="2">
-                                    </div>
-                                    {{-- <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div> --}}
-                                    <div class="form-group">
-                                        <input type="" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password" required autocomplete="new-password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password confirmation"
-                                            name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                    {{-- <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a> --}}
-                                    <button class="btn btn-primary btn-user btn-block" type="submit">
-                                        Register Account
-                                    </button>
-                                    {{-- <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                        <i class="fab fa-google fa-fw"></i> Register with Google
-                                    </a>
-                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                    </a> --}}
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
                                 </div>
-                                <div class="text-center">
-                                    <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
-                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="assets/imgs/login.png">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
-    </body>
+        </section>
+    </main>
 </x-guest-layout>
+
