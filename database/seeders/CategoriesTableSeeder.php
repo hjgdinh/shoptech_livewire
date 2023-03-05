@@ -74,8 +74,8 @@ class CategoriesTableSeeder extends Seeder
             [
                 'id' => '10',
                 'parent_id' => '9',
-                'name' => 'Tai nghe Apple',
-                'slug' => 'tai-nghe-apple',
+                'name' => 'Tai nghe',
+                'slug' => 'tai-nghe',
             ],
         ];
         DB::table('categories')->insert($data);

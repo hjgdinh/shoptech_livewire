@@ -147,8 +147,14 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow">Home</a>
-                <span></span> {{ $product->category->slug }}
-                <span></span> {{ $product->name }}
+                <span></span> 
+                @foreach ($category as $item)
+                    @if ($item->id == $product->category->parent_id)
+                        {{ $item->name }}
+                        <span></span> {{ $product->category->name }}
+                    @endif
+                @endforeach
+                {{-- <span></span> {{ $product->name }} --}}
             </div>
         </div>
     </div>
@@ -378,100 +384,306 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="Additional-info">
-                                    <table class="font-md">
-                                        <tbody>
-                                            <tr class="stand-up">
-                                                <th>Màn hình</th>
-                                                <td>
-                                                    @if (isset($variant->monitor))
-                                                        <p>{{ $variant->monitor }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="folded-wo-wheels">
-                                                <th>Hệ điều hành</th>
-                                                <td>
-                                                    @if (isset($variant->operating))
-                                                        <p>{{ $variant->operating }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="folded-w-wheels">
-                                                <th>Camera sau</th>
-                                                <td>
-                                                    @if (isset($variant->camera_behind))
-                                                        <p>{{ $variant->camera_behind }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="door-pass-through">
-                                                <th>Camera trước</th>
-                                                <td>
-                                                    @if (isset($variant->camera_front))
-                                                        <p>{{ $variant->camera_front }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="frame">
-                                                <th>Chip</th>
-                                                <td>
-                                                    @if (isset($variant->chip))
-                                                        <p>{{ $variant->chip }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="weight-wo-wheels">
-                                                <th>Ram</th>
-                                                <td>
-                                                    @if (isset($variant->ram))
-                                                        <p>{{ $variant->ram }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="weight-capacity">
-                                                <th>Dung lượng lưu trữ</th>
-                                                <td>
-                                                    @if (isset($variant->storage))
-                                                        <p>{{ $variant->storage }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="width">
-                                                <th>SIM</th>
-                                                <td>
-                                                    @if (isset($variant->sim))
-                                                        <p>{{ $variant->sim }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr class="handle-height-ground-to-handle">
-                                                <th>Pin, Sạc</th>
-                                                <td>
-                                                    @if (isset($variant->battery))
-                                                        <p>{{ $variant->battery }}</p>
-                                                    @else
-                                                        <p>Không có thông số</p>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    @foreach ($category as $item)
+                                        @if ($item->id == $product->category->parent_id)
+                                            @if ($item->name == 'Điện thoại')
+                                                <table class="font-md">
+                                                    <tbody>
+                                                        <tr class="stand-up">
+                                                            <th>Màn hình</th>
+                                                            <td>
+                                                                @if (isset($variant->monitor))
+                                                                    <p>{{ $variant->monitor }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-wo-wheels">
+                                                            <th>Hệ điều hành</th>
+                                                            <td>
+                                                                @if (isset($variant->operating))
+                                                                    <p>{{ $variant->operating }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-w-wheels">
+                                                            <th>Camera sau</th>
+                                                            <td>
+                                                                @if (isset($variant->camera_behind))
+                                                                    <p>{{ $variant->camera_behind }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="door-pass-through">
+                                                            <th>Camera trước</th>
+                                                            <td>
+                                                                @if (isset($variant->camera_front))
+                                                                    <p>{{ $variant->camera_front }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="frame">
+                                                            <th>Chip</th>
+                                                            <td>
+                                                                @if (isset($variant->chip))
+                                                                    <p>{{ $variant->chip }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-wo-wheels">
+                                                            <th>Ram</th>
+                                                            <td>
+                                                                @if (isset($variant->ram))
+                                                                    <p>{{ $variant->ram }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-capacity">
+                                                            <th>Dung lượng lưu trữ</th>
+                                                            <td>
+                                                                @if (isset($variant->storage))
+                                                                    <p>{{ $variant->storage }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="width">
+                                                            <th>SIM</th>
+                                                            <td>
+                                                                @if (isset($variant->sim))
+                                                                    <p>{{ $variant->sim }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="handle-height-ground-to-handle">
+                                                            <th>Pin, Sạc</th>
+                                                            <td>
+                                                                @if (isset($variant->battery))
+                                                                    <p>{{ $variant->battery }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @elseif ($item->name == 'Laptop')
+                                                <table class="font-md">
+                                                    <tbody>
+                                                        <tr class="stand-up">
+                                                            <th>CPU</th>
+                                                            <td>
+                                                                @if (isset($variant->cpu))
+                                                                    <p>{{ $variant->cpu }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-wo-wheels">
+                                                            <th>RAM</th>
+                                                            <td>
+                                                                @if (isset($variant->ram))
+                                                                    <p>{{ $variant->ram }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-w-wheels">
+                                                            <th>Ổ cứng</th>
+                                                            <td>
+                                                                @if (isset($variant->drive))
+                                                                    <p>{{ $variant->drive }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="door-pass-through">
+                                                            <th>Màn hình</th>
+                                                            <td>
+                                                                @if (isset($variant->monitor))
+                                                                    <p>{{ $variant->monitor }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="frame">
+                                                            <th>Card màn hình</th>
+                                                            <td>
+                                                                @if (isset($variant->graphic))
+                                                                    <p>{{ $variant->graphic }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-wo-wheels">
+                                                            <th>Cổng kết nối</th>
+                                                            <td>
+                                                                @if (isset($variant->connector))
+                                                                    <p>{{ $variant->connector }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-capacity">
+                                                            <th>Hệ điều hành</th>
+                                                            <td>
+                                                                @if (isset($variant->operating))
+                                                                    <p>{{ $variant->operating }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="width">
+                                                            <th>Thiết kế</th>
+                                                            <td>
+                                                                @if (isset($variant->design))
+                                                                    <p>{{ $variant->design }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="handle-height-ground-to-handle">
+                                                            <th>Kích thước, khối lượng</th>
+                                                            <td>
+                                                                @if (isset($variant->size))
+                                                                    <p>{{ $variant->size }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="handle-height-ground-to-handle">
+                                                            <th>Thời điểm ra mắt</th>
+                                                            <td>
+                                                                @if (isset($variant->release_time))
+                                                                    <p>{{ $variant->release_time }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @elseif ($item->name == 'Phụ kiện')
+                                                <table class="font-md">
+                                                    <tbody>
+                                                        <tr class="stand-up">
+                                                            <th>Thời gian tai nghe</th>
+                                                            <td>
+                                                                @if (isset($variant->monitor))
+                                                                    <p>{{ $variant->monitor }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-wo-wheels">
+                                                            <th>Thời gian hộp sạc</th>
+                                                            <td>
+                                                                @if (isset($variant->ram))
+                                                                    <p>{{ $variant->ram }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="folded-w-wheels">
+                                                            <th>Cổng sạc</th>
+                                                            <td>
+                                                                @if (isset($variant->operating))
+                                                                    <p>{{ $variant->operating }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="door-pass-through">
+                                                            <th>Công nghệ âm thanh</th>
+                                                            <td>
+                                                                @if (isset($variant->cpu))
+                                                                    <p>{{ $variant->cpu }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="frame">
+                                                            <th>Tương thích</th>
+                                                            <td>
+                                                                @if (isset($variant->drive))
+                                                                    <p>{{ $variant->drive }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-wo-wheels">
+                                                            <th>Tiện ích</th>
+                                                            <td>
+                                                                @if (isset($variant->graphic))
+                                                                    <p>{{ $variant->graphic }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="weight-capacity">
+                                                            <th>Hỗ trợ kết nối</th>
+                                                            <td>
+                                                                @if (isset($variant->connector))
+                                                                    <p>{{ $variant->connector }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="width">
+                                                            <th>Điều khiển bằng</th>
+                                                            <td>
+                                                                @if (isset($variant->design))
+                                                                    <p>{{ $variant->design }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="handle-height-ground-to-handle">
+                                                            <th>Hãng</th>
+                                                            <td>
+                                                                @if (isset($variant->size))
+                                                                    <p>{{ $variant->size }}</p>
+                                                                @else
+                                                                    <p>Không có thông số</p>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                 </div>
                                 <div class="tab-pane fade" id="Reviews">
                                     <!--Comments-->

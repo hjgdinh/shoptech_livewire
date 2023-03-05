@@ -20,10 +20,17 @@ class CreateVariantsTable extends Migration
             $table->string('camera_behind')->nullable();
             $table->string('camera_front')->nullable();
             $table->string('chip')->nullable();
-            $table->integer('ram')->nullable();
-            $table->integer('storage')->nullable();
+            $table->string('ram')->nullable();
+            $table->string('storage')->nullable();
             $table->string('sim')->nullable();
             $table->string('battery')->nullable();
+            $table->string('cpu')->nullable();
+            $table->string('drive')->nullable();
+            $table->string('graphic')->nullable();
+            $table->string('connector')->nullable();
+            $table->string('design')->nullable();
+            $table->string('size')->nullable();
+            $table->string('release_time')->nullable();
             $table->integer('product_id')->unsigned();
             $table->timestamps();
             // foreign key

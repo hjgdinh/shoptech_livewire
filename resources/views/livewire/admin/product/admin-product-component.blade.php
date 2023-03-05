@@ -103,7 +103,7 @@
                                                 style="width:4rem;padding:2px">
                                             @endif                                                                                  
                                         </td>
-                                        <td>{{ $item->description }}</td>
+                                        <td style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ $item->description }}</td>
                                         <td>{{ $item->category->name }}</td>
                                         <td>{{ $item->slug }}</td>
                                         <td>
