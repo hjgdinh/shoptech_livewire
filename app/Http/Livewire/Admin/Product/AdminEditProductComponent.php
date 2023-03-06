@@ -5,8 +5,11 @@ namespace App\Http\Livewire\Admin\Product;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Variant;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+
+use function PHPUnit\Framework\isNull;
 
 class AdminEditProductComponent extends Component
 {
@@ -20,6 +23,24 @@ class AdminEditProductComponent extends Component
     public $category_id;
     public $image = [];
     public $state = [];
+    // varants
+    public $varant;
+    public $monitor;
+    public $operating;
+    public $camera_behind;
+    public $camera_front;
+    public $chip;
+    public $ram;
+    public $storage;
+    public $sim;
+    public $battery;
+    public $cpu;
+    public $drive;
+    public $graphic;
+    public $connector;
+    public $design;
+    public $size;
+    public $release_time;
 
     protected $rules = [
         'name' => 'required',
@@ -60,6 +81,24 @@ class AdminEditProductComponent extends Component
         $this->category_id = $product->category_id;
         $this->image = $product->image;
         $this->reset('image');
+        // variant
+        $variantProduct = Variant::where('product_id', $product->id)->first();
+        $this->monitor = $variantProduct->monitor;
+        $this->operating = $variantProduct->operating;
+        $this->camera_behind = $variantProduct->camera_behind;
+        $this->camera_front = $variantProduct->camera_front;
+        $this->chip = $variantProduct->chip;
+        $this->ram = $variantProduct->ram;
+        $this->storage = $variantProduct->storage;
+        $this->sim = $variantProduct->sim;
+        $this->battery = $variantProduct->battery;
+        $this->cpu = $variantProduct->cpu;
+        $this->drive = $variantProduct->drive;
+        $this->graphic = $variantProduct->graphic;
+        $this->connector = $variantProduct->connector;
+        $this->design = $variantProduct->design;
+        $this->size = $variantProduct->size;
+        $this->release_time = $variantProduct->release_time;
     }
 
     public function autoSlug()
@@ -80,17 +119,35 @@ class AdminEditProductComponent extends Component
             $this->image[$key] = $image->store('/', 'images');
         }
 
-        $form = [
-            'name' => $this->name,
-            'slug' => $this->slug,
-            'price' => $this->price,
-            'description' => $this->description,
-            'category_id' => $this->category_id,
-            'image' => $this->image,
-        ];
         $product = Product::find($this->product_id);
-        $product->update($form);
+        $product->name = $this->name;
+        $product->slug = $this->slug;
+        $product->price = $this->price;
+        $product->description = $this->description;
+        $product->category_id = $this->category_id;
+        $product->image = $this->image;
+        $product->save();
         $this->image = "";
+
+        $variantProduct = Variant::where('product_id', $product->id)->first();
+        $variantProduct->monitor = $this->monitor;
+        $variantProduct->operating = $this->operating;
+        $variantProduct->camera_behind = $this->camera_behind;
+        $variantProduct->camera_front = $this->camera_front;
+        $variantProduct->chip = $this->chip;
+        $variantProduct->ram = $this->ram;
+        $variantProduct->storage = $this->storage;
+        $variantProduct->sim = $this->sim;
+        $variantProduct->battery = $this->battery;
+        $variantProduct->cpu = $this->cpu;
+        $variantProduct->drive = $this->drive;
+        $variantProduct->graphic = $this->graphic;
+        $variantProduct->connector = $this->connector;
+        $variantProduct->design = $this->design;
+        $variantProduct->size = $this->size;
+        $variantProduct->release_time = $this->release_time;
+        $variantProduct->save();
+
         session()->flash('message', 'Sửa thành công');
         return redirect()->route('admin.product');
     }
@@ -98,8 +155,6 @@ class AdminEditProductComponent extends Component
     public function render()
     {
         $category = Category::where('parent_id', 0)->with(['children'])->get();
-        return view('livewire.admin.product.admin-edit-product-component', [
-            'category' => $category,
-        ])->layout('layouts.admin');
+        return view('livewire.admin.product.admin-edit-product-component', compact('category'))->layout('layouts.admin');
     }
 }

@@ -16,6 +16,21 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        .show-less {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .test {
+            border: 1px solid #e3e6f0;
+        }
+
+        .test td {
+            border: none;
+        }
     </style>
 
     <div class="container-fluid">
@@ -88,24 +103,26 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $item)
-                                    <tr>
+                                    <tr class="test">
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->price }}</td>
+                                        <td class="show-less">{{ $item->name }}</td>
+                                        <td>{{ number_format($item->price, 0, '', ',') }} VND</td>
                                         <td>
                                             @if (isset($item->image))
-                                                @foreach ($item->image as $img)
-                                                    <img src="{{ url('images/' . $img) }}" alt="" 
-                                                        style="width:4rem;padding:2px">
-                                                @endforeach                                               
+                                                <div style="height:8rem;overflow:scroll">
+                                                    @foreach ($item->image as $img)
+                                                        <img src="{{ url('images/' . $img) }}" alt=""
+                                                            style="width:6rem;padding:2px">
+                                                    @endforeach
+                                                </div>
                                             @else
-                                                <img src="{{ url('images/deflaut_product.png') }}" alt="" 
-                                                style="width:4rem;padding:2px">
-                                            @endif                                                                                  
+                                                <img src="{{ url('images/deflaut_product.png') }}" alt=""
+                                                    style="width:6rem;padding:2px">
+                                            @endif
                                         </td>
-                                        <td style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ $item->description }}</td>
+                                        <td class="show-less">{{ $item->description }}</td>
                                         <td>{{ $item->category->name }}</td>
-                                        <td>{{ $item->slug }}</td>
+                                        <td class="show-less">{{ $item->slug }}</td>
                                         <td>
                                             <a href="{{ route('admin.editproduct', $item->id) }}"
                                                 class="btn btn-danger">Edit

@@ -1,4 +1,15 @@
 <div id="wrapper">
+    <style>
+        .varant_form {
+            padding: 5px;
+            width: 33.3333%;
+        }
+
+        .form-width-50 {
+            padding: 0 5px;
+            width: 50%;
+        }
+    </style>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -24,111 +35,270 @@
                         <div class="table-responsive">
                             <form method="post" enctype="multipart/form-data" wire:submit.prevent="addProduct">
                                 @csrf
-                                <label>Tên: (<span class="ss_red">*</span>)</label>
-                                <label for="" style="width: 100%;">
-                                    <input class="form-control" type="text" wire:model="name" wire:keyup="autoSlug"
-                                        placeholder="Enter your name" required>
-                                </label>
-                                <label>Slug: (<span class="ss_red">*</span>)</label>
-                                <label for="" style="width: 100%;">
-                                    <input class="form-control" type="text" wire:model="slug"
-                                        placeholder="" required>
-                                </label>
-                                <label>Giá: (<span class="ss_red">*</span>)</label>
-                                <label for="" style="width: 100%;">
-                                    <input class="form-control" type="number" wire:model="price"
-                                        placeholder="Enter your price" required>
-                                </label>
-                                <label>Mô tả: (<span class="ss_red">*</span>)</label>
-                                <label for="" style="width: 100%;">
-                                    <input class="form-control" type="text" wire:model="description"
-                                        placeholder="Enter your description" required>
-                                </label>
-                                <div>
-                                    <label>Loại sản phẩm: (<span class="ss_red">*</span>)</label>
-                                    <select wire:model="category_id" class="form-control">
-                                        <option value="" disabled>----- Loại -----</option>
-                                        @foreach ($category as $item)
-                                            <option value="{{ $item->id }}" disabled>{{ $item->name }}</option>
-                                            @foreach ($item->children as $child)
-                                                <option value="{{ $child->id }}">-- {{ $child->name }}</option>
-                                                @foreach ($child->children as $schild)
-                                                    <option value="{{ $schild->id }}">--- {{ $schild->name }}</option>
+                                <div style="display: flex;flex-wrap: wrap;">
+                                    <div class="form-width-50">
+                                        <label>Tên: (<span class="ss_red">*</span>)</label>
+                                        <label for="" style="width: 100%;">
+                                            <input class="form-control" type="text" wire:model="name"
+                                                wire:keyup="autoSlug" placeholder="Enter your name" required>
+                                        </label>
+                                    </div>
+                                    <div class="form-width-50">
+                                        <label>Slug: (<span class="ss_red">*</span>)</label>
+                                        <label for="" style="width: 100%;">
+                                            <input class="form-control" type="text" wire:model="slug" placeholder=""
+                                                required>
+                                        </label>
+                                    </div>
+                                    <div class="form-width-50">
+                                        <label>Giá: (<span class="ss_red">*</span>)</label>
+                                        <label for="" style="width: 100%;">
+                                            <input class="form-control" type="number" wire:model="price"
+                                                placeholder="Enter your price" required>
+                                        </label>
+                                    </div>
+                                    <div class="form-width-50">
+                                        <label>Loại sản phẩm: (<span class="ss_red">*</span>)</label>
+                                        <select wire:model="category_id" class="form-control">
+                                            <option value="" disabled>----- Loại -----</option>
+                                            @foreach ($category as $item)
+                                                <option value="{{ $item->id }}" disabled>{{ $item->name }}
+                                                </option>
+                                                @foreach ($item->children as $child)
+                                                    <option value="{{ $child->id }}">-- {{ $child->name }}</option>
+                                                    @foreach ($child->children as $schild)
+                                                        <option value="{{ $schild->id }}">--- {{ $schild->name }}
+                                                        </option>
+                                                    @endforeach
                                                 @endforeach
                                             @endforeach
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <label for="">
-                                    <div class=" form-group">
-                                        <label for="attachment" class="upload__btn">
-                                            <label class="form-label mt-4">Profile Photo:(<span
-                                                    class="ss_red">*</span>)</label>
-                                            <input type="file" name="image[]" id="attachment" class="form-control"
-                                                multiple="" style="padding:4px" required>
+                                        </select>
+                                    </div>
+                                    <div class="form-width-50" style="width:100%">
+                                        <label>Mô tả: (<span class="ss_red">*</span>)</label>
+                                        <label for="" style="width: 100%;">
+                                            <input class="form-control" type="text" wire:model="description"
+                                                placeholder="Enter your description" required>
                                         </label>
-                                        <div id="files-area" class="mt-xl-4">
-                                            <div id="filesList">
-                                                <div id="files-names" class="row"></div>
+                                    </div>
+                                    <div class="form-width-50" style="width:100%">
+                                        <label for="">
+                                            <div class=" form-group">
+                                                <label for="attachment" class="upload__btn">
+                                                    <label class="form-label mt-4">Product:(<span
+                                                            class="ss_red">*</span>)</label>
+                                                    <input type="file" wire:model="image" id="example-file"
+                                                        class="form-control" multiple style="padding:4px" required>
+                                                    <div wire:loading wire:target="image"
+                                                        style="font-size:20px;color:green">
+                                                        Uploading...</div>
+                                                    @error('image.*')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </label>
+                                                <div id="files-area" class="mt-xl-4">
+                                                    <div id="filesList">
+                                                        @if ($image)
+                                                            <div id="files-names">Preview Product:</div>
+                                                            <div style="display: flex">
+                                                                @foreach ($image as $images)
+                                                                    <div wire:key="{{ $loop->index }}"
+                                                                        style="padding: 0 15px 0 0">
+                                                                        <p style="height:10px;border-radius:1px solid black"
+                                                                            wire:click="removeMe({{ $loop->index }})">
+                                                                            <i class="far fa-times-circle"
+                                                                                style="color: orangered;"></i>
+                                                                        </p>
+                                                                        <img style="height: 5rem"
+                                                                            src="{{ $images->temporaryUrl() }}">
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div style="display: flex;padding: 10px 0;font-size: 18px;">
+                                    <input wire:model="varant" style="margin-right: 6px;" type="checkbox"
+                                        value="1">Biến thể<br>
+                                </div>
+                                @if ($varant)
+                                    <div style="display: flex;flex-wrap: wrap;">
+                                        <div class="varant_form">
+                                            <label>Màn hình:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="monitor"
+                                                    @if ($item->monitor) placeholder="{{ $item->monitor }}" 
+                                                        @else placeholder="Enter your description" @endif
+                                                    value="{{ old('monitor') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Hệ điều hành:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="operating"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('operating') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Camera sau:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="camera_behind"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('camera_behind') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Camera trước:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="camera_front"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('camera_front') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Chip:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="chip"
+                                                    placeholder="Enter your description" value="{{ old('chip') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Ram:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="ram"
+                                                    placeholder="Enter your description" value="{{ old('ram') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Dung lượng lưu trữ:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="storage"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('storage') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Sim:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="sim"
+                                                    placeholder="Enter your description" value="{{ old('sim') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Pin, Sạc:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="battery"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('battery') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Cpu:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="cpu"
+                                                    placeholder="Enter your description" value="{{ old('cpu') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Ổ cứng:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="drive"
+                                                    placeholder="Enter your description" value="{{ old('drive') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Card màn hình:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="graphic"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('graphic') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Cổng kết nối:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="connector"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('connector') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Thiết kế:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="design"
+                                                    placeholder="Enter your description" value="{{ old('design') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Kích thước, khối lượng:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="size"
+                                                    placeholder="Enter your description" value="{{ old('size') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="varant_form">
+                                            <label>Thời điểm ra mắt:</label>
+                                            <label for="" style="width: 100%;">
+                                                <input class="form-control" type="text" wire:model="release_time"
+                                                    placeholder="Enter your description"
+                                                    value="{{ old('release_time') }}">
+                                                @error('description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </label>
                                         </div>
                                     </div>
-                                    <script>
-                                        const dt = new DataTransfer();
-
-                                        $("#attachment").on("change", function(e) {
-                                            for (var i = 0; i < this.files.length; i++) {
-                                                let fileBloc = $("<div/>", {
-                                                        class: "file-block col-lg-2 col-md-3 col-12",
-                                                        style: "max-width:50%",
-                                                    }),
-                                                    fileName = $("<span/>", {
-                                                        class: "name",
-                                                        style: "display:none",
-                                                        text: this.files.item(i).name,
-                                                    });
-                                                let img = URL.createObjectURL(this.files[i]);
-                                                fileBloc.append(`
-                                                    <label class="file-delete" style="margin-bottom:5px">
-                                                        <button style="border: 1px solid silver;padding: 5px;margin: 5px 0 0;border-radius: 4px;text-align: center;">Xóa</button>
-                                                    </label>`)
-                                                    .append(fileName).append('<br>').append(
-                                                        `
-                                                    <div class="ss_item" style="margin-bottom:5px">
-                                                        <label for="img1" style="width: 100%;min-height: 5rem;">
-                                                        <img class="ss_thumbnail" src="${img}" style="width:200px"></label>
-                                                    </div>
-                                                    <span class="name" type="text">${this.files.item(i).name}</span>`
-                                                    );
-                                                // .append(fileName).append(`<img src="${img}" alt="" width="100px">`);
-                                                $("#filesList > #files-names").append(fileBloc);
-                                            }
-
-                                            // Ajout des fichiers dans l'objet DataTransfer
-                                            for (let file of this.files) {
-                                                dt.items.add(file);
-                                            }
-                                            // Mise à jour des fichiers de l'input file après ajout
-                                            this.files = dt.files;
-
-                                            // EventListener pour le bouton de suppression créé
-                                            $("label.file-delete").click(function() {
-                                                let name = $(this).next("span.name").text();
-                                                // Supprimer l'affichage du nom de fichier
-                                                $(this).parent().remove();
-                                                for (let i = 0; i < dt.items.length; i++) {
-                                                    if (name === dt.items[i].getAsFile().name) {
-                                                        // Suppression du fichier dans l'objet DataTransfer
-                                                        dt.items.remove(i);
-                                                        continue;
-                                                    }
-                                                }
-                                                // Mise à jour des fichiers de l'input file après suppression
-                                                document.getElementById("attachment").files = dt.files;
-                                            });
-                                        });
-                                    </script>
-                                </label><br>
+                                @endif
                                 <button class="btn btn-primary" type="submit">
                                     Submit
                                 </button>

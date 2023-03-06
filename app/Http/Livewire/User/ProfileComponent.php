@@ -63,13 +63,13 @@ class ProfileComponent extends Component
     public function updateProfile()
     {
         $this->validate();
+        $user = Customer::find($this->user_id);
         $form = [
             'name' => $this->name,
             'email' => $this->email,
             'address' => $this->address,
             'avatar' =>$this->avatar->store('/', 'images'),
-        ];
-        $user = Customer::find($this->user_id);
+        ];       
         $user->update($form);
         // $this->avatar = "";
         session()->flash('message', 'Sửa thành công');
