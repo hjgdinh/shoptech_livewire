@@ -304,8 +304,8 @@
                                                 wire:click.prevent="addToCart('{{ $product->id }}')"
                                                 class="button button-add-to-cart">Add to
                                                 cart</button>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                href=""><i class="fi-rs-heart"></i></a>
+                                            {{-- <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                href=""><i class="fi-rs-heart"></i></a> --}}
                                             <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
                                                     class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -906,9 +906,9 @@
                                                         {{-- <a aria-label="Compare" class="action-btn small hover-up"
                                                                     href="" tabindex="0"><i
                                                                         class="fi-rs-shuffle"></i></a> --}}
-                                                        <a aria-label="Add To Wishlist"
+                                                        {{-- <a aria-label="Add To Wishlist"
                                                             class="action-btn small hover-up" href=""
-                                                            tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                            tabindex="0"><i class="fi-rs-heart"></i></a> --}}
                                                         <a aria-label="Add To Cart" class="action-btn small hover-up"
                                                             wire:click.prevent="addToCart('{{ $item->id }}')">
                                                             <i class="fi-rs-shopping-bag-add"></i></a>
