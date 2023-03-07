@@ -76,7 +76,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
+                    <a href="{{ route('home.component') }}" rel="nofollow">Home</a>
                     <span></span> Register
                 </div>
             </div>
@@ -143,7 +143,7 @@
                                                                 agree to terms &amp; Policy.</span></label>
                                                     </div>
                                                 </div>
-                                                <a href="privacy-policy.html"><i
+                                                <a href="#"><i
                                                         class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                             </div>
                                             <div class="form-group">

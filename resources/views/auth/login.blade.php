@@ -51,7 +51,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
+                    <a href="{{route('home.component')}}" rel="nofollow">Home</a>
                     <span></span> Login
                 </div>
             </div>

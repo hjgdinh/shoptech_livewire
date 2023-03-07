@@ -24,9 +24,9 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>Get great devices up to 50% off <a href="shop.html">View details</a></li>
+                                <li>Get great devices up to 50% off <a href="#">View details</a></li>
                                 <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="shop.html">Shop now</a>
+                                <li>Trendy 25silver jewelry, save up 35% off today <a href="#">Shop now</a>
                                 </li>
                             </ul>
                         </div>
@@ -152,7 +152,7 @@
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
                                 <li class="has-children">
-                                    <a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's
+                                    <a href="#"><i class="surfsidemedia-font-dress"></i>Women's
                                         Clothing</a>
                                     <div class="dropdown-menu">
                                         <ul class="mega-menu d-lg-flex">
@@ -228,13 +228,13 @@
                                 </li>
                                 <li>
                                     <ul class="more_slide_open" style="display: none;">
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Beauty,
+                                        <li><a href="#"><i class="surfsidemedia-font-desktop"></i>Beauty,
                                                 Health</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Bags and
+                                        <li><a href="#"><i class="surfsidemedia-font-cpu"></i>Bags and
                                                 Shoes</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-diamond"></i>Consumer
+                                        <li><a href="#"><i class="surfsidemedia-font-diamond"></i>Consumer
                                                 Electronics</a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Automobiles
+                                        <li><a href="#"><i class="surfsidemedia-font-home"></i>Automobiles
                                                 & Motorcycles</a></li>
                                     </ul>
                                 </li>
@@ -276,7 +276,7 @@
                                         @endforeach
                                         <li class="sub-mega-menu sub-mega-menu-width-34">
                                             <div class="menu-banner-wrap">
-                                                <a href="product-details.html"><img
+                                                <a href="product-#"><img
                                                         src="{{ asset('assets/imgs/banner/menu-banner') }}.jpg"
                                                         alt="Surfside Media"></a>
                                                 <div class="menu-banner-content">
@@ -286,7 +286,7 @@
                                                         <span class="new-price text-success">Save to 50%</span>
                                                     </div>
                                                     <div class="menu-banner-btn">
-                                                        <a href="product-details.html">Shop now</a>
+                                                        <a href="product-#">Shop now</a>
                                                     </div>
                                                 </div>
                                                 <div class="menu-banner-discount">
@@ -373,7 +373,7 @@
                                         @foreach (Cart::instance('cart')->content() as $item)
                                             <li>
                                                 <div class="shopping-cart-img">
-                                                    <a href="product-details.html">
+                                                    <a href="product-#">
                                                         @if ($item->options->image)
                                                             <img src="{{ url('images/' . $item->options->image) }}"
                                                                 alt="Error">
@@ -384,7 +384,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="shopping-cart-title">
-                                                    <h4><a href="product-details.html">{{ $item->name }}</a></h4>
+                                                    <h4><a href="product-#">{{ $item->name }}</a></h4>
                                                     <h4><span>{{ $item->qty }} ×
                                                         </span>{{ number_format($item->price, 0, '', ',') }} VND
                                                     </h4>
@@ -456,21 +456,21 @@
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-small">
                             <ul>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a>
+                                <li><a href="#"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a>
                                 </li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a>
+                                <li><a href="#"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a>
                                 </li>
-                                <li> <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a>
+                                <li> <a href="#"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a>
                                 </li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer &
+                                <li><a href="#"><i class="surfsidemedia-font-desktop"></i>Computer &
                                         Office</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a>
+                                <li><a href="#"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a>
                                 </li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a>
+                                <li><a href="#"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
+                                <li><a href="#"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
+                                <li><a href="#"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a>
                                 </li>
-                                <li><a href="shop.html"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
+                                <li><a href="#"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
                             </ul>
                         </div>
                     </div>

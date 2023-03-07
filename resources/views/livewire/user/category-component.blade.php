@@ -2,7 +2,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('shop.component') }}" rel="nofollow">Home</a>
                 <span></span> Shop
             </div>
         </div>
@@ -296,7 +296,7 @@
                             <div class="banner-text">
                                 <span>Women Zone</span>
                                 <h4>Save 17% on <br>Office Dress</h4>
-                                <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                                <a href="{{ route('shop.component') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

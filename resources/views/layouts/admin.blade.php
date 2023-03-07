@@ -71,8 +71,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="#">Buttons</a>
+                        <a class="collapse-item" href="#">Cards</a>
                     </div>
                 </div>
             </li>
@@ -88,10 +88,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="#">Colors</a>
+                        <a class="collapse-item" href="#">Borders</a>
+                        <a class="collapse-item" href="#">Animations</a>
+                        <a class="collapse-item" href="#">Other</a>
                     </div>
                 </div>
             </li>
@@ -118,8 +118,8 @@
                         <a class="collapse-item" href="#">Đã hủy</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="#">404 Page</a>
+                        <a class="collapse-item" href="#">Blank Page</a>
                     </div>
                 </div>
             </li> --}}

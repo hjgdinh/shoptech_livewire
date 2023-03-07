@@ -2,7 +2,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('home.component') }}" rel="nofollow">Home</a>
                 <span></span> Shop
                 <span></span> Checkout
             </div>
@@ -266,7 +266,11 @@
                                                         @endif
                                                     </td>
                                                     <td><i class="ti-check-box font-small text-muted mr-10"></i>
-                                                        <h5><a href="product-details.html">{{ $item->name }}</a></h5>
+                                                        <h5>
+                                                            <a href="{{ route('detail.product', ['slug' => $item->options->slug]) }}">
+                                                                {{ $item->name }}
+                                                            </a>
+                                                        </h5>
                                                         <span class="product-qty">x {{ $item->qty }}</span>
                                                     </td>
                                                     <td>{{ number_format($item->subtotal, 0, '', ',') }} VND</td>

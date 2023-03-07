@@ -10,7 +10,7 @@
                                 <h2 class="animated fw-900">Supper value deals</h2>
                                 <h1 class="animated fw-900 text-brand">On all products</h1>
                                 <p class="animated">Save more with coupons & up to 70% off</p>
-                                <a class="animated btn btn-brush btn-brush-3" href="product-details.html"> Shop
+                                <a class="animated btn btn-brush btn-brush-3" href="#"> Shop
                                     Now </a>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                 <h2 class="animated fw-900">Fashion Trending</h2>
                                 <h1 class="animated fw-900 text-7">Great Collection</h1>
                                 <p class="animated">Save more with coupons & up to 20% off</p>
-                                <a class="animated btn btn-brush btn-brush-2" href="product-details.html">
+                                <a class="animated btn btn-brush btn-brush-2" href="#">
                                     Discover Now </a>
                             </div>
                         </div>
@@ -199,11 +199,11 @@
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="product-details.html">
+                                        <a href="#">
                                             <img class="default-img"
-                                                src="{{ asset('assets/imgs/shop/product-1') }}-1.jpg" alt="">
+                                                src="{{ asset('assets/imgs/shop/product-1-1.jpg') }}" alt="">
                                             <img class="hover-img"
-                                                src="{{ asset('assets/imgs/shop/product-1') }}-2.jpg" alt="">
+                                                src="{{ asset('assets/imgs/shop/product-1-2.jpg') }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-action-1">
@@ -211,15 +211,15 @@
                                             data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         {{-- <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                             href="wishlist.php"><i class="fi-rs-heart"></i></a> --}}
-                                        <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
-                                                class="fi-rs-shuffle"></i></a>
+                                        {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
+                                                class="fi-rs-shuffle"></i></a> --}}
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Accessories </a>
+                                        <a href="{{ route('shop.component') }}">Accessories </a>
                                     </div>
-                                    <h2><a href="product-details.html">Sed sollicitudin est</a></h2>
+                                    <h2><a href="product-#">Sed sollicitudin est</a></h2>
                                     <div class="rating-result" title="90%">
                                         <span>
                                             <span>70%</span>
@@ -230,7 +230,7 @@
                                         <span class="old-price">$245.8</span>
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="#"><i
                                                 class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="product-details.html">
+                                        <a href="product-#">
                                             <img class="hover-img"
                                                 src="{{ asset('assets/imgs/shop/product-9') }}-1.jpg" alt="">
                                             <img class="default-img"
@@ -264,9 +264,9 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Accessories </a>
+                                        <a href="{{ route('shop.component') }}">Accessories </a>
                                     </div>
-                                    <h2><a href="product-details.html"> Donec ut nisl rutrum</a></h2>
+                                    <h2><a href="#"> Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
                                         <span>
                                             <span>70%</span>
@@ -277,7 +277,7 @@
                                         <span class="old-price">$245.8</span>
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="#"><i
                                                 class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@
                 <div class="banner-text d-md-block d-none">
                     <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
                     <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
-                    <a href="shop.html" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                    <a href="{{ route('shop.component') }}" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -345,7 +345,7 @@
                         <div class="banner-text">
                             <span>Smart Offer</span>
                             <h4>Save 20% on <br>Woman Bag</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop.component') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -355,7 +355,7 @@
                         <div class="banner-text">
                             <span>Sale off</span>
                             <h4>Great Summer <br>Collection</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop.component') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                         <div class="banner-text">
                             <span>New Arrivals</span>
                             <h4>Shop Today’s <br>Deals & Offers</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop.component') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

@@ -146,7 +146,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('home.component') }}" rel="nofollow">Home</a>
                 <span></span> 
                 @foreach ($category as $item)
                     @if ($item->id == $product->category->parent_id)
@@ -225,7 +225,7 @@
                                     <div class="product-detail-rating">
                                         <div class="pro-details-brand">
                                             <span> Brands: <a
-                                                    href="shop.html">{{ $product->category->name }}</a></span>
+                                                    href="{{ route('shop.component') }}">{{ $product->category->name }}</a></span>
                                         </div>
                                         <div class="product-rate-cover text-end">
                                             <div class="product-rate d-inline-block">
