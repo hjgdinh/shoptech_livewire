@@ -26,14 +26,20 @@ class ShopComponent extends Component
                 $product->name,
                 1, // quantity
                 $product->price,
-                ['image' => $product->image[0]]
+                [
+                    'image' => $product->image[0],
+                    'slug' => $product->slug,
+                ],
             );
         } else {
             Cart::instance('cart')->add(
                 $product->id,
                 $product->name,
                 1, // quantity
-                $product->price
+                $product->price,
+                [
+                    'slug' => $product->slug,
+                ],
             );
         }
         session()->flash('message', 'Thêm vào giỏ thành công');

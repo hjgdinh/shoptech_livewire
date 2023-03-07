@@ -24,6 +24,7 @@ class CartComponent extends Component
     {
         $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty + 1;
+        $this->emit('cart_updated');
         Cart::instance('cart')->update($rowId, $qty);
         // return redirect()->route('cart.component');
     }
@@ -32,6 +33,7 @@ class CartComponent extends Component
     {
         $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty - 1;
+        $this->emit('cart_updated');
         Cart::instance('cart')->update($rowId, $qty);
     }
 
@@ -39,14 +41,12 @@ class CartComponent extends Component
     {
         Cart::instance('cart')->remove($rowId);
         session()->flash('message', 'xóa thành công');
-        return redirect()->route('cart.component');
         $this->emit('cart_updated');
     }
 
     public function clearAll()
     {
         Cart::instance('cart')->destroy();
-        return redirect()->route('cart.component');
         $this->emit('cart_updated');
     }
 

@@ -78,20 +78,26 @@
                                     @if (Cart::instance('cart')->count() > 0)
                                         <ul>
                                             @foreach (Cart::instance('cart')->content() as $item)
-                                                <li>
+                                                <li style="flex-wrap:nowrap">
                                                     <div class="shopping-cart-img">
-                                                        <a href="product-details.html">
+                                                        <a
+                                                            href="{{ route('detail.product', ['slug' => $item->options->slug]) }}">
                                                             @if ($item->options->image)
                                                                 <img src="{{ url('images/' . $item->options->image) }}"
                                                                     alt="Error">
                                                             @else
-                                                                <img src="{{ url('images/deflaut_product.png') }}"
+                                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                                     alt="Error">
                                                             @endif
                                                         </a>
                                                     </div>
                                                     <div class="shopping-cart-title">
-                                                        <h4><a href="product-details.html">{{ $item->name }}</a></h4>
+                                                        <h4><a style="overflow: hidden;
+                                                            display: -webkit-box;
+                                                            -webkit-line-clamp: 1;
+                                                            -webkit-box-orient: vertical;"
+                                                                href="{{ route('detail.product', ['slug' => $item->options->slug]) }}">{{ $item->name }}</a>
+                                                        </h4>
                                                         <h4><span>{{ $item->qty }} ×
                                                             </span>{{ number_format($item->price, 0, '', ',') }} VND
                                                         </h4>
@@ -115,7 +121,7 @@
                                                 </div>
                                             @else
                                                 <div class="shopping-cart-button">
-                                                    <a href="{{ route('login') }}">View cart</a>
+                                                    <a href="{{ route('cart.component') }}">View cart</a>
                                                     <a href="{{ route('login') }}">Checkout</a>
                                                 </div>
                                             @endif
@@ -241,8 +247,8 @@
                             <ul>
                                 <li><a class="active" href="{{ route('home.component') }}">Home </a></li>
                                 <li><a href="{{ route('shop.component') }}">Shop</a></li>
-                                <li class="position-static"><a href="{{ route('shop.component') }}">Our Collections <i
-                                            class="fi-rs-angle-down"></i></a>
+                                <li class="position-static"><a href="{{ route('shop.component') }}">Our Collections
+                                        <i class="fi-rs-angle-down"></i></a>
                                     <ul class="mega-menu">
                                         @foreach ($category as $item)
                                             <li class="sub-mega-menu sub-mega-menu-width-22">
@@ -372,7 +378,7 @@
                                                             <img src="{{ url('images/' . $item->options->image) }}"
                                                                 alt="Error">
                                                         @else
-                                                            <img src="{{ url('images/deflaut_product.png') }}"
+                                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                                 alt="Error">
                                                         @endif
                                                     </a>

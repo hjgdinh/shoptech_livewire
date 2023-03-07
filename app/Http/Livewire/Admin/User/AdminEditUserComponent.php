@@ -79,7 +79,7 @@ class AdminEditUserComponent extends Component
             'address' => $this->address,
             'gender' => $this->gender,
             'utype' => $this->utype,
-            'avatar' => $this->avatar->store('/', 'images'),
+            'avatar' => $this->avatar->store('/users', 'images'),
         ];
         $user = Customer::find($this->user_id);
         $user->update($form);

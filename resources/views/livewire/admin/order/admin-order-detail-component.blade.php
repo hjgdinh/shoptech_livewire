@@ -46,7 +46,7 @@
                                                             style="width:4rem;padding:2px">
                                                     @endforeach
                                                 @else
-                                                    <img src="{{ url('images/deflaut_product.png') }}" alt=""
+                                                    <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt=""
                                                         style="width:4rem;padding:2px">
                                                 @endif
                                             </td>

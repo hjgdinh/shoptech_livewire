@@ -116,7 +116,7 @@ class AdminEditProductComponent extends Component
         $this->validate();
 
         foreach ($this->image as $key => $image) {
-            $this->image[$key] = $image->store('/', 'images');
+            $this->image[$key] = $image->store('/products', 'images');
         }
 
         $product = Product::find($this->product_id);

@@ -82,8 +82,11 @@
                                                 @if ($product->image)
                                                     <img class="default-img"
                                                         src="{{ url('images/' . $product->image[0]) }}" alt="Error">
+                                                    <img class="hover-img"
+                                                        src="{{ url('images/' . $product->image[1]) }}" alt="Error">
                                                 @else
-                                                    <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                                    <img src="{{ url('images/deflaut/deflaut_product.png') }}"
+                                                        alt="Error">
                                                 @endif
                                             </a>
                                             {{-- <img class="default-img" src="assets/imgs/shop/product-3-1.jpg"
@@ -109,14 +112,15 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="{{ route('shop.category', ['slug' => $product->category->slug]) }}">
+                                            <a
+                                                href="{{ route('shop.category', ['slug' => $product->category->slug]) }}">
                                                 {{ $product->category->name }}
                                             </a>
                                         </div>
                                         <h2>
                                             <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
-                                            {{ $product->name }}
-                                        </a>
+                                                {{ $product->name }}
+                                            </a>
                                         </h2>
                                         <div class="rating-result" title="90%">
                                             <span>
@@ -271,12 +275,18 @@
                                         @if ($item->image)
                                             <img src="{{ url('images/' . $item->image[0]) }}" alt="Error">
                                         @else
-                                            <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}"
+                                                alt="Error">
                                         @endif
                                     </div>
                                     <div class="content pt-10">
-                                        <h6><a
-                                                href="{{ route('detail.product', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
+                                        <h6><a style="overflow: hidden;
+                                            display: -webkit-box;
+                                            -webkit-line-clamp: 1;
+                                            -webkit-box-orient: vertical;"
+                                                href="{{ route('detail.product', ['slug' => $item->slug]) }}">
+                                                {{ $item->name }}
+                                            </a>
                                         </h6>
                                         <p class="price mb-0 mt-5">{{ number_format($item->price, 0, '', ',') }} VND
                                         </p>

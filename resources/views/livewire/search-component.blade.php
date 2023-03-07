@@ -213,7 +213,7 @@
                                         @if ($product->image)
                                             <img src="{{ url('images/' . $product->image[0]) }}" alt="Error">
                                         @else
-                                            <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt="Error">
                                         @endif
                                     </div>
                                     <div class="product-content" bis_skin_checked="1">

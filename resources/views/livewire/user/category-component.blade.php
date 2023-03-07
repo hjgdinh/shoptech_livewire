@@ -85,7 +85,7 @@
                                                             src="{{ url('images/' . $product->image[0]) }}"
                                                             alt="Error">
                                                     @else
-                                                        <img src="{{ url('images/deflaut_product.png') }}"
+                                                        <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                             alt="Error">
                                                     @endif
                                                 </a>
@@ -274,7 +274,7 @@
                                         @if ($item->image)
                                             <img src="{{ url('images/' . $item->image[0]) }}" alt="Error">
                                         @else
-                                            <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt="Error">
                                         @endif
                                     </div>
                                     <div class="content pt-10">

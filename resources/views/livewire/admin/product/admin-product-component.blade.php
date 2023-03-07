@@ -116,7 +116,7 @@
                                                     @endforeach
                                                 </div>
                                             @else
-                                                <img src="{{ url('images/deflaut_product.png') }}" alt=""
+                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt=""
                                                     style="width:6rem;padding:2px">
                                             @endif
                                         </td>

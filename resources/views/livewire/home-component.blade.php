@@ -99,7 +99,7 @@
                         <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one"
                             type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    {{-- <li class="nav-item" role="presentation">
                         <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two"
                             type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
                     </li>
@@ -107,7 +107,7 @@
                         <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three"
                             type="button" role="tab" aria-controls="tab-three" aria-selected="false">New
                             added</button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <a href="{{ route('shop.component') }}" class="view-more d-none d-md-flex">View More<i
                         class="fi-rs-angle-double-small-right"></i></a>
@@ -129,8 +129,11 @@
                                                     <img class="default-img"
                                                         src="{{ url('images/' . $product->image[0]) }}"
                                                         alt="Error">
+                                                    <img class="hover-img"
+                                                        src="{{ url('images/' . $product->image[1]) }}"
+                                                        alt="Error">
                                                 @else
-                                                    <img src="{{ url('images/deflaut_product.png') }}"
+                                                    <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                         alt="Error">
                                                 @endif
                                             </a>
@@ -309,9 +312,18 @@
                 <div class="carausel-6-columns" id="carausel-6-columns">
                     @foreach ($categories as $category)
                         <div class="card-1">
-                            <figure class=" img-hover-scale overflow-hidden">
-                                <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">
-                                    <img src="{{ asset('/images/deflaut_category.png') }}" alt=""></a>
+                            <figure style="justify-content: center;
+                            align-items: center;"
+                                class="img-hover-scale overflow-hidden">
+                                @if ($category->image)
+                                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">
+                                        <img style="height: 6rem" src="{{ url('/images/' . $category->image) }}"
+                                            alt=""></a>
+                                @else
+                                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">
+                                        <img src="{{ asset('/images/deflaut/deflaut_category.png') }}"
+                                            alt=""></a>
+                                @endif
                             </figure>
                             <h5>
                                 <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">
@@ -376,7 +388,8 @@
                                             <img class="default-img" src="{{ url('images/' . $product->image[0]) }}"
                                                 alt="Error">
                                         @else
-                                            <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}"
+                                                alt="Error">
                                         @endif
                                     </a>
                                 </div>
@@ -413,7 +426,7 @@
         </div>
     </section>
 
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container">
             <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Brands</h3>
             <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
@@ -451,6 +464,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 </main>

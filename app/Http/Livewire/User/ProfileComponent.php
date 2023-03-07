@@ -68,7 +68,7 @@ class ProfileComponent extends Component
             'name' => $this->name,
             'email' => $this->email,
             'address' => $this->address,
-            'avatar' =>$this->avatar->store('/', 'images'),
+            'avatar' =>$this->avatar->store('/', 'images/users'),
         ];       
         $user->update($form);
         // $this->avatar = "";

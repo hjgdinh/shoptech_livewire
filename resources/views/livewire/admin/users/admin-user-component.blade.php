@@ -100,7 +100,7 @@
                                                 @else
                                                     <img class="img-profile rounded-circle"
                                                         style="height: 5rem;border-radius:1px !important"
-                                                        src="{{ url('images/deflaut_avatar.png') }}">
+                                                        src="{{ url('images/deflaut/deflaut_avatar.png') }}">
                                                 @endif
                                             </td>
                                             <td>

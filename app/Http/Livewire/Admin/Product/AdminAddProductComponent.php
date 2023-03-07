@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Variant;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Http\File;
 
 class AdminAddProductComponent extends Component
 {
@@ -86,7 +87,7 @@ class AdminAddProductComponent extends Component
         $this->validate();
 
         foreach ($this->image as $key => $image) {
-            $this->image[$key] = $image->store('/', 'images');
+            $this->image[$key] = $image->store('/products', 'images');
         }
 
         $product = new Product();

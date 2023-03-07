@@ -22,6 +22,7 @@ class ProductsTableSeeder extends Seeder
                 'name' => 'iPhone 11 128GB',
                 'slug' => 'iphone-11-128gb',
                 'price' => '14490000',
+                'image' => '["products/iphone-11-1.png","products/iphone-11.png"]',
                 'description' => 'Được xem là một trong những phiên bản iPhone "giá rẻ" của bộ 3 iPhone 11 series nhưng iPhone 11 128GB vẫn sở hữu cho mình rất nhiều ưu điểm mà hiếm có một chiếc smartphone nào khác sở hữu.
                 Nâng cấp mạnh mẽ về cụm camera
                 Năm nay với iPhone 11 thì Apple đã nâng cấp khá nhiều về camera nếu so sánh với chiếc iPhone Xr 128GB năm ngoái.
@@ -53,9 +54,10 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'id' => '2',
-                'name' => 'iPhone 13 256GB ',
+                'name' => 'iPhone 13 256GB',
                 'slug' => 'iphone-13-256gb',
                 'price' => '31490000',
+                'image' => '["products/iphone-13-4.jpg","products/iphone-13-1.jpg","products/iphone-13-3.jpg","products/iphone-13-2.jpg"]',
                 'description' => 'iPhone 13 Pro Max 1 TB thuộc phân khúc điện thoại cao cấp mà không một iFan nào có thể bỏ qua, với màn hình lớn sắc nét, cấu hình vượt trội, dung lượng lưu trữ "khủng", thời gian sử dụng dài, mỗi lần trải nghiệm đều cho bạn cảm giác thỏa mãn đáng ngạc nhiên.
                 Apple A15 Bionic - cấu hình đột phá
                 Để đảm bảo hiệu năng cho iPhone 13 Pro Max, nhà Táo sử dụng con chip Apple A15 Bionic được sản xuất theo tiến trình 5 nm cải tiến, số lượng bóng dẫn lên đến 15.8 nghìn tỷ cho năng lực tính toán và xử lý các tác vụ của điện thoại tăng mạnh. 
@@ -88,6 +90,7 @@ class ProductsTableSeeder extends Seeder
                 'id' => '3',
                 'name' => 'iPhone 12 256GB ',
                 'slug' => 'iphone-12-256gb',
+                'image' => '["products/iphone-12-1.jpg","products/iphone-12-2.png","products/iphone-12-3.png","products/iphone-12-4.png"]',
                 'price' => '18490000',
                 'description' => 'Smartphone iPhone 12 256 GB được Apple cho ra mắt đã đem đến làn sóng mạnh mẽ đối với những ai yêu công nghệ nói chung và “fan hâm mộ” trung thành của điện thoại iPhone nói riêng, với con chip mạnh, dung lượng lưu trữ lớn cùng thiết kế toàn diện và khả năng hiển thị hình ảnh xuất sắc.
                 Thiết kế hoàn thiện đến từng chi tiết
@@ -126,6 +129,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'id' => '4',
                 'name' => 'Dell Vostro 3510 i5 1135G7/8GB/512GB/2GB MX350/OfficeHS/Win11',
+                'image' => '["products/dell-vostro-1.jpg","products/dell-vostro-2.jpg","products/dell-vostro-3.jpg","products/dell-vostro-4.jpg"]',
                 'slug' => 'dell-vostro-3510-i5-p112f002bbl',
                 'price' => '18990000',
                 'description' => 'Laptop Dell Vostro 3510 i5 (P112F002BBL) sở hữu cấu hình mạnh mẽ, đa nhiệm mượt mà trên sức mạnh của bộ vi xử lý Intel thế hệ 11, cùng một thiết kế đơn giản mà sang đẹp, sẽ là lựa chọn đắt giá đáp ứng nhu cầu học tập, làm việc hay giải trí của bạn.
@@ -142,6 +146,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'id' => '5',
                 'name' => 'Dell Vostro 5410 i5 11320H/8GB/512GB/Office H&S/Win11',
+                'image' => '["products/dell-vostro-5410-1.jpg","products/dell-vostro-5410-2.jpg","products/dell-vostro-5410-3.jpg","products/dell-vostro-5410-4.jpg"]',
                 'slug' => 'dell-vostro-5410-i5-v4i5214w1',
                 'price' => '20490000',
                 'description' => 'Sở hữu phong cách thiết kế thanh lịch, tinh tế cùng những thông số kỹ thuật khá ấn tượng cho đa dạng nhu cầu từ laptop học tập - văn phòng đến giải trí cơ bản, laptop Dell Vostro 5410 i5 (V4I5214W1) sẽ là một lựa chọn mang lại sự hài lòng cho bạn.
@@ -169,6 +174,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'id' => '6',
                 'name' => 'Bluetooth AirPods Pro (2nd Gen) MagSafe Charge Apple MQD83',
+                'image' => '["products/airpods-pro-2nd-1.jpg","products/airpods-pro-2nd-2.jpg","products/airpods-pro-2nd-3.jpg"]',
                 'slug' => 'tai-nghe-bluetooth-airpods-pro-2-magsafe-charge-apple-mqd83-trang',
                 'price' => '6290000',
                 'description' => 'Thiết kế tai nghe AirPods Pro 2 gọn nhẹ, kiểu dáng hiện đại

@@ -35,12 +35,15 @@
                                                @if ($item->options->image)
                                                     <img src="{{ url('images/' . $item->options->image) }}" alt="Error">
                                                 @else
-                                                    <img src="{{ url('images/deflaut_product.png') }}" alt="Error">
+                                                    <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt="Error">
                                                 @endif
                                             </td>
                                             <td class="product-des">
-                                                <h5 class="product-name"><a
-                                                        href="product-details.html">{{ $item->name }}</a></h5>
+                                                <h5 class="product-name">
+                                                    <a href="{{ route('detail.product', ['slug' => $item->options->slug]) }}">
+                                                        {{ $item->name }}
+                                                    </a>
+                                                </h5>
                                                 {{-- <p class="font-xs">{{ $item->description }}<br>
                                                 </p> --}}
                                             </td>

@@ -69,7 +69,7 @@ class AdminAddUserComponent extends Component
             'address' => $this->address,
             'gender' => $this->gender,
             'utype' => $this->utype,
-            'avatar' => $this->avatar->store('/','images'),
+            'avatar' => $this->avatar->store('/users','images'),
         ]);
         $user->save();
         session()->flash('message', 'Tạo thành công');

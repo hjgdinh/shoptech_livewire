@@ -261,7 +261,7 @@
                                                             <img src="{{ url('images/' . $item->options->image) }}"
                                                                 alt="Error">
                                                         @else
-                                                            <img src="{{ url('images/deflaut_product.png') }}"
+                                                            <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                                 alt="Error">
                                                         @endif
                                                     </td>

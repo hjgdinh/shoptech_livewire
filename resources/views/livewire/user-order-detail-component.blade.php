@@ -56,7 +56,7 @@
                                                                     <img src="{{ url('images/' . $item->product->image[0]) }}"
                                                                         alt="" style="width:4rem;padding:2px">
                                                                 @else
-                                                                    <img src="{{ url('images/deflaut_product.png') }}"
+                                                                    <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                                         alt="" style="width:4rem;padding:2px">
                                                                 @endif
                                                             </td>

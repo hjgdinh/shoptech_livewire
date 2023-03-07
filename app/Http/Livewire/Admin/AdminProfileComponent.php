@@ -71,10 +71,6 @@ class AdminProfileComponent extends Component
     public function updateAdminProfile()
     {
         $this->validate();
-
-        // foreach ($this->avatar as $key => $avatar) {
-        //     $this->avatar[$key] = $avatar->store('/', 'images');
-        // }
         
         $form = [
             'name' => $this->name,
