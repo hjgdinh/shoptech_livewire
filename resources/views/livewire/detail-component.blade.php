@@ -248,7 +248,7 @@
                                     <div class="short-desc mb-30">
                                         <p
                                             style="text-align: justify;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">
-                                            {{ $product->description }}
+                                            {!! $product->description !!}
                                         </p>
                                     </div>
                                     {{-- <div class="product_sort_info font-xs mb-30">
@@ -340,7 +340,7 @@
                             <div class="tab-content shop_info_tab entry-main-content">
                                 <div class="tab-pane fade show active" id="Description">
                                     <div class="" style="text-align: justify;">
-                                        {{ $product->description }}
+                                        {!! $product->description !!}
                                         {{-- <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending
                                             and much yikes off far quetzal goodness and from for grimaced goodness
                                             unaccountably and meadowlark near unblushingly crucial scallop

@@ -120,7 +120,7 @@
                                                     style="width:6rem;padding:2px">
                                             @endif
                                         </td>
-                                        <td class="show-less">{{ $item->description }}</td>
+                                        <td class="show-less">{!! $item->description !!}</td>
                                         <td>{{ $item->category->name }}</td>
                                         <td class="show-less">{{ $item->slug }}</td>
                                         <td>

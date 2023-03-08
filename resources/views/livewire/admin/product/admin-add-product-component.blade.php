@@ -41,6 +41,9 @@
                                         <label for="" style="width: 100%;">
                                             <input class="form-control" type="text" wire:model="name"
                                                 wire:keyup="autoSlug" placeholder="Enter your name" required>
+                                            @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </label>
                                     </div>
                                     <div class="form-width-50">
@@ -48,6 +51,9 @@
                                         <label for="" style="width: 100%;">
                                             <input class="form-control" type="text" wire:model="slug" placeholder=""
                                                 required>
+                                            @error('slug')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </label>
                                     </div>
                                     <div class="form-width-50">
@@ -55,6 +61,9 @@
                                         <label for="" style="width: 100%;">
                                             <input class="form-control" type="number" wire:model="price"
                                                 placeholder="Enter your price" required>
+                                            @error('price')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </label>
                                     </div>
                                     <div class="form-width-50">
@@ -73,12 +82,19 @@
                                                 @endforeach
                                             @endforeach
                                         </select>
+                                        @error('category_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-width-50" style="width:100%">
                                         <label>Mô tả: (<span class="ss_red">*</span>)</label>
-                                        <label for="" style="width: 100%;">
-                                            <input class="form-control" type="text" wire:model="description"
-                                                placeholder="Enter your description" required>
+                                        <label for="" style="width: 100%;" wire:ignore>
+                                            <textarea id="description" class="form-control" 
+                                                wire:model="description" required>
+                                            </textarea>
+                                            @error('description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </label>
                                     </div>
                                     <div class="form-width-50" style="width:100%">
@@ -91,7 +107,8 @@
                                                         class="form-control" multiple style="padding:4px" required>
                                                     <div wire:loading wire:target="image"
                                                         style="font-size:20px;color:green">
-                                                        Uploading...</div>
+                                                        Uploading...
+                                                    </div>
                                                     @error('image.*')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -317,3 +334,26 @@
         <!-- End of Main Content -->
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $('#description').summernote({
+            placeholder: 'Enter your description',
+            height: 200,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $edittable) {
+                    @this.set('description', contents)
+                }
+            }
+        });
+    </script>
+@endpush

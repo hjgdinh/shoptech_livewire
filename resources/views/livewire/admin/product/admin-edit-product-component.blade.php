@@ -86,9 +86,10 @@
                                     </div>
                                     <div class="form-width-50" style="width:100%">
                                         <label>Mô tả: (<span class="ss_red">*</span>)</label>
-                                        <label for="" style="width: 100%;">
-                                            <input class="form-control" type="text" wire:model="description"
-                                                placeholder="Enter your description" required>
+                                        <label for="" style="width: 100%;" wire:ignore>
+                                            <textarea id="description" class="form-control"
+                                                wire:model="description" required>
+                                            </textarea>
                                             @error('description')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -146,7 +147,8 @@
                                     </div>
                                 </div>
                                 <div style="display: flex;padding: 10px 0;font-size: 18px;">
-                                    <input wire:model="varant" style="margin-right: 6px;" type="checkbox" value="1">Biến thể<br>
+                                    <input wire:model="varant" style="margin-right: 6px;" type="checkbox"
+                                        value="1">Biến thể<br>
                                 </div>
                                 @if ($varant)
                                     <div style="display: flex;flex-wrap: wrap;">
@@ -340,3 +342,28 @@
         <!-- End of Main Content -->
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function() {
+            $('#description').summernote({
+                placeholder: 'Enter your description',
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $edittable) {
+                        @this.set('description', contents)
+                    }
+                }
+            });
+        });
+    </script>
+@endpush
