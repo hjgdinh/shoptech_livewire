@@ -16,6 +16,9 @@ class AdminUserComponent extends Component
 
     public function deleteUser($id) {
         $user = Customer::find($id);
+        if ($user->avatar) {
+            unlink('images' . '/' . $user->avatar);
+        }
         $user->delete();
         session()->flash('message', 'Xóa thành công');
     }

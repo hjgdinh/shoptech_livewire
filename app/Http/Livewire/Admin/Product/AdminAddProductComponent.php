@@ -20,7 +20,7 @@ class AdminAddProductComponent extends Component
     public $price;
     public $description;
     public $category_id;
-    public $image = [];
+    public $image;
     // varants
     public $varant;
     public $monitor;

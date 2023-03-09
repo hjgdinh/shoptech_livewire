@@ -64,25 +64,27 @@ class AdminEditUserComponent extends Component
         $this->phone = $user->phone;
         $this->address = $user->address;
         $this->gender = $user->gender;
-        $this->utype = $user->utype;
+        $this->utype = $user->utype;     
+        $this->avatar = $user->avatar;     
         $this->reset('avatar');               
     }
     
     public function updateUser()
     {
         $this->validate();
-        $form = [
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-            'phone' => $this->phone,
-            'address' => $this->address,
-            'gender' => $this->gender,
-            'utype' => $this->utype,
-            'avatar' => $this->avatar->store('/users', 'images'),
-        ];
         $user = Customer::find($this->user_id);
-        $user->update($form);
+        if ($this->state['avatar_url'] != url('images/deflaut/deflaut_avatar.png')) {
+            unlink('images' . '/' . $user->avatar);
+        }
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->password = Hash::make($this->password);
+        $user->phone = $this->phone;
+        $user->address = $this->address;
+        $user->gender = $this->gender;
+        $user->utype = $this->utype;
+        $user->avatar = $this->avatar->store('/users', 'images');
+        $user->save();
         session()->flash('message', 'Sửa thành công');
         // return redirect()->route('admin.user');
     }

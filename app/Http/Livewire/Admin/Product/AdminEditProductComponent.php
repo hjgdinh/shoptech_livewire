@@ -21,7 +21,7 @@ class AdminEditProductComponent extends Component
     public $price;
     public $description;
     public $category_id;
-    public $image = [];
+    public $image;
     public $state = [];
     // varants
     public $varant;
@@ -114,12 +114,20 @@ class AdminEditProductComponent extends Component
     public function updateProduct()
     {
         $this->validate();
+     
+        $product = Product::find($this->product_id);
 
-        foreach ($this->image as $key => $image) {
-            $this->image[$key] = $image->store('/products', 'images');
+        if ($this->image) {
+            foreach($product->image as $img) {
+                if ($img) {
+                    unlink('images' . '/' . $img);                   
+                }
+            };
+            foreach ($this->image as $key => $image) {
+                $this->image[$key] = $image->store('/products', 'images');
+            }
         }
 
-        $product = Product::find($this->product_id);
         $product->name = $this->name;
         $product->slug = $this->slug;
         $product->price = $this->price;

@@ -15,13 +15,22 @@ class AdminProductComponent extends Component
     public $sorting;
     public $pagesize;
 
-    public function deleteProduct($id) {
+    public function deleteProduct($id)
+    {
         $product = Product::find($id);
+        if ($product->image) {
+            foreach ($product->image as $img) {
+                if ($img) {
+                    unlink('images' . '/' . $img);
+                }
+            }
+        }
         $product->delete();
         session()->flash('message', 'Xóa thành công');
     }
 
-    public function mount() {
+    public function mount()
+    {
         $this->pagesize = 5;
         $this->sorting = "deflaut";
     }
@@ -29,15 +38,13 @@ class AdminProductComponent extends Component
     public function render()
     {
         $category = Category::where('parent_id', 0)->with(['children'])->get();
-        if($this->sorting == "price-desc") {
-            $products = Product::where('name', 'like','%'.$this->search.'%')->orderBy('price', 'DESC')->paginate($this->pagesize);
+        if ($this->sorting == "price-desc") {
+            $products = Product::where('name', 'like', '%' . $this->search . '%')->orderBy('price', 'DESC')->paginate($this->pagesize);
+        } else if ($this->sorting == "price-asc") {
+            $products = Product::where('name', 'like', '%' . $this->search . '%')->orderBy('price', 'ASC')->paginate($this->pagesize);
+        } else {
+            $products = Product::where('name', 'like', '%' . $this->search . '%')->paginate($this->pagesize);
         }
-        else if($this->sorting == "price-asc") {
-            $products = Product::where('name', 'like','%'.$this->search.'%')->orderBy('price', 'ASC')->paginate($this->pagesize);
-        }
-        else {
-            $products = Product::where('name', 'like','%'.$this->search.'%')->paginate($this->pagesize);
-        }       
         return view('livewire.admin.product.admin-product-component', [
             'products' => $products,
         ])->layout('layouts.admin');
