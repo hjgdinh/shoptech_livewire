@@ -79,11 +79,14 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
-                                                @if ($product->image)
+                                                @if (count($product->image) >= 2)
                                                     <img class="default-img"
                                                         src="{{ url('images/' . $product->image[0]) }}" alt="Error">
                                                     <img class="hover-img"
                                                         src="{{ url('images/' . $product->image[1]) }}" alt="Error">
+                                                @elseif(count($product->image) <= 2)
+                                                    <img class="default-img"
+                                                        src="{{ url('images/' . $product->image[0]) }}" alt="Error">
                                                 @else
                                                     <img src="{{ url('images/deflaut/deflaut_product.png') }}"
                                                         alt="Error">
@@ -118,7 +121,11 @@
                                             </a>
                                         </div>
                                         <h2>
-                                            <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
+                                            <a style="overflow: hidden;
+                                            display: -webkit-box;
+                                            -webkit-line-clamp: 1;
+                                            -webkit-box-orient: vertical;"
+                                                href="{{ route('detail.product', ['slug' => $product->slug]) }}">
                                                 {{ $product->name }}
                                             </a>
                                         </h2>
@@ -271,7 +278,9 @@
                             </div>
                             @foreach ($new_product as $item)
                                 <div class="single-post clearfix">
-                                    <div class="image">
+                                    <div class="image"
+                                        style="display: flex;
+                                    align-items: center;">
                                         @if ($item->image)
                                             <img src="{{ url('images/' . $item->image[0]) }}" alt="Error">
                                         @else
@@ -303,7 +312,8 @@
                             <div class="banner-text">
                                 <span>Women Zone</span>
                                 <h4>Save 17% on <br>Office Dress</h4>
-                                <a href="{{ route('shop.component') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                                <a href="{{ route('shop.component') }}">Shop Now <i
+                                        class="fi-rs-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

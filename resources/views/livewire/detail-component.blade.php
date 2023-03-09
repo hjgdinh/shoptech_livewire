@@ -147,7 +147,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('home.component') }}" rel="nofollow">Home</a>
-                <span></span> 
+                <span></span>
                 @foreach ($category as $item)
                     @if ($item->id == $product->category->parent_id)
                         {{ $item->name }}
@@ -177,7 +177,8 @@
                                             @endforeach
                                         @else
                                             <figure class="border-radius-10">
-                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt="product image">
+                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}"
+                                                    alt="product image">
                                             </figure>
                                         @endif
                                     </div>
@@ -191,7 +192,8 @@
                                             @endforeach
                                         @else
                                             <div>
-                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}" alt="product image">
+                                                <img src="{{ url('images/deflaut/deflaut_product.png') }}"
+                                                    alt="product image">
                                             </div>
                                         @endif
                                     </div>
@@ -221,7 +223,12 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="detail-info">
-                                    <h2 class="title-detail">{{ $product->name }}</h2>
+                                    <h2 class="title-detail"
+                                        style="overflow: hidden;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;">
+                                        {{ $product->name }}</h2>
                                     <div class="product-detail-rating">
                                         <div class="pro-details-brand">
                                             <span> Brands: <a
@@ -919,7 +926,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="{{ route('detail.product', ['slug' => $item->slug]) }}"
+                                                    <h2><a style="overflow: hidden;
+                                                        display: -webkit-box;
+                                                        -webkit-line-clamp: 1;
+                                                        -webkit-box-orient: vertical;"
+                                                            href="{{ route('detail.product', ['slug' => $item->slug]) }}"
                                                             tabindex="0">{{ $item->name }}</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
@@ -1029,7 +1040,9 @@
                         </div>
                         @foreach ($new_product as $item)
                             <div class="single-post clearfix">
-                                <div class="image">
+                                <div class="image"
+                                    style="display: flex;
+                                align-items: center;">
                                     @if ($item->image)
                                         <img src="{{ url('images/' . $item->image[0]) }}" alt="Error">
                                     @else
@@ -1037,7 +1050,10 @@
                                     @endif
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a
+                                    <h6><a style="overflow: hidden;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 1;
+                                        -webkit-box-orient: vertical;"
                                             href="{{ route('detail.product', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
                                     </h6>
                                     <p class="price mb-0 mt-5">{{ number_format($item->price, 0, '', ',') }} VND</p>

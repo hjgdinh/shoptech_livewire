@@ -90,7 +90,7 @@ class ProductsTableSeeder extends Seeder
                 'id' => '3',
                 'name' => 'iPhone 12 256GB ',
                 'slug' => 'iphone-12-256gb',
-                'image' => '["products/iphone-12-1.jpg","products/iphone-12-2.png","products/iphone-12-3.png","products/iphone-12-4.png"]',
+                'image' => '["products/iphone-12-1.jpg","products/iphone-12-2.jpg","products/iphone-12-3.jpg","products/iphone-12-4.jpg"]',
                 'price' => '18490000',
                 'description' => 'Smartphone iPhone 12 256 GB được Apple cho ra mắt đã đem đến làn sóng mạnh mẽ đối với những ai yêu công nghệ nói chung và “fan hâm mộ” trung thành của điện thoại iPhone nói riêng, với con chip mạnh, dung lượng lưu trữ lớn cùng thiết kế toàn diện và khả năng hiển thị hình ảnh xuất sắc.
                 Thiết kế hoàn thiện đến từng chi tiết

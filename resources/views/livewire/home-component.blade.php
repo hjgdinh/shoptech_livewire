@@ -120,17 +120,22 @@
                             <div class="alert alert-success">{{ Session::get('message') }}</div>
                         @endif
                         @foreach ($products as $product)
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6" style="padding:5px">
                                 <div class="product-cart-wrap">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="{{ route('detail.product', ['slug' => $product->slug]) }}">
-                                                @if ($product->image)
+                                            <a style="align-items: center; justify-content: center;" 
+                                                href="{{ route('detail.product', ['slug' => $product->slug]) }}">
+                                                @if (count($product->image) >= 2)
                                                     <img class="default-img"
                                                         src="{{ url('images/' . $product->image[0]) }}"
                                                         alt="Error">
                                                     <img class="hover-img"
                                                         src="{{ url('images/' . $product->image[1]) }}"
+                                                        alt="Error">
+                                                @elseif(count($product->image) <= 2)
+                                                    <img class="default-img"
+                                                        src="{{ url('images/' . $product->image[0]) }}"
                                                         alt="Error">
                                                 @else
                                                     <img src="{{ url('images/deflaut/deflaut_product.png') }}"
@@ -298,7 +303,8 @@
                 <div class="banner-text d-md-block d-none">
                     <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
                     <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
-                    <a href="{{ route('shop.component') }}" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                    <a href="{{ route('shop.component') }}" class="btn">Learn More <i
+                            class="fi-rs-arrow-right"></i></a>
                 </div>
             </div>
         </div>
