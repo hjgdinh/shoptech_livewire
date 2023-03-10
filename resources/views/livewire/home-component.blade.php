@@ -253,9 +253,9 @@
                                     <div class="product-img product-img-zoom">
                                         <a href="product-#">
                                             <img class="hover-img"
-                                                src="{{ asset('assets/imgs/shop/product-9') }}-1.jpg" alt="">
+                                                src="{{ asset('assets/imgs/shop/product-9-1.jpg') }}" alt="">
                                             <img class="default-img"
-                                                src="{{ asset('assets/imgs/shop/product-9') }}-2.jpg" alt="">
+                                                src="{{ asset('assets/imgs/shop/product-9-2.jpg') }}" alt="">
                                         </a>
                                     </div>
                                     <div class="product-action-1">
@@ -323,7 +323,7 @@
                                 class="img-hover-scale overflow-hidden">
                                 @if ($category->image)
                                     <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">
-                                        <img style="height: 6rem" src="{{ url('/images/' . $category->image) }}"
+                                        <img style="height: 6rem" src="{{ url('images/' . $category->image) }}"
                                             alt=""></a>
                                 @else
                                     <a href="{{ route('shop.category', ['slug' => $category->slug]) }}">

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Customer extends Authenticatable
 {
+    use \Illuminate\Notifications\Notifiable;
     use HasFactory;
     protected $guarded = [];
     protected $table = 'users';

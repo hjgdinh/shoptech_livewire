@@ -36,7 +36,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => '1',
                 'name' => 'Samsung',
                 'slug' => 'samsumg',
-                'image' => 'deflaut/samsumg.png',
+                'image' => 'deflaut/samsung.png',
             ],
             [
                 'id' => '4',
