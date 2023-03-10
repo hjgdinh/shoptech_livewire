@@ -16,6 +16,8 @@ class AdminCategoryComponent extends Component
     public $pagesize;
     public $name;
 
+    protected $paginationTheme = 'bootstrap';
+
     public function deleteCategory($id)
     {
         $category = Category::find($id);

@@ -84,7 +84,7 @@ class PasswordResetTest extends TestCase
                 'email' => $user->email,
                 'password' => 'password',
                 'password_confirmation' => 'password',
-            ]);
+            ],);
 
             $response->assertSessionHasNoErrors();
 

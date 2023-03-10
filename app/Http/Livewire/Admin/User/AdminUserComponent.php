@@ -14,6 +14,8 @@ class AdminUserComponent extends Component
     public $sorting;
     public $pagesize;
 
+    protected $paginationTheme = 'bootstrap';
+
     public function deleteUser($id) {
         $user = Customer::find($id);
         if ($user->avatar) {

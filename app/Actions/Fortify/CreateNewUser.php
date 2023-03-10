@@ -20,6 +20,24 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        $messages = [
+            'required' => ' :Attribute bắt buộc phải nhập.',
+            'email'    => ' :Attribute phải có định dạng email',
+            'string'    => ' :Attribute phải là String',
+            'max'    => ' :Attribute tối đa 255 ký tự',
+            'unique'    => ' :Attribute đã tồn tại',
+            'confirmed'    => ' :Attribute không trùng nhau',
+        ];
+
+        $niceName = [
+            'name' => 'Tên',
+            'email' => 'Email',
+            'password' => 'Mật khẩu',
+            'gender' => 'Giới tính',
+            'address' => 'Địa chỉ',
+            'phone' => 'Số điện thoại',
+        ];
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -28,7 +46,7 @@ class CreateNewUser implements CreatesNewUsers
             'address' => ['required'],
             'phone' => ['required'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
+        ], $messages, $niceName)->validate();
 
         return Customer::create([
             'name' => $input['name'],

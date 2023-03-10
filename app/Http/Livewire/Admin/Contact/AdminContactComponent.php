@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class AdminContactComponent extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public function deleteContact($id) {
         $contact = Contact::find($id);

@@ -15,6 +15,8 @@ class AdminProductComponent extends Component
     public $sorting;
     public $pagesize;
 
+    protected $paginationTheme = 'bootstrap';
+
     public function deleteProduct($id)
     {
         $product = Product::find($id);

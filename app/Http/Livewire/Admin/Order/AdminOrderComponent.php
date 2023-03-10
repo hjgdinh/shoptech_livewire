@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class AdminOrderComponent extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public function updateStatus($order_id, $status)
     {

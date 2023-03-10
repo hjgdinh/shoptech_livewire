@@ -19,9 +19,14 @@ class ResetUserPassword implements ResetsUserPasswords
      */
     public function reset(Customer $user, array $input): void
     {
+        $messages = [
+            'required' => ' :Attribute bắt buộc phải nhập.',
+            'confirmed'    => ' :Attribute không trùng nhau',
+        ];
+
         Validator::make($input, [
             'password' => $this->passwordRules(),
-        ])->validate();
+        ], $messages)->validate();
 
         $user->forceFill([
             'password' => Hash::make($input['password']),
