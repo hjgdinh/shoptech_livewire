@@ -35,7 +35,7 @@ class AdminEditCategoryComponent extends Component
 
     public function mount($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Category::where('id', $id)->firstOrFail();
         $this->category_id = $category->id;
         $this->name = $category->name;
         $this->slug = $category->slug;

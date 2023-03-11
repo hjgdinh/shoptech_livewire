@@ -41,6 +41,7 @@ class ContactComponent extends Component
     }
 
     public function sendContact() {
+        
         $this->validate();
 
         $contact = new Contact();

@@ -27,9 +27,9 @@ class CreateOrdersTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('note')->nullable();           
-            $table->decimal('subtotal');
-            $table->decimal('total');
-            $table->decimal('discount')->default(0);
+            $table->string('subtotal');
+            $table->string('total');
+            $table->string('discount')->default(0);
             $table->tinyInteger('status')->default('1')->comment('1 : Chờ duyệt, 2 : Duyệt thành công, 3 : Hủy hàng');
             $table->tinyInteger('payment_method')->comment('1 : Khi nhận hàng, 2 : Card/Visa, 3 : Paypal');
             $table->timestamps();

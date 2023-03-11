@@ -70,9 +70,9 @@
                                                 @endforeach
                                             </table>
                                             <div style="padding: 15px 0;">
-                                                <p>Tổng SP: {{ $order->total }} VND</p>
+                                                <p>Tổng SP: {{ number_format($order->total, 0, '', ',') }} VND</p>
                                                 <p>Shipping: Free Shipping</p>
-                                                <p>Tổng: {{ $order->total }} VND</p>
+                                                <p>Tổng: {{ number_format($order->total, 0, '', ',') }} VND</p>
                                             </div>
                                             <a class="btn btn-primary" href="{{ route('user.dashboard') }}">
                                                 Back

@@ -56,7 +56,7 @@ class AdminProfileComponent extends Component
 
     public function mount($id)
     {
-        $user = Customer::where('id', $id)->first();
+        $user = Customer::where('id', $id)->firstOrFail();
         $this->state = $user->toArray();
         $this->user_id = $user->id;
         $this->name = $user->name;

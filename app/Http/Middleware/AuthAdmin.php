@@ -17,11 +17,10 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->utype === 'ADM')
-        {
+        if (Auth::user()->utype === 'ADM') {
             return $next($request);
         }
-            session()->flush();
-            return redirect()->route('login');
-        }
+        session()->flush();
+        return redirect()->route('login');
+    }
 }

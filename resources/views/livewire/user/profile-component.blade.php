@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label class="form-label">Avatar:(<span
-                                                            class="ss_red">*</span>)</label>
+                                                                class="ss_red">*</span>)</label>
                                                         <input type="file" wire:model="avatar" class="form-control"
                                                             required style="padding:10px 20px">
                                                         <div wire:loading wire:target="avatar"

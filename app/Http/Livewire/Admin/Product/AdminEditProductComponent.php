@@ -71,7 +71,7 @@ class AdminEditProductComponent extends Component
 
     public function mount($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::where('id', $id)->firstOrFail();
         $this->state = $product->toArray();
         $this->product_id = $product->id;
         $this->name = $product->name;
@@ -82,7 +82,7 @@ class AdminEditProductComponent extends Component
         $this->image = $product->image;
         $this->reset('image');
         // variant
-        $variantProduct = Variant::where('product_id', $product->id)->first();
+        $variantProduct = Variant::where('product_id', $product->id)->firstOrFail();
         $this->monitor = $variantProduct->monitor;
         $this->operating = $variantProduct->operating;
         $this->camera_behind = $variantProduct->camera_behind;
@@ -137,7 +137,7 @@ class AdminEditProductComponent extends Component
         $product->save();
         $this->image = "";
 
-        $variantProduct = Variant::where('product_id', $product->id)->first();
+        $variantProduct = Variant::where('product_id', $product->id)->firstOrFail();
         $variantProduct->monitor = $this->monitor;
         $variantProduct->operating = $this->operating;
         $variantProduct->camera_behind = $this->camera_behind;

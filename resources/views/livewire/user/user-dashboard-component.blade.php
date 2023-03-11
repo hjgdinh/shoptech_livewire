@@ -116,7 +116,7 @@
                                                                         @default
                                                                     @endswitch
                                                                 </td>
-                                                                <td>{{ $item->total }} VND for
+                                                                <td>{{ number_format($item->total, 0, '', ',') }} VND for
                                                                     {{ $item->orderItem->count() }} item</td>
                                                                 <td><a href="{{ route('user.orderdetail', $item->id) }}"
                                                                         class="btn-small d-block">View</a>

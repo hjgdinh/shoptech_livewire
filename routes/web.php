@@ -60,39 +60,39 @@ Route::get('/thankyou', ThankYouComponent::class)->name('thankyou.component');
 Route::get('/contact', ContactComponent::class)->name('contact.component');  
 
 /* ADMIN */
-Route::middleware(['auth:sanctum','verified','authadmin'])->group(function() {
-    Route::get('/admin', AdminDashboardComponent::class);
-    Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
-    Route::get('/admin/profile/{id}', AdminProfileComponent::class)->name('admin.profile');
+Route::group(['prefix' => 'admin','middleware' => ['auth:sanctum','verified','authadmin']], function() {
+    Route::get('/', AdminDashboardComponent::class);
+    Route::get('/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/profile/{id}', AdminProfileComponent::class)->name('admin.profile');
     // user
-    Route::get('/admin/users', AdminUserComponent::class)->name('admin.user');
-    Route::get('/admin/users/add', AdminAddUserComponent::class)->name('admin.adduser');
-    Route::get('/admin/users/edit/{id}', AdminEditUserComponent::class)->name('admin.edituser');
+    Route::get('/users', AdminUserComponent::class)->name('admin.user');
+    Route::get('/users/add', AdminAddUserComponent::class)->name('admin.adduser');
+    Route::get('/users/edit/{id}', AdminEditUserComponent::class)->name('admin.edituser');
     // product
-    Route::get('/admin/products', AdminProductComponent::class)->name('admin.product');
-    Route::get('/admin/products/add', AdminAddProductComponent::class)->name('admin.addproduct');
-    Route::get('/admin/products/edit/{id}', AdminEditProductComponent::class)->name('admin.editproduct');
+    Route::get('/products', AdminProductComponent::class)->name('admin.product');
+    Route::get('/products/add', AdminAddProductComponent::class)->name('admin.addproduct');
+    Route::get('/products/edit/{id}', AdminEditProductComponent::class)->name('admin.editproduct');
     // category
-    Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.category');
-    Route::get('/admin/categories/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
-    Route::get('/admin/categories/edit/{id}', AdminEditCategoryComponent::class)->name('admin.editcategory');
-    Route::get('/admin/subcategories/edit/{id}', AdminEditSubCategoryComponent::class)->name('admin.editsubcategory');
+    Route::get('/categories', AdminCategoryComponent::class)->name('admin.category');
+    Route::get('/categories/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
+    Route::get('/categories/edit/{id}', AdminEditCategoryComponent::class)->name('admin.editcategory');
+    Route::get('/subcategories/edit/{id}', AdminEditSubCategoryComponent::class)->name('admin.editsubcategory');
     // order
-    Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.order');
-    Route::get('/admin/orders/{order_id}', AdminOrderDetailComponent::class)->name('admin.orderdetail');
+    Route::get('/orders', AdminOrderComponent::class)->name('admin.order');
+    Route::get('/orders/{order_id}', AdminOrderDetailComponent::class)->name('admin.orderdetail');
     // Contact
-    Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contact');
+    Route::get('/contacts', AdminContactComponent::class)->name('admin.contact');
 });
 
 /* CLIENT */
-Route::middleware(['auth:sanctum','verified'])->group(function() {
-    Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+Route::group(['prefix' => 'user','middleware' => ['auth:sanctum','verified']], function() {
+    Route::get('/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     // order
-    Route::get('/user/orders/{order_id}', UserOrderDetailComponent::class)->name('user.orderdetail');
+    Route::get('/orders/{order_id}', UserOrderDetailComponent::class)->name('user.orderdetail');
     // pw
-    Route::get('/user/change-password', ChangePasswordComponent::class)->name('user.changepw');
+    Route::get('/change-password', ChangePasswordComponent::class)->name('user.changepw');
     // profile
-    Route::get('/user/profile/{id}', ProfileComponent::class)->name('user.profile');
+    Route::get('/profile/{id}', ProfileComponent::class)->name('user.profile');
 });
 
 
